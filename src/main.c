@@ -8,7 +8,11 @@ int	main(int ac, char **av)
 	char	*res;
 	int		fd;
 
-	(void)ac;
+	if (ac != 2)
+	{
+		printf("Error\n");
+		return (1);
+	}
 	fd = open(av[1], O_RDONLY);
 	if (fd == -1)
 	{
