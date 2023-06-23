@@ -1,7 +1,8 @@
 
 SRC			= main.c \
 			  error.c \
-			  key_press.c
+			  key_press.c \
+			  parse_center.c
 
 SRCDIR		= ./src
 

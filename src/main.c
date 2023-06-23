@@ -7,9 +7,11 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 	{
-		error_msg("Error: wrong argument !");
+		error_msg(INVALID_ARGUMENT);
 		return (EXIT_FAILURE);
 	}
+	data = parse_center(av[1]);
+
 	(void)(av);
 	data = ft_calloc(1, sizeof(t_data));
 	if (!data)
