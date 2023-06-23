@@ -47,13 +47,13 @@ $(NAME):	${OBJS}
 			ar rcs ${NAME} ${OBJS}
 
 .c.o:
-			${CC} ${CFLAGS}	-c $< -o $@
+			@${CC} ${CFLAGS}	-c $< -o $@
 
 clean:
-			${RM} ${OBJS} ${BOBJS}
+			@${RM} ${OBJS} ${BOBJS}
 
 fclean:		clean
-			${RM} ${NAME}
+			@${RM} ${NAME}
 
 re:			fclean all
 
