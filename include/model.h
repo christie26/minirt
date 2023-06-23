@@ -2,6 +2,16 @@
 #ifndef MODEL_H
 # define MODEL_H
 
+# define ESC 53
+# define LEFT 123
+# define RIGHT 124
+# define DOWN 125
+# define UP 126
+# define KEY_W 13
+# define KEY_A 0
+# define KEY_S 1
+# define KEY_D 2
+
 typedef struct s_color {
 	int	red;
 	int	green;
@@ -56,5 +66,18 @@ typedef struct s_cylinder {
 	double		height;
 	t_color		color;
 }	t_cylinder;
+
+typedef struct s_data {
+	t_ambient	ambient;
+	t_camera	camera;
+	t_light		light;
+	t_sphere	sphere;
+	t_plane		plane;
+	t_cylinder	cylinder;
+	void		*mlx;
+	void		*win;
+	void		*img;
+	char		*addr;
+}	t_data;
 
 #endif
