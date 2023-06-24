@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minkim3 <minkim3@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/24 19:52:05 by minkim3           #+#    #+#             */
-/*   Updated: 2023/06/24 21:33:41 by minkim3          ###   ########.fr       */
+/*   Created: 2023/06/24 19:46:38 by minkim3           #+#    #+#             */
+/*   Updated: 2023/06/24 20:38:20 by minkim3          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#include "../../includes/minirt.h"
 
-# include "../libft/get_next_line.h"
-# include "../libft/libft.h"
-# include "error.h"
-# include "model.h"
-# include "parse.h"
-# include "utils.h"
-# include <fcntl.h>
-# include <mlx.h>
-# include <stdio.h>
-# include <stdlib.h>
+void	handle_syscall(void)
+{
+	perror("Error\n");
+	exit(EXIT_FAILURE);
+}
 
-#endif
+void	ft_putendl_fd(char *s, int fd)
+{
+	write(fd, s, ft_strlen(s));
+	write(fd, "\n", 1);
+	return ;
+}
+
+void	*error_msg(char *error_message)
+{
+	ft_putendl_fd(error_message, 2);
+	return (0);
+}

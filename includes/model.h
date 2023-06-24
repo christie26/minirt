@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   model.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: minkim3 <minkim3@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/24 19:52:08 by minkim3           #+#    #+#             */
+/*   Updated: 2023/06/24 20:34:33 by minkim3          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #ifndef MODEL_H
 # define MODEL_H
@@ -56,5 +68,18 @@ typedef struct s_cylinder {
 	double		height;
 	t_color		color;
 }	t_cylinder;
+
+typedef struct s_data {
+	t_ambient	ambient;
+	t_camera	camera;
+	t_light		light;
+	t_sphere	sphere;
+	t_plane		plane;
+	t_cylinder	cylinder;
+	void		*mlx;
+	void		*win;
+	void		*img;
+	char		*addr;
+}	t_data;
 
 #endif

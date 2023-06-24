@@ -1,22 +1,47 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: minkim3 <minkim3@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/06/24 20:18:20 by minkim3           #+#    #+#              #
+#    Updated: 2023/06/24 21:52:18 by minkim3          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-SRC			= main.c
+NAME		 = ./minirt
+LIBFT		 = ./libft/libft.a
+DYLIB		 = ./mlx/libmlx.dylib
 
-SRCDIR		= ./src
+CC			 = cc
+CFLAGS		 = -Wall -Wextra -Werror -O3 -ffast-math -g
+LDFLAGS	     = -fsanitize=address
 
-SRC			:= $(addprefix $(SRCDIR)/, $(SRC))
-OBJ			= ${SRC:.c=.o}
+SRCDIR		 = ./src/
 
-HEADER_PATH     = ./includes/
-S_HEADER        = model.h header.h minirt.h
-HEADER          = $(addprefix $(HEADER_PATH), $(S_HEADER))
+MAIN_PATH  	 = main/
+MAIN_SRCS    = main.c
+MAIN         = $(addprefix $(MAIN_PATH), $(MAIN_SRCS))
 
-NAME		= ./minirt
-LIBFT		= ./libft/libft.a
-DYLIB		= ./mlx/libmlx.dylib
+PARSING_PATH = parse/
+PARSING_SRCS = open.c parse_center.c parsing_helper.c \
+				ambient.c camera.c light.c plane.c \
+				sphere.c cylinder.c
+PARSING      = $(addprefix $(PARSING_PATH), $(PARSING_SRCS))
 
-CC			= cc
-CFLAGS		= -Wall -Wextra -Werror -O3 -ffast-math -g
-LDFLAGS		= -fsanitize=address
+TOOL_PATH  	 = utils/
+TOOL_SRCE	 = error.c parse_utils.c free.c get_double.c
+TOOL		 = $(addprefix $(TOOL_PATH), $(TOOL_SRCE))
+
+SRC			 := $(addprefix $(SRCDIR), $(MAIN)) \
+				$(addprefix $(SRCDIR), $(TOOL)) \
+				$(addprefix $(SRCDIR), $(PARSING))
+OBJ			 = ${SRC:.c=.o}
+
+HEADER_PATH  = ./includes/
+S_HEADER     = minirt.h
+HEADER       = $(addprefix $(HEADER_PATH), $(S_HEADER))
 
 all:		${NAME}
 
