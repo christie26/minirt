@@ -2,7 +2,9 @@
 SRC			= main.c \
 			  error.c \
 			  key_press.c \
-			  parse_center.c
+			  parse_center.c \
+			  identifier_ambient.c \
+			  parse_utils.c
 
 SRCDIR		= ./src
 
@@ -34,7 +36,7 @@ $(DYLIB):
 clean:
 			${RM} ${OBJ}
 			@make -C ./libft clean
-			@make -C ./mlx clean
+			# @make -C ./mlx clean
 
 fclean:		clean
 			${RM} ${NAME}
