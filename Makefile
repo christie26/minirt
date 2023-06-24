@@ -6,7 +6,7 @@
 #    By: minkim3 <minkim3@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/24 20:18:20 by minkim3           #+#    #+#              #
-#    Updated: 2023/06/24 21:52:18 by minkim3          ###   ########.fr        #
+#    Updated: 2023/06/24 21:55:36 by minkim3          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ PARSING_SRCS = open.c parse_center.c parsing_helper.c \
 PARSING      = $(addprefix $(PARSING_PATH), $(PARSING_SRCS))
 
 TOOL_PATH  	 = utils/
-TOOL_SRCE	 = error.c parse_utils.c free.c get_double.c
+TOOL_SRCE	 = error.c free.c get_double.c
 TOOL		 = $(addprefix $(TOOL_PATH), $(TOOL_SRCE))
 
 SRC			 := $(addprefix $(SRCDIR), $(MAIN)) \
