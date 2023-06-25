@@ -44,16 +44,7 @@ int	main(int ac, char **av)
 	
 	mlx_hook(data.win, 2, 0, key_press, &data);
 	mlx_hook(data.win, 17, 0, win_close, 0);
-
-	// alt 1
-	// mlx_loop_hook(data.mlx, render, &data);
-	// alt 1 end
-
-	// alt 2
-	first_ppm(&data);
-	mlx_put_image_to_window(data.mlx, data.win, data.img, 0, 0);
-	// alt 2 end
-
+	mlx_loop_hook(data.mlx, render, &data);
 	mlx_loop(data.mlx);
 
 	return (0);
