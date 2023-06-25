@@ -1,17 +1,27 @@
 
 #include "../../includes/minirt.h"
 
-t_cordinate	get_coordinate(char *cordinate_val)
+t_coordinate	get_coordinate(char *coordinate_val)
 {
-	t_cordinate	cordinate;
-	char		**cordinate_values;
+	t_coordinate	coordinate;
+	char		**coordinate_values;
 
-	cordinate_values = ft_split(cordinate_val, ',');
-	cordinate.x = get_double(cordinate_values[0]);
-	cordinate.y = get_double(cordinate_values[1]);
-	cordinate.z = get_double(cordinate_values[2]);
-	free_two_dimensional_array(cordinate_values);
-	return (cordinate);
+	coordinate_values = ft_split(coordinate_val, ',');
+	coordinate.x = get_double(coordinate_values[0]);
+	coordinate.y = get_double(coordinate_values[1]);
+	coordinate.z = get_double(coordinate_values[2]);
+	free_two_dimensional_array(coordinate_values);
+	return (coordinate);
+}
+
+t_coordinate	get_coordinate_double(double x, double y, double z)
+{
+	t_coordinate	coordinate;
+
+	coordinate.x = x;
+	coordinate.y = y;
+	coordinate.z = z;
+	return (coordinate);
 }
 
 t_color	get_color(char *color_val)
