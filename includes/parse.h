@@ -22,9 +22,4 @@ t_cylinder		get_cylinder(char **tab);
 //open.c
 int				formatcheck_open(char *filename);
 
-// key_press
-int				key_press(int keycode, t_data *data);
-int				win_close(void);
-int				render(void);
-
 #endif

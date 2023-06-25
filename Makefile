@@ -31,11 +31,11 @@ PARSING_SRCS = open.c parse_center.c parsing_helper.c \
 PARSING      = $(addprefix $(PARSING_PATH), $(PARSING_SRCS))
 
 RENDER_PATH 	= render/
-RENDER_SRCS 	= render.c
+RENDER_SRCS 	= render.c key_press.c first_ppm.c
 RENDER      	= $(addprefix $(RENDER_PATH), $(RENDER_SRCS))
 
 TOOL_PATH  	 = utils/
-TOOL_SRCE	 = error.c free.c get_double.c
+TOOL_SRCE	 = error.c free.c get_double.c rgb_to_hex.c
 TOOL		 = $(addprefix $(TOOL_PATH), $(TOOL_SRCE))
 
 SRC			 := $(addprefix $(SRCDIR), $(MAIN)) \

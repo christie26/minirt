@@ -42,7 +42,7 @@ int	main(int ac, char **av)
 	
 	mlx_init(&data);
 	data.mlx = mlx_init();
-	data.win = mlx_new_window(data.mlx, 1000, 800, "minirt");
+	data.win = mlx_new_window(data.mlx, 1000, 1000, "minirt");
 	mlx_hook(data.win, 2, 0, key_press, &data);
 	mlx_hook(data.win, 17, 0, win_close, 0);
 	mlx_loop_hook(data.mlx, render, &data);
