@@ -14,6 +14,7 @@
 # include <fcntl.h>
 # include <mlx.h>
 # include <stdio.h>
+# include <math.h>
 # include <stdlib.h>
 
 #endif
