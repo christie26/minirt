@@ -21,7 +21,7 @@ SRCS		= ft_strlen.c ft_strlcpy.c ft_strlcat.c \
 				ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c \
 				ft_itoa.c ft_utoa.c ft_strmapi.c ft_striteri.c \
 				ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
-				get_next_line.c
+				get_next_line.c ft_strcmp.c
 
 BSRCS		= ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 				ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c \
@@ -48,13 +48,13 @@ $(NAME):	${OBJS}
 			ar rcs ${NAME} ${OBJS}
 
 .c.o:
-			${CC} ${CFLAGS}	-c $< -o $@
+			@${CC} ${CFLAGS}	-c $< -o $@
 
 clean:
-			${RM} ${OBJS} ${BOBJS}
+			@${RM} ${OBJS} ${BOBJS}
 
 fclean:		clean
-			${RM} ${NAME}
+			@${RM} ${NAME}
 
 re:			fclean all
 

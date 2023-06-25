@@ -3,4 +3,6 @@
 *.a
 .vscode/*
 *.dSYM
+libmlx.dylib
+minirt
 mlx/*
