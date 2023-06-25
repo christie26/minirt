@@ -6,9 +6,9 @@ void	write_pixel_image(t_data *data, int x, int y, int color)
 
 	// if (x > 950 || x < 50 || y > 950 | y < 50)
 		// return ;
-    printf("data->addr = %p, color = %d\n", data->addr, color);
+    // printf("data->addr = %p, color = %d\n", data->addr, color);
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-    printf("dst = %p\n", dst);
+    // printf("dst = %p\n", dst);
 	*(unsigned int *)dst = color;
 	return ;
 }
@@ -35,12 +35,10 @@ void first_ppm(t_data *data)
             int ig = (int)(255.999 * g);
             int ib = (int)(255.999 * b);
 
-			printf("(%d, %d) = R: %d, G: %d, B: %d\n", i, j, ir, ig, ib);
 
             // rgb to color 
             int color = rgb_to_hex(ir, ig, ib);
             
-            printf("color -> %d\n", color);
             write_pixel_image(data, i, j, color);
         }
     }
