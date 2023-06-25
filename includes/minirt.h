@@ -9,6 +9,7 @@
 # include "parse.h"
 # include "utils.h"
 # include "render.h"
+# include "vector.h"
 
 # include <fcntl.h>
 # include <mlx.h>

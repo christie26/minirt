@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: minkim3 <minkim3@student.42.fr>            +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/06/24 20:18:20 by minkim3           #+#    #+#              #
-#    Updated: 2023/06/24 21:55:36 by minkim3          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME		 = ./minirt
 LIBFT		 = ./libft/libft.a
 DYLIB		 = ./mlx/libmlx.dylib
@@ -20,9 +8,9 @@ LDFLAGS	     = -fsanitize=address
 
 SRCDIR		 = ./src/
 
-MAIN_PATH 	= main/
-MAIN_SRCS 	= main.c
-MAIN      	= $(addprefix $(MAIN_PATH), $(MAIN_SRCS))
+MAIN_PATH 	 = main/
+MAIN_SRCS 	 = main.c
+MAIN       	 = $(addprefix $(MAIN_PATH), $(MAIN_SRCS))
 
 PARSING_PATH = parse/
 PARSING_SRCS = open.c parse_center.c parsing_helper.c \
@@ -30,9 +18,13 @@ PARSING_SRCS = open.c parse_center.c parsing_helper.c \
 				sphere.c cylinder.c
 PARSING      = $(addprefix $(PARSING_PATH), $(PARSING_SRCS))
 
-RENDER_PATH 	= render/
-RENDER_SRCS 	= render.c key_press.c first_ppm.c
-RENDER      	= $(addprefix $(RENDER_PATH), $(RENDER_SRCS))
+RENDER_PATH  = render/
+RENDER_SRCS  = render.c key_press.c first_ppm.c
+RENDER       = $(addprefix $(RENDER_PATH), $(RENDER_SRCS))
+
+VECTOR_PATH  = vector/
+VECTOR_SRCE	 = init_vector.c basic_calculations.c advanced_calculations.c
+VECTOR		 = $(addprefix $(VECTOR_PATH), $(VECTOR_SRCE))
 
 TOOL_PATH  	 = utils/
 TOOL_SRCE	 = error.c free.c get_double.c rgb_to_hex.c
@@ -41,7 +33,8 @@ TOOL		 = $(addprefix $(TOOL_PATH), $(TOOL_SRCE))
 SRC			 := $(addprefix $(SRCDIR), $(MAIN)) \
 				$(addprefix $(SRCDIR), $(TOOL)) \
 				$(addprefix $(SRCDIR), $(PARSING)) \
-				$(addprefix $(SRCDIR), $(RENDER))
+				$(addprefix $(SRCDIR), $(RENDER)) \
+				$(addprefix $(SRCDIR), $(VECTOR))
 OBJ			 = ${SRC:.c=.o}
 
 HEADER_PATH  = ./includes/
@@ -51,10 +44,10 @@ HEADER       = $(addprefix $(HEADER_PATH), $(S_HEADER))
 all:		${NAME}
 
 %.o: 		%.c $(DYLIB) $(HEADER)
-			$(CC) $(CFLAGS) -Imlx -Ilibft -c $< -o $@
+			$(CC) $(CFLAGS) $(LDFLAGS) -Imlx -Ilibft -c $< -o $@
 
 $(NAME): 	$(OBJ) $(DYLIB) $(LIBFT)
-			$(CC) $(OBJ) -L./mlx -lmlx -L./libft -lft -framework OpenGL -framework AppKit -o $(NAME) 
+			$(CC) $(LDFLAGS) $(OBJ) -L./mlx -lmlx -L./libft -lft -framework OpenGL -framework AppKit -o $(NAME) 
 
 $(LIBFT):
 			@make -j3 -C ./libft all
