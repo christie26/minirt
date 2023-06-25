@@ -44,11 +44,7 @@ HEADER       = $(addprefix $(HEADER_PATH), $(S_HEADER))
 all:		${NAME}
 
 %.o: 		%.c $(DYLIB) $(HEADER)
-<<<<<<< HEAD
-			$(CC) $(CFLAGS)  -Imlx -Ilibft -c $< -o $@
-=======
 			$(CC) $(CFLAGS) $(LDFLAGS) -Imlx -Ilibft -c $< -o $@
->>>>>>> origin/minkim3
 
 $(NAME): 	$(OBJ) $(DYLIB) $(LIBFT)
 			$(CC) $(LDFLAGS) $(OBJ) -L./mlx -lmlx -L./libft -lft -framework OpenGL -framework AppKit -o $(NAME) 
