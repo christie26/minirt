@@ -20,9 +20,9 @@ LDFLAGS	     = -fsanitize=address
 
 SRCDIR		 = ./src/
 
-MAIN_PATH  	 = main/
-MAIN_SRCS    = main.c
-MAIN         = $(addprefix $(MAIN_PATH), $(MAIN_SRCS))
+MAIN_PATH 	= main/
+MAIN_SRCS 	= main.c
+MAIN      	= $(addprefix $(MAIN_PATH), $(MAIN_SRCS))
 
 PARSING_PATH = parse/
 PARSING_SRCS = open.c parse_center.c parsing_helper.c \
@@ -60,7 +60,7 @@ $(DYLIB):
 clean:
 			${RM} ${OBJ}
 			@make -C ./libft clean
-			@make -C ./mlx clean
+			# @make -C ./mlx clean
 
 fclean:		clean
 			${RM} ${NAME}

@@ -5,3 +5,6 @@
 *.dSYM
 libmlx.dylib
 minirt
+*/*.swiftmodule
+*/*.swiftsourceinfo
+*/*.swiftdoc
