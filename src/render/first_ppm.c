@@ -4,9 +4,11 @@ void	write_pixel_image(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
-	if (x > 950 || x < 50 || y > 950 | y < 50)
-		return ;
+	// if (x > 950 || x < 50 || y > 950 | y < 50)
+		// return ;
+    printf("data->addr = %p, color = %d\n", data->addr, color);
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+    printf("dst = %p\n", dst);
 	*(unsigned int *)dst = color;
 	return ;
 }
@@ -15,13 +17,10 @@ void first_ppm(t_data *data)
 {
 
     // Image
-
-    const int image_width = 256;
-    const int image_height = 256;
+    const int image_width = 1920;
+    const int image_height = 1080;
 
     // Render
-
-    // std::cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
 
     for (int j = image_height-1; j >= 0; --j) 
 	{
@@ -37,11 +36,11 @@ void first_ppm(t_data *data)
             int ib = (int)(255.999 * b);
 
 			printf("(%d, %d) = R: %d, G: %d, B: %d\n", i, j, ir, ig, ib);
-            // std::cout << ir << ' ' << ig << ' ' << ib << '\n';
 
             // rgb to color 
             int color = rgb_to_hex(ir, ig, ib);
             
+            printf("color -> %d\n", color);
             write_pixel_image(data, i, j, color);
         }
     }

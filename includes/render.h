@@ -22,6 +22,8 @@ int	render(t_data *data);
 // utils.c
 int rgb_to_hex(int r, int g, int b);
 void first_ppm(t_data *data);
+void	write_pixel_image(t_data *data, int x, int y, int color);
+
 
 
 #endif

@@ -51,7 +51,7 @@ HEADER       = $(addprefix $(HEADER_PATH), $(S_HEADER))
 all:		${NAME}
 
 %.o: 		%.c $(DYLIB) $(HEADER)
-			$(CC) $(CFLAGS) -Imlx -Ilibft -c $< -o $@
+			$(CC) $(CFLAGS)  -Imlx -Ilibft -c $< -o $@
 
 $(NAME): 	$(OBJ) $(DYLIB) $(LIBFT)
 			$(CC) $(OBJ) -L./mlx -lmlx -L./libft -lft -framework OpenGL -framework AppKit -o $(NAME) 
