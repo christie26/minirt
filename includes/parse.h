@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parse.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: minkim3 <minkim3@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/24 20:10:10 by minkim3           #+#    #+#             */
-/*   Updated: 2023/06/24 21:44:12 by minkim3          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef PARSE_H
 # define PARSE_H
 
@@ -33,10 +21,5 @@ t_cylinder		get_cylinder(char **tab);
 
 //open.c
 int				formatcheck_open(char *filename);
-
-// key_press
-int				key_press(int keycode, t_data *data);
-int				win_close(void);
-int				render(void);
 
 #endif

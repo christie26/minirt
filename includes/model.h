@@ -1,16 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   model.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: minkim3 <minkim3@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/24 19:52:08 by minkim3           #+#    #+#             */
-/*   Updated: 2023/06/24 20:34:33 by minkim3          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-
 #ifndef MODEL_H
 # define MODEL_H
 
@@ -80,6 +67,9 @@ typedef struct s_data {
 	void		*win;
 	void		*img;
 	char		*addr;
+	int			bits_per_pixel;
+	int			line_length;
+	int			endian;
 }	t_data;
 
 #endif
