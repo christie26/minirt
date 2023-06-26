@@ -7,11 +7,11 @@ typedef struct s_color {
 	int	blue;
 }	t_color;
 
-typedef struct s_cordinate {
+typedef struct s_coordinate {
 	double	x;
 	double	y;
 	double	z;
-}	t_cordinate;
+}	t_coordinate;
 
 typedef struct s_vector {
 	double	x;
@@ -25,31 +25,31 @@ typedef struct s_ambient {
 }	t_ambient;
 
 typedef struct s_camera {
-	t_cordinate	cordinate;
+	t_coordinate	coordinate;
 	t_vector	vector;
 	double		fov;
 }	t_camera;
 
 typedef struct s_light {
-	t_cordinate	cordinate;
+	t_coordinate	coordinate;
 	double		brightness;
 	t_color		color;
 }	t_light;
 
 typedef struct s_sphere {
-	t_cordinate	cordinate;
+	t_coordinate	coordinate;
 	double		diameter;
 	t_color		color;
 }	t_sphere;
 
 typedef struct s_plane {
-	t_cordinate	cordinate;
+	t_coordinate	coordinate;
 	t_vector	vector;
 	t_color		color;
 }	t_plane;
 
 typedef struct s_cylinder {
-	t_cordinate	cordinate;
+	t_coordinate	coordinate;
 	t_vector	vector;
 	double		diameter;
 	double		height;

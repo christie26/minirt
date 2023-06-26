@@ -43,3 +43,4 @@ void first_ppm(t_data *data)
         }
     }
 }
+
