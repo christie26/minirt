@@ -42,17 +42,27 @@ t_color ray_color_sky(t_ray ray, t_data *data)
     return (color_rgb);
 }
 
+void	write_pixel_image(t_data *data, int x, int y, int color)
+{
+	char	*dst;
+
+	// if (x > 950 || x < 50 || y > 950 | y < 50)
+		// return ;
+    // printf("data->addr = %p, color = %d\n", data->addr, color);
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+    // printf("dst = %p\n", dst);
+	*(unsigned int *)dst = color;
+	return ;
+}
+
 void	simple_render(t_data *data)
 {
 
-	const double aspect_ratio = 16.0 / 9.0;
-    const int image_width = 400; // <- FOV 
-    const int image_height = (int)(image_width / aspect_ratio);
-
-    // Camera
-    // set viewport variables 
-    double viewport_height = 2.0;
-    double viewport_width = aspect_ratio * viewport_height;
+	setup_screen(data, 1920, 1080);
+    const int image_width = data->screen.resolution_width;
+    const int image_height = data->screen.resolution_height;
+    double viewport_height = data->screen.height;
+    double viewport_width = data->screen.width;
     double focal_length = 1.0; // like ede-thom's project !! 
 
 	t_coordinate origin = get_coordinate_double(0, 0, 0); // coordinate of camera

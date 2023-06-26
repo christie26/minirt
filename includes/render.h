@@ -20,6 +20,8 @@
 int		key_press(int keycode, t_data *data);
 int		win_close(void);
 int		render(t_data *data);
+void	setup_screen(t_data *data, int res_width, int res_height);
+
 
 // utils.c
 void	write_pixel_image(t_data *data, int x, int y, int color);
