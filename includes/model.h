@@ -42,12 +42,11 @@ typedef struct s_light
 	t_color			color;
 }					t_light;
 
-typedef struct s_sphere
-{
-	t_coordinate	coordinate;
-	double			diameter;
-	t_color			color;
-}					t_sphere;
+typedef struct s_sphere {
+	t_coordinate	center;
+	double		diameter;
+	t_color		color;
+}	t_sphere;
 
 typedef struct s_plane
 {

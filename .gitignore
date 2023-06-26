@@ -8,4 +8,4 @@ minirt
 */*.swiftmodule
 */*.swiftsourceinfo
 */*.swiftdoc
-*/*.rt
+# */*.rt

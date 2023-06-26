@@ -26,7 +26,6 @@ void	write_pixel_image(t_data *data, int x, int y, int color);
 
 // rednering trial
 void	first_ppm(t_data *data);
-bool	hit_sphere(t_coordinate center, double radius, t_ray ray);
 void	simple_render(t_data *data);
 
 #endif
