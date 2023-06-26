@@ -1,21 +1,5 @@
 #include "../../includes/minirt.h"
 
-bool hit_sphere(t_coordinate center, double radius, t_ray ray)
-{
-    t_vector dif;
-	double	a;
-	double	b;
-	double	c;
-	double	discriminant;
-
-	dif = get_vector_two_point(ray.origin, center);
-	a = vector_dot(ray.direction, ray.direction);
-	b = 2 * vector_dot(dif, ray.direction);
-	c = vector_dot(ray.direction, ray.direction) - radius * radius;
-	discriminant = b * b - 4 * a * c;
-	return (discriminant);
-}
-
 // 여기에서 쓰는 계산식은 특수한 경우이다. 
 // 일반적인 경우에 적용 가능한 함수를 만들어야 한다. 
 t_coordinate  get_start_corner(t_coordinate origin, t_vector horizontal, \
@@ -43,17 +27,17 @@ t_vector get_ray_direction(t_coordinate lower_left_corner, t_vector horizontal, 
     return (ray_direction);
 }
 
-t_color ray_color_sky(t_ray ray)
+t_color ray_color_sky(t_ray ray, t_data *data)
 {
     t_color     color_rgb;
     t_vector    unit_vector;
     double      ratio;
 
-    // if (hit_sphere(get_coordinate_double(0,0,-1), 0.5, ray))
-        // return (get_color("255, 0, 0"));
+    // if (data->sphere)
+        if (hit_sphere(data->sphere, ray))
+            return (data->sphere.color);
     unit_vector = get_unit_vector(ray.direction);
     ratio = 0.5 * (unit_vector.y + 1);
-    // printf("ratio = %f\n", ratio);
     color_rgb = gredient_color(get_color("255,255,255"), get_color("30,144,255"), ratio);
     return (color_rgb);
 }
@@ -62,7 +46,7 @@ void	simple_render(t_data *data)
 {
 
 	const double aspect_ratio = 16.0 / 9.0;
-    const int image_width = 400;
+    const int image_width = 400; // <- FOV 
     const int image_height = (int)(image_width / aspect_ratio);
 
     // Camera
@@ -93,10 +77,10 @@ void	simple_render(t_data *data)
             ray.origin = origin;
             ray.direction = get_ray_direction(lower_left_corner, horizontal, vertical, origin, u, v);
             // color_hex = 0xFFFFFF;
-            color_rgb = ray_color_sky(ray);
+            color_rgb = ray_color_sky(ray, data);
             color_hex = t_color_to_hex(color_rgb);
-            if (i == 0)
-                printf("(%d, %d) -> %d, %d, %d\n", i, j, color_rgb.red, color_rgb.green, color_rgb.blue);
+            // if (i == 0)
+                // printf("(%d, %d) -> %d, %d, %d\n", i, j, color_rgb.red, color_rgb.green, color_rgb.blue);
             write_pixel_image(data, i, j, color_hex);
         }
     }
