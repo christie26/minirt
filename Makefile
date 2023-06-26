@@ -23,11 +23,12 @@ RENDER_SRCS  = render.c key_press.c simple_render.c setup_screen.c
 RENDER       = $(addprefix $(RENDER_PATH), $(RENDER_SRCS))
 
 VECTOR_PATH  = vector/
-VECTOR_SRCE	 = init_vector.c basic_calculations.c advanced_calculations.c
+VECTOR_SRCE	 = init_vector.c basic_calculations.c advanced_calculations.c other_vector.c
 VECTOR		 = $(addprefix $(VECTOR_PATH), $(VECTOR_SRCE))
 
 TOOL_PATH  	 = utils/
-TOOL_SRCE	 = error.c free.c get_double.c color_utils.c sphere_utils.c
+TOOL_SRCE	 = error.c free.c get_double.c \
+				color_utils.c sphere_utils.c mlx_utils.c math_utils.c
 TOOL		 = $(addprefix $(TOOL_PATH), $(TOOL_SRCE))
 
 SRC			 := $(addprefix $(SRCDIR), $(MAIN)) \

@@ -34,14 +34,11 @@ int	main(int ac, char **av)
 		return (EXIT_FAILURE);
 	}
 	data = parse_center(av[1]);
-	// print_data(data);
-	
 	data.mlx = mlx_init();
 	data.win = mlx_new_window(data.mlx, 1920, 1080, "Hello world!");
 	data.img = mlx_new_image(data.mlx, 1920, 1080);
 	data.addr = mlx_get_data_addr(data.img, &data.bits_per_pixel, &data.line_length,
 								&data.endian);
-	 
 	mlx_hook(data.win, 2, 0, key_press, &data);
 	mlx_hook(data.win, 17, 0, win_close, 0);
 	mlx_loop_hook(data.mlx, render, &data);

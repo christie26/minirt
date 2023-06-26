@@ -20,8 +20,13 @@
 int		key_press(int keycode, t_data *data);
 int		win_close(void);
 int		render(t_data *data);
-void	setup_screen(t_data *data, int res_width, int res_height);
 
+// setup_screen.c
+void			setup_screen(t_data *data, int res_width, int res_height);
+t_coordinate	get_start_corner(t_coordinate origin, t_vector horizontal, \
+					t_vector vertical, double focal_length);
+t_vector		get_ray_direction(t_coordinate lower_left_corner, t_vector horizontal, \
+					t_vector vertical, t_coordinate origin, double u, double v);
 
 // utils.c
 void	write_pixel_image(t_data *data, int x, int y, int color);
