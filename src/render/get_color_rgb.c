@@ -22,7 +22,7 @@ static t_color	get_color_sphere(t_sphere sphere, t_light light, t_coordinate hit
 	light_vector = vector_unit(get_vector_two_point(hit_point, light.coordinate));
 	light_ratio = vector_dot(light_vector, sphere.normal);
 	printf("light_ratio: %f\n", light_ratio);
-	light_ratio *= -1;
+	// light_ratio *= -1;
 	if (light_ratio < 0)
 		return (sphere.color);
 	light_ratio = light_ratio * light.brightness;

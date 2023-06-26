@@ -19,8 +19,6 @@ void	get_pixel_color(t_data *data, t_render render)
 					render.horizontal, render.vertical, render.origin, u, v);
 			color_rgb = get_color_rgb(ray, data);
 			color_hex = color_to_hex(color_rgb);
-			// if (i == 0)
-			// printf("(%d, %d) -> %d, %d, %d\n", i, j, color_rgb.red, color_rgb.green, color_rgb.blue);
 			write_pixel_image(data, i, j, color_hex);
 		}
 	}
