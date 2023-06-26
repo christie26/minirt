@@ -47,6 +47,7 @@ typedef struct s_sphere
 	t_coordinate	center;
 	double			diameter;
 	t_color			color;
+	t_vector		normal;
 }					t_sphere;
 
 typedef struct s_plane

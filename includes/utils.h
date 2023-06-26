@@ -24,6 +24,7 @@ t_color	gredient_color(t_color color_one, t_color color_two, double ratio);
 
 // sphere
 int		hit_sphere(t_sphere sphere, t_ray ray);
+t_coordinate get_sphere_point(t_sphere sphere, t_ray ray);
 
 // math_utils.c
 double	quadratic_equation_1(double a, double b, double c);
