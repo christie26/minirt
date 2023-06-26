@@ -12,4 +12,9 @@ void	free_two_dimensional_array(char **array);
 // get double.c
 double	get_double(const char *str);
 
+// color_utils.c
+int		rgb_to_hex(int r, int g, int b);
+int		t_color_to_hex(t_color color);
+t_color	gredient_color(t_color color_one, t_color color_two, double ratio);
+
 #endif
