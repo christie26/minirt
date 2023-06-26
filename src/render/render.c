@@ -12,6 +12,6 @@ int	render(t_data *data)
 
 	simple_render(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
-	
+	// while (1);
 	return (0);
 }
