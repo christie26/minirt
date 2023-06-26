@@ -59,10 +59,10 @@ void	simple_render(t_data *data)
 {
 
 	setup_screen(data, 1920, 1080);
-    const int image_width = data->screen.resolution_width;
-    const int image_height = data->screen.resolution_height;
-    double viewport_height = data->screen.height;
-    double viewport_width = data->screen.width;
+    const int window_width = data->screen.window_width;
+    const int window_height = data->screen.window_height;
+    double viewport_height = data->screen.view_height;
+    double viewport_width = data->screen.view_width;
     double focal_length = 1.0; // like ede-thom's project !! 
 
 	t_coordinate origin = get_coordinate_double(0, 0, 0); // coordinate of camera
@@ -79,11 +79,11 @@ void	simple_render(t_data *data)
     t_color color_rgb;
     int     color_hex;
 
-    // printf("image width: %d, image height: %d\n", image_width, image_height);
-    for (int j = image_height-1; j >= 0; --j) {
-        for (int i = 0; i < image_width; ++i) {
-            double u = (double)(i) / (image_width-1);
-            double v = (double)(j) / (image_height-1);
+    // printf("window width: %d, window height: %d\n", window_width, window_height);
+    for (int j = window_height-1; j >= 0; --j) {
+        for (int i = 0; i < window_width; ++i) {
+            double u = (double)(i) / (window_width-1);
+            double v = (double)(j) / (window_height-1);
             ray.origin = origin;
             ray.direction = get_ray_direction(lower_left_corner, horizontal, vertical, origin, u, v);
             // color_hex = 0xFFFFFF;

@@ -66,11 +66,11 @@ typedef struct s_cylinder
 
 typedef struct s_screen
 {
-	double			width;
-	double			height;
+	double			view_width;
+	double			view_height;
 	double			distance;
-	int 			resolution_width;
-	int 			resolution_height;
+	int 			window_width;
+	int 			window_height;
 	t_vector		horizontal;
 	t_vector		vertical;
 }					t_screen;

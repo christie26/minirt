@@ -9,10 +9,10 @@ void	setup_screen(t_data *data, int res_width, int res_height)
 	t_vector	vertical;
 
 	data->screen.distance = 1;
-	data->screen.resolution_width = res_width;
-	data->screen.resolution_height = res_height;
-	data->screen.width = 2 * tan(DEG_TO_RAD(data->camera.fov));
-	data->screen.height = data->screen.width * (res_height / (double)res_width);
+	data->screen.window_width = res_width;
+	data->screen.window_height = res_height;
+	data->screen.view_width = 2 * tan(DEG_TO_RAD(data->camera.fov));
+	data->screen.view_height = data->screen.view_width * (res_height / (double)res_width);
 	world_vertical = init_vector(0, 1, 0);
 	horizontal = vector_unit(vector_cross(world_vertical, data->camera.vector));
 	vertical = vector_unit(vector_cross(data->camera.vector, horizontal));
@@ -41,7 +41,7 @@ void	setup_screen(t_data *data, int res_width, int res_height)
 // t_vector	get_ray_to_screen(t_camera camera, t_screen screen, int pixel_x, int pixel_y)
 // {
 // 	// Calculate the position of the point on the screen corresponding to the pixel
-// 	// This will depend on the resolution and size of your screen
+// 	// This will depend on the window and size of your screen
 // 	// Then subtract the camera's position from this point to get the ray
 // }
 
