@@ -10,7 +10,6 @@ typedef struct s_ray {
 
 t_vector	init_vector(double x, double y, double z);
 t_vector	get_vector_two_point(t_coordinate start, t_coordinate end);
-t_vector    get_unit_vector(t_vector origin_vector);
 
 t_vector	vector_add(t_vector v1, t_vector v2);
 t_vector	vector_sub(t_vector v1, t_vector v2);
