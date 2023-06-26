@@ -33,6 +33,6 @@ void	write_pixel_image(t_data *data, int x, int y, int color);
 
 // rednering trial
 void	first_ppm(t_data *data);
-void	simple_render(t_data *data);
+void	get_pixel_color(t_data *data, t_render render);
 
 #endif
