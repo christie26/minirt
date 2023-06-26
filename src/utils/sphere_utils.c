@@ -16,4 +16,3 @@ bool hit_sphere(t_sphere sphere, t_ray ray)
 	discriminant = b * b - 4 * a * c;
 	return (discriminant > 0);
 }
-
