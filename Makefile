@@ -27,7 +27,7 @@ VECTOR_SRCE	 = init_vector.c basic_calculations.c advanced_calculations.c
 VECTOR		 = $(addprefix $(VECTOR_PATH), $(VECTOR_SRCE))
 
 TOOL_PATH  	 = utils/
-TOOL_SRCE	 = error.c free.c get_double.c color_utils.c
+TOOL_SRCE	 = error.c free.c get_double.c color_utils.c sphere_utils.c
 TOOL		 = $(addprefix $(TOOL_PATH), $(TOOL_SRCE))
 
 SRC			 := $(addprefix $(SRCDIR), $(MAIN)) \
