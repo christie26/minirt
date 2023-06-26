@@ -19,7 +19,7 @@ double	get_double(const char *str);
 
 // color_utils.c
 int		rgb_to_hex(int r, int g, int b);
-int		t_color_to_hex(t_color color);
+int		color_to_hex(t_color color);
 t_color	gredient_color(t_color color_one, t_color color_two, double ratio);
 
 // sphere

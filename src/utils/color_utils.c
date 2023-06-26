@@ -9,7 +9,7 @@ int rgb_to_hex(int r, int g, int b)
 	return (color);
 }
 
-int t_color_to_hex(t_color color)
+int color_to_hex(t_color color)
 {
 	int color_hex;
 

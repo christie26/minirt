@@ -19,7 +19,7 @@ PARSING_SRCS = open.c parse_center.c parsing_helper.c \
 PARSING      = $(addprefix $(PARSING_PATH), $(PARSING_SRCS))
 
 RENDER_PATH  = render/
-RENDER_SRCS  = render.c key_press.c simple_render.c setup_screen.c
+RENDER_SRCS  = render.c key_press.c setup_screen.c get_pixel_color.c get_color_rgb.c
 RENDER       = $(addprefix $(RENDER_PATH), $(RENDER_SRCS))
 
 VECTOR_PATH  = vector/

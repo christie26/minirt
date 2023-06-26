@@ -35,4 +35,8 @@ void	write_pixel_image(t_data *data, int x, int y, int color);
 void	first_ppm(t_data *data);
 void	get_pixel_color(t_data *data, t_render render);
 
+// color
+t_color	get_color_rgb(t_ray ray, t_data *data);
+
+
 #endif
