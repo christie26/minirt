@@ -1,6 +1,13 @@
 #include "../../includes/minirt.h"
 
-#define PI 3.14159265358979323846
+static double	degree_to_radian(double fov)
+{
+	double pi;
+
+	pi = 3.14159265358979323846;
+	fov = fov * pi / 180;
+	return (fov);
+}
 
 void	setup_screen(t_data *data, int res_width, int res_height)
 {
@@ -11,7 +18,7 @@ void	setup_screen(t_data *data, int res_width, int res_height)
 	data->screen.distance = 1;
 	data->screen.resolution_width = res_width;
 	data->screen.resolution_height = res_height;
-	data->screen.width = 2 * tan(DEG_TO_RAD(data->camera.fov));
+	data->screen.width = 2 * tan(degree_to_radian(data->camera.fov));
 	data->screen.height = data->screen.width * (res_height / (double)res_width);
 	world_vertical = init_vector(0, 1, 0);
 	horizontal = vector_unit(vector_cross(world_vertical, data->camera.vector));
