@@ -35,7 +35,7 @@ t_coordinate get_sphere_point(t_sphere sphere, t_ray ray);
 // math_utils.c
 double	quadratic_equation_1(double a, double b, double c);
 double	quadratic_equation_2(double a, double b, double c);
-int	get_smaller_value(int a, int b);
+int	ft_min(int a, int b);
 
 
 #endif

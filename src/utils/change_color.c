@@ -9,9 +9,9 @@ t_color mix_color(t_color color_one, t_color color_two, double ratio)
 {
     t_color new_color;
 
-    new_color.red = get_smaller_value(calculate_ratio(color_one.red, color_two.red, ratio), 255);
-    new_color.green = get_smaller_value(calculate_ratio(color_one.green, color_two.green, ratio), 255);
-    new_color.blue = get_smaller_value(calculate_ratio(color_one.blue, color_two.blue, ratio), 255);
+    new_color.red = ft_min(calculate_ratio(color_one.red, color_two.red, ratio), 255);
+    new_color.green = ft_min(calculate_ratio(color_one.green, color_two.green, ratio), 255);
+    new_color.blue = ft_min(calculate_ratio(color_one.blue, color_two.blue, ratio), 255);
     return (new_color);
 }
 
@@ -27,9 +27,9 @@ t_color	add_color(t_color color_one, t_color color_two)
 {
 	t_color	color_rgb;
 
-	color_rgb.red = get_smaller_value(color_one.red + color_two.red, 255);
-	color_rgb.green = get_smaller_value(color_one.green + color_two.green, 255);
-	color_rgb.blue = get_smaller_value(color_one.blue + color_two.blue, 255);
+	color_rgb.red = ft_min(color_one.red + color_two.red, 255);
+	color_rgb.green = ft_min(color_one.green + color_two.green, 255);
+	color_rgb.blue = ft_min(color_one.blue + color_two.blue, 255);
 	return (color_rgb);
 }
 
