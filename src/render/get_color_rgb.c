@@ -13,6 +13,14 @@ static t_color	ray_sky_color(t_ray ray)
 	return (color_rgb);
 }
 
+static	t_color	apply_brightness(t_color color, double brightness)
+{
+	color.red *= brightness;
+	color.green *= brightness;
+	color.blue *= brightness;
+	return (color);
+}
+
 static t_color	get_color_sphere(t_sphere sphere, t_light light, t_coordinate hit_point)
 {
 	t_color		color_rgb;
@@ -22,8 +30,7 @@ static t_color	get_color_sphere(t_sphere sphere, t_light light, t_coordinate hit
 	light_vector = vector_unit(get_vector_two_point(light.coordinate, hit_point));
 	light_ratio = vector_dot(light_vector, sphere.normal);
 	if (light_ratio < 0)
-		return (sphere.color);
-	light_ratio = light_ratio * light.brightness;
+		return (apply_brightness(sphere.color, light.brightness));
 	color_rgb = gredient_color(light.color, sphere.color, light_ratio);
 	return (color_rgb);
 }
