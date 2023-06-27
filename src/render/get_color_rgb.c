@@ -35,9 +35,9 @@ t_color	multiply_color(t_color color_one, t_color color_two)
 {
 	t_color	color_rgb;
 
-	color_rgb.red = get_smaller_value(color_one.red * color_two.red, 255);
-	color_rgb.green = get_smaller_value(color_one.green * color_two.green, 255);
-	color_rgb.blue = get_smaller_value(color_one.blue * color_two.blue, 255);
+	color_rgb.red = color_one.red * color_two.red / 255;
+	color_rgb.green = color_one.green * color_two.green / 255;
+	color_rgb.blue = color_one.blue * color_two.blue / 255;
 	return (color_rgb);
 }
 
