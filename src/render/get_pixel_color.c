@@ -3,9 +3,9 @@
 static t_color	get_color_rgb(t_ray ray, t_data *data)
 {
 	t_coordinate hit_point;
+	t_color background_color;
 
-	data->ambient.color = apply_brightness(data->ambient.color, data->ambient.ratio);
-	data->light.color = apply_brightness(data->light.color, data->light.brightness);
+	background_color = apply_brightness(data->ambient.color, data->ambient.ratio);
 	if (hit_sphere(data->sphere, ray))
 	{
 		hit_point = get_sphere_point(data->sphere, ray);
@@ -13,7 +13,7 @@ static t_color	get_color_rgb(t_ray ray, t_data *data)
 		return (apply_phong_model(*data, hit_point));
 	}
 	else
-		return (data->ambient.color);
+		return (background_color);
 }
 
 void	get_pixel_color(t_data *data, t_render render)
