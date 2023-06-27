@@ -19,7 +19,7 @@ PARSING_SRCS = open.c parse_center.c parsing_helper.c \
 PARSING      = $(addprefix $(PARSING_PATH), $(PARSING_SRCS))
 
 RENDER_PATH  = render/
-RENDER_SRCS  = render.c key_press.c setup_screen.c get_pixel_color.c get_color_rgb.c
+RENDER_SRCS  = render.c key_press.c setup_screen.c get_pixel_color.c phong_model.c
 RENDER       = $(addprefix $(RENDER_PATH), $(RENDER_SRCS))
 
 VECTOR_PATH  = vector/
@@ -27,8 +27,8 @@ VECTOR_SRCE	 = init_vector.c basic_calculations.c advanced_calculations.c other_
 VECTOR		 = $(addprefix $(VECTOR_PATH), $(VECTOR_SRCE))
 
 TOOL_PATH  	 = utils/
-TOOL_SRCE	 = error.c free.c get_double.c \
-				color_utils.c sphere_utils.c mlx_utils.c math_utils.c
+TOOL_SRCE	 = error.c free.c get_double.c color_utils.c sphere_utils.c \
+				mlx_utils.c math_utils.c change_color.c
 TOOL		 = $(addprefix $(TOOL_PATH), $(TOOL_SRCE))
 
 SRC			 := $(addprefix $(SRCDIR), $(MAIN)) \

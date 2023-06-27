@@ -20,7 +20,13 @@ double	get_double(const char *str);
 // color_utils.c
 int		rgb_to_hex(int r, int g, int b);
 int		color_to_hex(t_color color);
+
+// change_color.c
 t_color	mix_color(t_color color_one, t_color color_two, double ratio);
+t_color	apply_brightness(t_color color, double brightness);
+t_color	add_color(t_color color_one, t_color color_two);
+t_color	multiply_color(t_color color_one, t_color color_two);
+
 
 // sphere
 int		hit_sphere(t_sphere sphere, t_ray ray);

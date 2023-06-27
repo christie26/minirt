@@ -1,5 +1,21 @@
 #include "../../includes/minirt.h"
 
+static t_color	get_color_rgb(t_ray ray, t_data *data)
+{
+	t_coordinate hit_point;
+
+	data->ambient.color = apply_brightness(data->ambient.color, data->ambient.ratio);
+	data->light.color = apply_brightness(data->light.color, data->light.brightness);
+	if (hit_sphere(data->sphere, ray))
+	{
+		hit_point = get_sphere_point(data->sphere, ray);
+		data->sphere.normal = vector_unit(get_vector_two_point(data->sphere.center, hit_point));
+		return (apply_phong_model(*data, hit_point));
+	}
+	else
+		return (data->ambient.color);
+}
+
 void	get_pixel_color(t_data *data, t_render render)
 {
 	t_ray ray;
