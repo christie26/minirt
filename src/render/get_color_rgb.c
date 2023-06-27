@@ -21,17 +21,21 @@ static	t_color	apply_brightness(t_color color, double brightness)
 	return (color);
 }
 
-static t_color	get_color_sphere(t_sphere sphere, t_light light, t_coordinate hit_point)
+static t_color	get_sphere_color(t_sphere sphere, t_light light, t_ambient ambient, t_coordinate hit_point)
 {
 	t_color		color_rgb;
+	t_color		ambient_color;
 	t_vector	light_vector;
 	double		light_ratio;
 
 	light_vector = vector_unit(get_vector_two_point(light.coordinate, hit_point));
 	light_ratio = vector_dot(light_vector, sphere.normal);
+	ambient_color = apply_brightness(ambient.color, ambient.ratio);
 	if (light_ratio < 0)
-		return (apply_brightness(sphere.color, light.brightness));
-	color_rgb = gredient_color(light.color, sphere.color, light_ratio);
+		return (ambient_color);
+	light.color = apply_brightness(light.color, light.brightness);
+	color_rgb = gredient_color(sphere.color, ambient_color, ambient.ratio);
+	color_rgb = gredient_color(sphere.color, light.color, light_ratio);
 	return (color_rgb);
 }
 
@@ -45,7 +49,7 @@ t_color	get_color_rgb(t_ray ray, t_data *data)
 	{
 		hit_point = get_sphere_point(data->sphere, ray);
 		data->sphere.normal = vector_unit(get_vector_two_point(data->sphere.center, hit_point));
-		color_rgb = get_color_sphere(data->sphere, data->light, hit_point);
+		color_rgb = get_sphere_color(data->sphere, data->light, data->ambient, hit_point);
 		return (color_rgb);
 	}
 	else
