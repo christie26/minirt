@@ -1,18 +1,5 @@
 #include "../../includes/minirt.h"
 
-// static t_color	ray_sky_color(t_ray ray)
-// {
-// 	double		ratio;
-// 	t_color		color_rgb;
-// 	t_vector	unit_vector;
-
-// 	unit_vector = vector_unit(ray.direction);
-// 	ratio = 0.5 * (unit_vector.y + 1);
-// 	color_rgb = mix_color(get_color("255,255,255"), \
-// 			get_color("30,144,255"), ratio);
-// 	return (color_rgb);
-// }
-
 static t_color get_ambient_color(t_color obj_color, t_color ambient)
 {
 	t_color ambient_color;

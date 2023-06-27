@@ -28,6 +28,5 @@ int	render(t_data *data)
 	render = get_rendering_info(*data);
 	get_pixel_color(data, render);
 	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
-	// while (1);
 	return (0);
 }
