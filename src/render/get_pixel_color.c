@@ -31,7 +31,7 @@ void	get_pixel_color(t_data *data, t_render render)
 			u = (double)(i) / (render.window_width - 1);
 			v = (double)(j) / (render.window_height - 1);
 			ray.origin = render.origin;
-			ray.direction = get_ray_direction(render.lower_left_corner,
+			ray.direction = get_ray_direction(render.lower_left_corner,\
 					render.horizontal, render.vertical, render.origin, u, v);
 			color_rgb = get_color_rgb(ray, data);
 			color_hex = color_to_hex(color_rgb);

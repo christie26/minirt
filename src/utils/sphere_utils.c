@@ -42,7 +42,6 @@ t_coordinate get_sphere_point(t_sphere sphere, t_ray ray)
 	double			b;
 	double			c;
 
-
 	dif = get_vector_two_point(ray.origin, sphere.center);
 	a = vector_dot(ray.direction, ray.direction);
 	b = 2 * vector_dot(dif, ray.direction);
