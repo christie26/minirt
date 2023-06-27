@@ -22,6 +22,4 @@ void	get_pixel_color(t_data *data, t_render render)
 			write_pixel_image(data, i, j, color_hex);
 		}
 	}
-	// exit(1);
-	// while (1);
 }

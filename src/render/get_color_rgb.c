@@ -13,7 +13,6 @@ static t_color	ray_sky_color(t_ray ray)
 	return (color_rgb);
 }
 
-// 요 함수가 이상한 듯..! ㅇ
 static t_color	get_color_sphere(t_sphere sphere, t_light light, t_coordinate hit_point)
 {
 	t_color		color_rgb;
