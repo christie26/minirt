@@ -9,3 +9,10 @@ double	quadratic_equation_2(double a, double b, double c)
 {
 	return (((-1) * b + sqrt(pow(b, 2) - 4 * a * c)) / (2 * a));
 }
+
+int	get_smaller_value(int a, int b)
+{
+	if (a < b)
+		return (a);
+	return (b);
+}
