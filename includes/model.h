@@ -106,4 +106,11 @@ typedef struct s_render
 	t_coordinate	lower_left_corner;
 }					t_render;
 
+typedef struct s_phong
+{
+	t_color			ambient_color;
+	t_color			diffuse_color;
+	t_color			specular_color;
+}					t_phong;
+
 #endif

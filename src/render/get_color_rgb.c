@@ -41,18 +41,52 @@ t_color	multiply_color(t_color color_one, t_color color_two)
 	return (color_rgb);
 }
 
-static t_color	get_sphere_color(t_sphere sphere, t_light light, t_ambient ambient, t_coordinate hit_point)
+static t_color get_ambient_color(t_color obj_color, t_color ambient)
 {
-	t_color		color_rgb;
+	t_color ambient_color;
+
+	ambient_color = multiply_color(obj_color, ambient);
+	return (ambient_color);
+}
+
+static t_color get_diffuse_color(t_color obj_color, t_color light_color, double light_ratio)
+{
+	t_color diffuse_color;
+
+	diffuse_color = mix_color(obj_color, light_color, light_ratio);
+	return (diffuse_color);
+}
+
+static t_color get_phong_color(t_phong phong)
+{
+	t_color phong_color;
+
+	phong_color = add_color(phong.ambient_color, phong.diffuse_color);
+	return (phong_color);
+}
+
+static double	get_light_ratio(t_data data, t_coordinate hit_point)
+{
 	t_vector	light_vector;
 	double		light_ratio;
 
-	light_vector = vector_unit(get_vector_two_point(light.coordinate, hit_point));
-	light_ratio = vector_dot(light_vector, sphere.normal);
+	light_vector = vector_unit(get_vector_two_point(data.light.coordinate, hit_point));
+	light_ratio = vector_dot(light_vector, data.sphere.normal);
+	return (light_ratio);
+}
+
+static t_color	apply_phong_model(t_data data, t_coordinate hit_point)
+{
+	t_color		color_rgb;
+	double		light_ratio;
+	t_phong		phong;
+
+	light_ratio = get_light_ratio(data, hit_point);
 	if (light_ratio < 0)
-		return (ambient.color);
-	color_rgb = add_color(multiply_color(sphere.color, ambient.color), \
-		mix_color(sphere.color, light.color, light_ratio));
+		light_ratio = 0;
+	phong.ambient_color = get_ambient_color(data.sphere.color, data.ambient.color);
+	phong.diffuse_color = get_diffuse_color(data.sphere.color, data.light.color, light_ratio);
+	color_rgb = get_phong_color(phong);
 	return (color_rgb);
 }
 
@@ -66,7 +100,7 @@ t_color	get_color_rgb(t_ray ray, t_data *data)
 	{
 		hit_point = get_sphere_point(data->sphere, ray);
 		data->sphere.normal = vector_unit(get_vector_two_point(data->sphere.center, hit_point));
-		return (get_sphere_color(data->sphere, data->light, data->ambient, hit_point));
+		return (apply_phong_model(*data, hit_point));
 	}
 	else
 		return (data->ambient.color);
