@@ -9,7 +9,7 @@ static t_color	get_color_rgb(t_ray ray, t_data *data)
 	if (hit_sphere(data->sphere, ray))
 	{
 		hit_point = get_sphere_point(data->sphere, ray);
-		data->sphere.normal = vector_unit(get_vector_two_point(data->sphere.center, hit_point));
+		// data->sphere.normal = vector_unit(get_vector_two_point(data->sphere.center, hit_point));
 		return (apply_phong_model(*data, hit_point));
 	}
 	else

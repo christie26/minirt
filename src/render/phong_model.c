@@ -33,13 +33,16 @@ static int	is_shadow(t_data data, t_ray ray_to_light)
 static double	get_light_ratio(t_data data, t_coordinate hit_point)
 {
 	double		light_ratio;
-	t_ray		ray_to_light;
+	t_ray		hit_to_light;
+	t_vector	normal;
 
-	ray_to_light.origin = hit_point;
-	ray_to_light.direction = vector_unit(get_vector_two_point(hit_point, data.light.coordinate));
-	if (is_shadow(data, ray_to_light))
+	hit_to_light.origin = hit_point;
+	hit_to_light.direction = vector_unit(get_vector_two_point(hit_point, data.light.coordinate));
+	if (is_shadow(data, hit_to_light))
 		return (0);
-	light_ratio = vector_dot(data.sphere.normal, ray_to_light.direction);
+	normal = vector_unit(get_vector_two_point(data.sphere.center, hit_point));
+	light_ratio = vector_dot(normal, hit_to_light.direction);
+	// printf("h_p(%.2f,%.2f,%.2f)")
 	light_ratio *= -1;  // 지워야 함
 	return (light_ratio);
 }
