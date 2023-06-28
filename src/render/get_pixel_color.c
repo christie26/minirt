@@ -49,23 +49,25 @@ static t_color	get_color_rgb(t_ray ray, t_data *data)
 		return (background_color);
 }
 
-void	get_pixel_color(t_data *data, t_render render)
+void	get_pixel_color(t_data *data)
 {
-	t_ray	ray;
-	t_color	color_rgb;
-	int		color_hex;
-	double	u;
-	double	v;
+	t_ray		ray;
+	t_color		color_rgb;
+	t_screen	screen;
+	int			color_hex;
+	double		u;
+	double		v;
 
-	for (int j = render.window_height - 1; j >= 0; --j)
+	screen = data->screen;
+	for (int j = WINDOW_HEIGHT - 1; j >= 0; --j)
 	{
-		for (int i = 0; i < render.window_width; ++i)
+		for (int i = 0; i < WINDOW_WIDTH; ++i)
 		{
-			u = (double)(i) / (render.window_width - 1);
-			v = (double)(j) / (render.window_height - 1);
-			ray.origin = render.origin;
-			ray.direction = get_ray_direction(render.lower_left_corner,\
-					render.horizontal, render.vertical, render.origin, u, v);
+			u = (double)(i) / (WINDOW_WIDTH - 1);
+			v = (double)(j) / (WINDOW_HEIGHT - 1);
+			ray.origin = data->camera.coordinate;
+			ray.direction = get_ray_direction(screen.start_point,\
+					screen.horizontal, screen.vertical, data->camera.coordinate, u, v);
 			color_rgb = get_color_rgb(ray, data);
 			color_hex = color_to_hex(color_rgb);
 			write_pixel_image(data, i, j, color_hex);
