@@ -24,7 +24,10 @@ static t_color get_diffuse_color(t_color obj_color, t_light light, double light_
 static int	is_shadow(t_data data, t_ray ray_to_light)
 {
 	if (hit_sphere(data.sphere, ray_to_light))
+	{
+		printf("shadow%.2f,%.2f,%.2f\n", ray_to_light.direction.x, ray_to_light.direction.y,ray_to_light.direction.z);
 		return (1);
+	}
 	return (0);
 }
 
@@ -35,14 +38,24 @@ static double	get_light_ratio(t_data data, t_coordinate hit_point)
 	t_ray		hit_to_light;
 	t_vector	normal;
 
+	printf("before shadow\n");
 	hit_to_light.origin = hit_point;
 	hit_to_light.direction = vector_unit(get_vector_two_point(hit_point, data.light.coordinate));
 	if (is_shadow(data, hit_to_light))
 		return (0);
+	printf("after shadow\n");
+
 	normal = vector_unit(get_vector_two_point(data.sphere.center, hit_point));
+	// normal = vector_unit(get_vector_two_point(hit_point, data.sphere.center));
 	light_ratio = vector_dot(normal, hit_to_light.direction);
-	// printf("h_p(%.2f,%.2f,%.2f)")
-	light_ratio *= -1;  // 지워야 함
+
+	printf("light(%.2f,%.2f,%.2f)\n",data.light.coordinate.x,data.light.coordinate.y, data.light.coordinate.z );
+	printf("point(%.2f,%.2f,%.2f)\nratio=%.2f\nhit_to_light(%.2f,%.2f,%.2f) normal(%.2f,%.2f,%.2f)\n", \
+		hit_point.x,hit_point.y,hit_point.z, light_ratio,\
+		hit_to_light.direction.x,hit_to_light.direction.y,hit_to_light.direction.z, \
+		normal.x,normal.y,normal.z);
+	
+	// light_ratio *= -1;  // 지워야 함
 	return (light_ratio);
 }
 
