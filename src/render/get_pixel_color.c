@@ -2,8 +2,8 @@
 
 static t_color	get_color_rgb(t_ray ray, t_data *data)
 {
-	t_coordinate hit_point;
-	t_color background_color;
+	t_coordinate	hit_point;
+	t_color			background_color;
 
 	background_color = apply_brightness(data->ambient.color, data->ambient.ratio);
 	if (hit_sphere(data->sphere, ray))
@@ -17,11 +17,11 @@ static t_color	get_color_rgb(t_ray ray, t_data *data)
 
 void	get_pixel_color(t_data *data, t_render render)
 {
-	t_ray ray;
-	t_color color_rgb;
-	int color_hex;
-	double u;
-	double v;
+	t_ray	ray;
+	t_color	color_rgb;
+	int		color_hex;
+	double	u;
+	double	v;
 
 	for (int j = render.window_height - 1; j >= 0; --j)
 	{
