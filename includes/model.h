@@ -74,6 +74,7 @@ typedef struct s_screen
 	int				window_height;
 	t_vector		horizontal;
 	t_vector		vertical;
+	t_coordinate	start_point;
 }					t_screen;
 
 typedef struct s_data
