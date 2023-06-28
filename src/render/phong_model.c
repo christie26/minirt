@@ -10,12 +10,13 @@ static t_color get_ambient_color(t_ambient ambient)
 
 static t_color get_diffuse_color(t_color obj_color, t_light light, double light_ratio)
 {
-	t_color diffuse_color;
 	t_color light_brightness_color;
+	t_color	obj_brigthness_color;
+	t_color diffuse_color;
 
 	light_brightness_color = apply_brightness(light.color, light.brightness);
-	light_brightness_color = apply_brightness(light_brightness_color, light_ratio);
-	diffuse_color = multiply_color(obj_color, light_brightness_color);
+	obj_brigthness_color = apply_brightness(obj_color, light_ratio);
+	diffuse_color = multiply_color(obj_brigthness_color, light_brightness_color);
 	return (diffuse_color);
 }
 
