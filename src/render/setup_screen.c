@@ -36,8 +36,6 @@ t_vector get_ray_direction(t_coordinate lower_left_corner, t_vector horizontal, 
 void	setup_screen(t_data *data, int res_width, int res_height)
 {
 	t_vector	world_vertical;
-	t_vector	horizontal;
-	t_vector	vertical;
 
 	data->screen.distance = 1;
 	data->screen.window_width = res_width;
@@ -45,8 +43,6 @@ void	setup_screen(t_data *data, int res_width, int res_height)
 	data->screen.view_width = 2 * tan(degree_to_radian(data->camera.fov));
 	data->screen.view_height = data->screen.view_width * (res_height / (double)res_width);
 	world_vertical = init_vector(0, 1, 0);
-	horizontal = vector_unit(vector_cross(world_vertical, data->camera.vector));
-	vertical = vector_unit(vector_cross(data->camera.vector, horizontal));
-	data->screen.horizontal = horizontal;
-	data->screen.vertical = vertical;
+	data->screen.horizontal = vector_unit(vector_cross(world_vertical, data->camera.vector));
+	data->screen.vertical = vector_unit(vector_cross(data->camera.vector, data->screen.horizontal));
 }
