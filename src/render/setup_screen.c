@@ -2,10 +2,7 @@
 
 static double	degree_to_radian(double fov)
 {
-	double pi;
-
-	pi = 3.14159265358979323846;
-	fov = fov * pi / 180;
+	fov = fov * PI / 180;
 	return (fov);
 }
 
@@ -35,19 +32,17 @@ t_vector get_ray_direction(t_coordinate lower_left_corner, t_vector horizontal, 
     return (ray_direction);
 }
 
-void	setup_screen(t_data *data, int res_width, int res_height)
+void	setup_screen(t_data *data)
 {
 	t_vector	world_vertical;
-	// t_vector	horizontal;
-	// t_vector	vertical;
 	t_screen	screen;
 
 	screen = data->screen;
 	screen.distance = 1;
-	screen.window_width = res_width;
-	screen.window_height = res_height;
-	screen.view_width = 2 * tan(degree_to_radian(data->camera.fov));
-	screen.view_height = screen.view_width * (res_height / (double)res_width);
+	screen.view_width = 2 * fabs(tan(degree_to_radian(data->camera.fov)));
+	screen.view_height = screen.view_width * (WINDOW_HEIGHT / (double)WINDOW_WIDTH);
+	printf("%.2f, %.2f\n", screen.view_height, screen.view_width);
+
 	world_vertical = init_vector(0, 1, 0);
 
 	screen.horizontal = vector_unit(vector_cross(world_vertical, data->camera.vector));
@@ -57,11 +52,10 @@ void	setup_screen(t_data *data, int res_width, int res_height)
 	screen.vertical = vector_mult_scalar(screen.vertical, screen.view_height);
 
 	screen.start_point = get_start_corner(data->camera, screen.horizontal,screen.vertical, screen.distance);
-	
 	printf("start_corner = (%.2f,%.2f,%.2f)\nhorizontal = (%.2f,%.2f,%.2f)\nvertical = (%.2f,%.2f,%.2f)\n", \
 		screen.start_point.x,screen.start_point.y,screen.start_point.z, \
 		screen.horizontal.x,screen.horizontal.y,screen.horizontal.z, \
 		screen.vertical.x,screen.vertical.y,screen.vertical.z);
-		
+	
 	data->screen = screen;
 }

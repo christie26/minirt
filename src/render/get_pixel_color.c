@@ -37,12 +37,12 @@ void	get_pixel_color(t_data *data)
 	double		v;
 
 	screen = data->screen;
-	for (int j = screen.window_height - 1; j >= 0; --j)
+	for (int j = WINDOW_HEIGHT - 1; j >= 0; --j)
 	{
-		for (int i = 0; i < screen.window_width; ++i)
+		for (int i = 0; i < WINDOW_WIDTH; ++i)
 		{
-			u = (double)(i) / (screen.window_width - 1);
-			v = (double)(j) / (screen.window_height - 1);
+			u = (double)(i) / (WINDOW_WIDTH - 1);
+			v = (double)(j) / (WINDOW_HEIGHT - 1);
 			ray.origin = data->camera.coordinate;
 			ray.direction = get_ray_direction(screen.start_point,\
 					screen.horizontal, screen.vertical, data->camera.coordinate, u, v);

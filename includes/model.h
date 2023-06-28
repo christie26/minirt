@@ -1,6 +1,9 @@
 #ifndef MODEL_H
 # define MODEL_H
 
+# define WINDOW_WIDTH 1000
+# define WINDOW_HEIGHT 1000
+
 typedef struct s_color
 {
 	int				red;
@@ -70,8 +73,8 @@ typedef struct s_screen
 	double			view_width;
 	double			view_height;
 	double			distance;
-	int				window_width;
-	int				window_height;
+	// int				window_width;
+	// int				window_height;
 	t_vector		horizontal;
 	t_vector		vertical;
 	t_coordinate	start_point;

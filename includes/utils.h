@@ -5,6 +5,7 @@
 
 # include "model.h"
 # include "vector.h"
+# define PI 3.14159265358979323846
 
 // error.c
 void	ft_putendl_fd(char *s, int fd);

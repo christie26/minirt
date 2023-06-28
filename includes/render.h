@@ -22,7 +22,7 @@ int				win_close(void);
 int				render(t_data *data);
 
 // setup_screen.c
-void			setup_screen(t_data *data, int res_width, int res_height);
+void			setup_screen(t_data *data);
 t_coordinate	get_start_corner(t_camera camera, t_vector horizontal, \
 					t_vector vertical, double focal_length);
 t_vector		get_ray_direction(t_coordinate lower_left_corner, t_vector horizontal, \
