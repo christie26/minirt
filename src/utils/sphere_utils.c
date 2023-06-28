@@ -8,7 +8,6 @@ int hit_sphere(t_sphere sphere, t_ray ray)
 	double	c;
 	double	discriminant;
 
-	// dif = get_vector_two_point(ray.origin, sphere.center);
 	dif = get_vector_two_point(sphere.center, ray.origin);
 	a = vector_dot(ray.direction, ray.direction);
 	b = 2 * vector_dot(dif, ray.direction);
@@ -32,9 +31,7 @@ static t_coordinate get_closer_hit_point(double a, double b, double c, t_ray ray
 
 	t_1 = quadratic_equation_1(a, b, c);
 	t_2 = quadratic_equation_2(a, b, c);
-	// printf("%.2f,%.2f,%.2f -> t_1 = %.2f, t_2 = %.2f\n", a,b,c,t_1, t_2);
 	closer_hit_point = get_closer_point(calculate_hit_point(ray, t_1), calculate_hit_point(ray, t_2), ray);
-	// printf("hit_point (%.2f,%.2f,%.2f)\n", closer_hit_point.x,closer_hit_point.y,closer_hit_point.z);
 	return (closer_hit_point);
 }
 
@@ -45,7 +42,6 @@ t_coordinate get_sphere_point(t_sphere sphere, t_ray ray)
 	double			b;
 	double			c;
 
-	// dif = get_vector_two_point(ray.origin, sphere.center);
 	dif = get_vector_two_point(sphere.center, ray.origin);
 	a = vector_dot(ray.direction, ray.direction);
 	b = 2 * vector_dot(dif, ray.direction);
