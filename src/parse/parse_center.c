@@ -6,11 +6,13 @@ static t_data	parsing(t_data data, char *line)
 	char	**tab;
 
 	tab = ft_split(line, ' ');
-	if (!ft_strcmp(tab[0], "A"))
+	if (!tab)
+		error_msg("Error\n");
+	else if (!ft_strcmp(tab[0], "A") || !ft_strcmp(tab[0], "a"))
 		data.ambient = get_ambient(tab);
-	else if (!ft_strcmp(tab[0], "C"))
+	else if (!ft_strcmp(tab[0], "C") || !ft_strcmp(tab[0], "c"))
 		data.camera = get_camera(tab);
-	else if (!ft_strcmp(tab[0], "L"))
+	else if (!ft_strcmp(tab[0], "L") || !ft_strcmp(tab[0], "l"))
 		data.light = get_light(tab);
 	else if (!ft_strcmp(tab[0], "pl"))
 		data.plane = get_plane(tab);
