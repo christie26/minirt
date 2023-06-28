@@ -20,6 +20,8 @@ static t_data	parsing(t_data data, char *line)
 		data.sphere = get_sphere(tab);
 	else if (!ft_strcmp(tab[0], "cy"))
 		data.cylinder = get_cylinder(tab);
+	else if (!ft_strcmp(tab[0], "\n"))
+		;
 	else
 		error_msg(INVALID_IDENTIFIER);
 	free_two_dimensional_array(tab);
