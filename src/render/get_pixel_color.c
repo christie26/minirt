@@ -1,11 +1,23 @@
 #include "../../includes/minirt.h"
 
+t_color sky_color(t_ray ray)
+{
+    t_color     color_rgb;
+    t_vector    unit_vector;
+    double      ratio;
+
+    unit_vector = vector_unit(ray.direction);
+    ratio = 0.5 * (unit_vector.y + 1);
+    color_rgb = mix_color(get_color("255,255,255"), get_color("30,144,255"), ratio);
+    return (color_rgb);
+}
+
 static t_color	get_color_rgb(t_ray ray, t_data *data)
 {
 	t_coordinate	hit_point;
 	t_color			background_color;
 
-	background_color = apply_brightness(data->ambient.color, data->ambient.ratio);
+	background_color = sky_color(ray);
 	if (hit_sphere(data->sphere, ray))
 	{
 		hit_point = get_sphere_point(data->sphere, ray);

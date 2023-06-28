@@ -17,9 +17,9 @@
 # define KEY_D 2
 
 // render.c
-int		key_press(int keycode, t_data *data);
-int		win_close(void);
-int		render(t_data *data);
+int				key_press(int keycode, t_data *data);
+int				win_close(void);
+int				render(t_data *data);
 
 // setup_screen.c
 void			setup_screen(t_data *data, int res_width, int res_height);
@@ -29,14 +29,17 @@ t_vector		get_ray_direction(t_coordinate lower_left_corner, t_vector horizontal,
 					t_vector vertical, t_coordinate origin, double u, double v);
 
 // utils.c
-void	write_pixel_image(t_data *data, int x, int y, int color);
+void			write_pixel_image(t_data *data, int x, int y, int color);
 
 // rednering trial
-void	first_ppm(t_data *data);
-void	get_pixel_color(t_data *data, t_render render);
+void			first_ppm(t_data *data);
+void			get_pixel_color(t_data *data, t_render render);
 
 // phong
-t_color	apply_phong_model(t_data data, t_coordinate hit_point);
+t_color			apply_phong_model(t_data data, t_coordinate hit_point);
 
+// shadow_center.c
+void			fix_hit_to_light(t_ray *hit_to_light);
+int				is_shadow(t_data data, t_ray ray_to_light);
 
 #endif

@@ -20,22 +20,6 @@ static t_color get_diffuse_color(t_color obj_color, t_light light, double light_
 	return (diffuse_color);
 }
 
-// 나중에 도형 여러개로 확장할 함수
-static int	is_shadow(t_data data, t_ray ray_to_light)
-{
-	if (shadow_sphere(data.sphere, ray_to_light))
-		return (1);
-	return (0);
-}
-
-void	fix_hit_to_light(t_ray *hit_to_light)
-{
-	hit_to_light->origin.x = hit_to_light->origin.x + 0.01 *  hit_to_light->direction.x;
-	hit_to_light->origin.y = hit_to_light->origin.y + 0.01 *  hit_to_light->direction.y;
-	hit_to_light->origin.z = hit_to_light->origin.z + 0.01 *  hit_to_light->direction.z;
-}
-
-//이거... 
 static double	get_light_ratio(t_data data, t_coordinate hit_point)
 {
 	double		light_ratio;
