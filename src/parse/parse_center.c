@@ -1,10 +1,12 @@
 
 #include "../../includes/minirt.h"
 
-static t_data	parsing(t_data data, char *line)
+static t_data parsing(t_data data, char *line)
 {
-	char	**tab;
+	char **tab;
 
+	if (!line || line[0] == '#' || line[0] == '\n')
+		return data;
 	tab = ft_split(line, ' ');
 	if (!tab)
 		error_msg("Error\n");
@@ -23,7 +25,7 @@ static t_data	parsing(t_data data, char *line)
 	else
 		error_msg(INVALID_IDENTIFIER);
 	free_two_dimensional_array(tab);
-	return (data);
+	return data;
 }
 
 t_data	parse_center(char *filename)
