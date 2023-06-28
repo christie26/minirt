@@ -14,6 +14,6 @@ double get_distance(t_coordinate start, t_coordinate end)
 {
 	t_vector diff;
 
-	diff = get_vector_two_point(start, end);
+	diff = get_vector_of_two_point(start, end);
 	return (vector_length(diff));
 }

@@ -11,7 +11,7 @@ t_vector	init_vector(double x, double y, double z)
 	return (vector);
 }
 
-t_vector	get_vector_two_point(t_coordinate start, t_coordinate end)
+t_vector	get_vector_of_two_point(t_coordinate start, t_coordinate end)
 {
 	t_vector	vector;
 

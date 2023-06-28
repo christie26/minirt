@@ -20,7 +20,7 @@ PARSING      = $(addprefix $(PARSING_PATH), $(PARSING_SRCS))
 
 RENDER_PATH  = render/
 RENDER_SRCS  = render.c key_press.c setup_screen.c get_pixel_color.c phong_model.c \
-				shadow_center.c
+				shadow_center.c hit_shape.c get_hit_point.c
 RENDER       = $(addprefix $(RENDER_PATH), $(RENDER_SRCS))
 
 VECTOR_PATH  = vector/

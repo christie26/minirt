@@ -112,4 +112,14 @@ typedef struct s_phong
 	t_color			specular_color;
 }					t_phong;
 
+enum				e_definition
+{
+	SPHERE = 1,
+	PLANE = 2,
+	SQUARE = 3,
+	CYLINDER = 4,
+	TRIANGLE = 5,
+	NONE = -1
+};
+
 #endif

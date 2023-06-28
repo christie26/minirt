@@ -1,6 +1,6 @@
 #include "../../includes/minirt.h"
 
-t_color sky_color(t_ray ray)
+static t_color sky_color(t_ray ray)
 {
     t_color     color_rgb;
     t_vector    unit_vector;
@@ -12,15 +12,37 @@ t_color sky_color(t_ray ray)
     return (color_rgb);
 }
 
+static int hit_shape(t_data *data, t_ray ray)
+{
+    if (hit_sphere(data->sphere, ray))
+        return (SPHERE);
+    else if (hit_plane(data->plane, ray))
+        return (PLANE);
+	else
+		return (NONE);
+}
+
+static t_coordinate get_shape_point(t_data *data, t_ray ray, int shape)
+{
+    t_coordinate hit_point;
+
+    if (shape == SPHERE)
+		hit_point = get_sphere_point(data->sphere, ray);
+	else if (shape == PLANE)
+		hit_point = get_plane_point(data->plane, ray);
+}
+
 static t_color	get_color_rgb(t_ray ray, t_data *data)
 {
 	t_coordinate	hit_point;
+	int				shape;
 	t_color			background_color;
 
 	background_color = sky_color(ray);
-	if (hit_sphere(data->sphere, ray))
+	shape = hit_shape(data, ray);
+	if (shape != NONE)
 	{
-		hit_point = get_sphere_point(data->sphere, ray);
+		hit_point = get_shape_point(data, ray, shape);
 		return (apply_phong_model(*data, hit_point));
 	}
 	else

@@ -29,9 +29,9 @@ t_color	multiply_color(t_color color_one, t_color color_two);
 
 
 // sphere
-int				hit_sphere(t_sphere sphere, t_ray ray);
-t_coordinate	get_sphere_point(t_sphere sphere, t_ray ray);
 int				shadow_sphere(t_sphere sphere, t_ray ray);
+t_coordinate	get_closer_point(t_coordinate hit_point_1, t_coordinate hit_point_2, t_ray ray);
+t_coordinate get_closer_hit_point(double a, double b, double c, t_ray ray);
 
 // math_utils.c
 double	quadratic_equation_1(double a, double b, double c);

@@ -42,4 +42,10 @@ t_color			apply_phong_model(t_data data, t_coordinate hit_point);
 void			fix_hit_to_light(t_ray *hit_to_light);
 int				is_shadow(t_data data, t_ray ray_to_light);
 
+// hit_shape.c
+int				hit_sphere(t_sphere sphere, t_ray ray);
+
+// hit point.c
+t_coordinate	get_sphere_point(t_sphere sphere, t_ray ray);
+
 #endif

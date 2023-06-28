@@ -9,7 +9,7 @@ typedef struct s_ray {
 }	t_ray;
 
 t_vector	init_vector(double x, double y, double z);
-t_vector	get_vector_two_point(t_coordinate start, t_coordinate end);
+t_vector	get_vector_of_two_point(t_coordinate start, t_coordinate end);
 
 t_coordinate	calculate_hit_point(t_ray ray, double t);
 double			get_distance(t_coordinate start, t_coordinate end);
