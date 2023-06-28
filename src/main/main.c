@@ -26,8 +26,8 @@
 static void	add_mlx_data(t_data *data)
 {
 	data->mlx = mlx_init();
-	data->win = mlx_new_window(data->mlx, 1920, 1080, "Hello world!");
-	data->img = mlx_new_image(data->mlx, 1920, 1080);
+	data->win = mlx_new_window(data->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "miniRT");
+	data->img = mlx_new_image(data->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
 	data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel, &data->line_length,
 								&data->endian);
 }
