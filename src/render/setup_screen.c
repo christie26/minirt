@@ -52,10 +52,6 @@ void	setup_screen(t_data *data)
 	screen.vertical = vector_mult_scalar(screen.vertical, screen.view_height);
 
 	screen.start_point = get_start_corner(data->camera, screen.horizontal,screen.vertical, screen.distance);
-	printf("start_corner = (%.2f,%.2f,%.2f)\nhorizontal = (%.2f,%.2f,%.2f)\nvertical = (%.2f,%.2f,%.2f)\n", \
-		screen.start_point.x,screen.start_point.y,screen.start_point.z, \
-		screen.horizontal.x,screen.horizontal.y,screen.horizontal.z, \
-		screen.vertical.x,screen.vertical.y,screen.vertical.z);
 	
 	data->screen = screen;
 }

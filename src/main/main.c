@@ -48,6 +48,6 @@ int	main(int ac, char **av)
 	mlx_hook(data.win, 17, 0, win_close, 0);
 	mlx_loop_hook(data.mlx, render, &data);
 	mlx_loop(data.mlx);
-
+	destroy_list(&data.shapes);
 	return (0);
 }

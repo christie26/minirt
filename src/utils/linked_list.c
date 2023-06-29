@@ -1,0 +1,95 @@
+#include "../../includes/minirt.h"
+
+t_list	*create_linkedlist(void)
+{
+	t_list	*linked_list;
+
+	linked_list = ft_calloc(1, sizeof(t_list));
+	if (linked_list == NULL)
+		exit(EXIT_FAILURE);
+	return (linked_list);
+}
+
+t_node	*create_new_node(void *shape, int type)
+{
+	t_node	*new_node;
+
+	new_node = ft_calloc(1, sizeof(t_node));
+	if (!new_node)
+		exit(EXIT_FAILURE);
+	new_node->shape = shape;
+	new_node->type = type;
+	return (new_node);
+}
+
+t_node	*get_node(t_list *linked_list, size_t index)
+{
+	size_t	i;
+	t_node	*dummy;
+
+	i = 0;
+	if (linked_list == NULL)
+	{
+		printf("Error: linked list is null\n");
+		return (NULL);
+	}
+	dummy = linked_list->headnode;
+	if (dummy == NULL)
+	{
+		printf("Error: linked list is empty\n");
+		return (NULL);
+	}
+	while ((i < index) && dummy->next)
+	{
+		dummy = dummy->next;
+		i++;
+	}
+	if (i == index)
+		return (dummy);
+	else
+	{
+		printf("Error: index out of range\n");
+		return (NULL);
+	}
+}
+
+int	add_node(t_list **linked_list, void *shape, int type)
+{
+	t_node	*dummy;
+	t_node	*new_node;
+
+	if (linked_list == NULL || *linked_list == NULL)
+		return (0);
+	dummy = (*linked_list)->headnode;
+	new_node = create_new_node(shape, type);
+	if (dummy == NULL)
+	{
+		(*linked_list)->headnode = new_node;
+		return (1);
+	}
+	while (dummy && dummy->next)
+		dummy = dummy->next;
+	dummy->next = new_node;
+	return (1);
+}
+
+
+void	destroy_list(t_list **linked_list)
+{
+	t_node *dummy;
+	t_node *remove;
+
+	if (!*linked_list)
+		return ;
+	dummy = (*linked_list)->headnode;
+	while (dummy)
+	{
+		remove = dummy;
+		free(remove->shape);
+		dummy = dummy->next;
+		free(remove);
+		remove = NULL;
+	}
+	free(*linked_list);
+	*linked_list = NULL;
+}

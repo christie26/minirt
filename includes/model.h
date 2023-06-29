@@ -4,6 +4,19 @@
 # define WINDOW_WIDTH 1000
 # define WINDOW_HEIGHT 1000
 
+typedef struct s_node
+{
+	void			*shape;
+	int				type;
+	struct s_node	*next;
+}					t_node;
+
+typedef struct s_list
+{
+	t_node			*headnode;
+	int				index;
+}					t_list;
+
 typedef struct s_color
 {
 	int				red;
@@ -73,8 +86,6 @@ typedef struct s_screen
 	double			view_width;
 	double			view_height;
 	double			distance;
-	// int				window_width;
-	// int				window_height;
 	t_vector		horizontal;
 	t_vector		vertical;
 	t_coordinate	start_point;
@@ -85,9 +96,7 @@ typedef struct s_data
 	t_ambient		ambient;
 	t_camera		camera;
 	t_light			light;
-	t_sphere		sphere;
-	t_plane			plane;
-	t_cylinder		cylinder;
+	t_list			*shapes;
 	t_screen		screen;
 	void			*mlx;
 	void			*win;
@@ -115,6 +124,15 @@ typedef struct s_phong
 	t_color			diffuse_color;
 	t_color			specular_color;
 }					t_phong;
+
+typedef struct s_hit_sphere
+{
+	t_vector	dif;
+	double		a;
+	double		b;
+	double		c;
+	double		discriminant;
+}					t_hit_sphere;
 
 enum				e_definition
 {

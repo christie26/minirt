@@ -20,7 +20,7 @@ PARSING      = $(addprefix $(PARSING_PATH), $(PARSING_SRCS))
 
 RENDER_PATH  = render/
 RENDER_SRCS  = render.c key_press.c setup_screen.c get_pixel_color.c phong_model.c \
-				shadow_center.c hit_shape.c get_hit_point.c
+				shadow_center.c plane_point.c sphere_point.c
 RENDER       = $(addprefix $(RENDER_PATH), $(RENDER_SRCS))
 
 VECTOR_PATH  = vector/
@@ -29,7 +29,7 @@ VECTOR		 = $(addprefix $(VECTOR_PATH), $(VECTOR_SRCE))
 
 TOOL_PATH  	 = utils/
 TOOL_SRCE	 = error.c free.c get_double.c color_utils.c sphere_utils.c \
-				mlx_utils.c math_utils.c change_color.c
+				mlx_utils.c math_utils.c change_color.c linked_list.c
 TOOL		 = $(addprefix $(TOOL_PATH), $(TOOL_SRCE))
 
 SRC			 := $(addprefix $(SRCDIR), $(MAIN)) \

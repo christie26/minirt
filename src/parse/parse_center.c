@@ -1,12 +1,45 @@
 
 #include "../../includes/minirt.h"
 
-static t_data parsing(t_data data, char *line)
+static void	add_shape(t_list *shapes, char **tab, int type)
 {
-	char **tab;
+	void	*new_shape;
+
+	if (type == SPHERE)
+		new_shape = get_sphere(tab);
+	else if (type == PLANE)
+		new_shape = get_plane(tab);
+	else
+	{
+		new_shape = get_cylinder(tab);
+	}
+	add_node(&shapes, new_shape, type);
+}
+
+static t_list	*parse_shape(char **tab)
+{
+	t_list *shapes;
+
+	shapes = ft_calloc(sizeof(t_list), 1);
+	if (!ft_strcmp(tab[0], "pl"))
+		add_shape(shapes, tab, PLANE);
+	else if (!ft_strcmp(tab[0], "sp"))
+		add_shape(shapes, tab, SPHERE);
+	else if (!ft_strcmp(tab[0], "cy"))
+		add_shape(shapes, tab, CYLINDER);
+	else
+	{
+		error_msg("Error\n");
+	}
+	return (shapes);
+}
+
+static t_data	parsing(t_data data, char *line)
+{
+	char	**tab;
 
 	if (!line || line[0] == '#' || line[0] == '\n')
-		return data;
+		return (data);
 	tab = ft_split(line, ' ');
 	if (!tab)
 		error_msg("Error\n");
@@ -16,16 +49,12 @@ static t_data parsing(t_data data, char *line)
 		data.camera = get_camera(tab);
 	else if (!ft_strcmp(tab[0], "L") || !ft_strcmp(tab[0], "l"))
 		data.light = get_light(tab);
-	else if (!ft_strcmp(tab[0], "pl"))
-		data.plane = get_plane(tab);
-	else if (!ft_strcmp(tab[0], "sp"))
-		data.sphere = get_sphere(tab);
-	else if (!ft_strcmp(tab[0], "cy"))
-		data.cylinder = get_cylinder(tab);
 	else
-		error_msg(INVALID_IDENTIFIER);
+	{
+		data.shapes = parse_shape(tab);
+	}
 	free_two_dimensional_array(tab);
-	return data;
+	return (data);
 }
 
 t_data	parse_center(char *filename)
@@ -35,7 +64,7 @@ t_data	parse_center(char *filename)
 	char	*line;
 
 	fd = formatcheck_open(filename);
-	ft_memset(&data, 0, 0);
+	ft_memset(&data, 0, sizeof(t_data));
 	while (1)
 	{
 		line = get_next_line(fd);

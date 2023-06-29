@@ -9,7 +9,14 @@ void	fix_hit_to_light(t_ray *hit_to_light)
 
 int	is_shadow(t_data data, t_ray ray_to_light)
 {
-	if (shadow_sphere(data.sphere, ray_to_light))
+	t_list *shapes;
+	t_node *shape_node;
+	void 	*shape;
+
+	shapes = data.shapes;
+	shape_node = get_node(shapes, shapes->index);
+	shape = shape_node->shape;
+	if (shadow_sphere(*(t_sphere *)shape, ray_to_light))
 		return (1);
 	return (0);
 }

@@ -1,12 +1,15 @@
 
 #include "../../includes/minirt.h"
 
-t_plane	get_plane(char **tab)
+t_plane	*get_plane(char **tab)
 {
-	t_plane	plane;
+	t_plane	*plane;
 
-	plane.coordinate = get_coordinate(tab[1]);
-	plane.vector = get_vector(tab[2]);
-	plane.color = get_color(tab[3]);
+	plane = malloc(sizeof(t_plane));
+	if (plane == NULL)
+		exit(EXIT_FAILURE);
+	plane->coordinate = get_coordinate(tab[1]);
+	plane->vector = get_vector(tab[2]);
+	plane->color = get_color(tab[3]);
 	return (plane);
 }
