@@ -38,7 +38,9 @@ static double	get_light_ratio(t_data data, t_coordinate hit_point, t_ray *ray)
 		return (0);
 	// if (object->type == SPHERE)
 	normal = vector_unit(get_vector_two_point(((t_sphere *)object)->center, hit_point));
+	printf("center = (%.1f,%.1f,%.1f)\n",((t_sphere *)object)->center.x,((t_sphere *)object)->center.y,((t_sphere *)object)->center.z);
 	light_ratio = vector_dot(normal, hit_to_light.direction);
+	// printf("light_ratio = %.2f\n", light_ratio);
 	return (light_ratio);
 }
 
@@ -52,9 +54,9 @@ static t_color	add_all_phong_colors(t_phong phong)
 
 t_color	apply_phong_model(t_data data, t_ray *ray)
 {
-	t_color	color_rgb;
-	double	light_ratio;
-	t_phong	phong;
+	t_color			color_rgb;
+	double			light_ratio;
+	t_phong			phong;
 	t_coordinate	hit_point;
 
 	hit_point = ray->hit_point;

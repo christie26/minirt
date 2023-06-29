@@ -20,17 +20,7 @@ int	is_shadow(t_data data, t_ray hit_to_light)
 	{
 		if (object->type == SPHERE)
 			if (shadow_sphere(*(t_sphere *)object, hit_to_light))
-			return (1);
-		// 	hit_point = get_closer_sphere_point(*(t_sphere *)object->object, ray);
-		// // else if (object->type == PLANE)
-		// 	// distance = get_closer_plane_point(*(t_plane *)object->object, ray);
-		// if (short_distance > get_distance(hit_point, ray->origin))
-		// {
-		// 	ray->object = object;
-		// 	ray->object_type = object->type;
-		// 	ray->hit_point = hit_point;
-		// 	short_distance = get_distance(hit_point, ray->origin);
-		// }
+				return (1);
 		object = object->next;
 	}
 	return (0);

@@ -12,26 +12,28 @@ static t_color sky_color(t_ray ray, double vertical)
 
 static double	get_short_distance(t_data *data, t_list *object_list, t_ray *ray)
 {
-	t_node			*object;
+	t_node			*node;
 	double			short_distance;
 	t_coordinate	hit_point;
+	void			*object;
 
-	object = object_list->headnode;
+	node = object_list->headnode;
 	short_distance = INFINITY;
-	while (object)
+	while (node)
 	{
-		if (object->type == SPHERE)
-			hit_point = get_closer_sphere_point(*(t_sphere *)object->object, ray);
+		object = node->object;
+		if (node->type == SPHERE)
+			hit_point = get_closer_sphere_point(*(t_sphere *)object, ray);
 		// else if (object->type == PLANE)
 			// distance = get_closer_plane_point(*(t_plane *)object->object, ray);
 		if (short_distance > get_distance(hit_point, ray->origin))
 		{
 			ray->object = object;
-			ray->object_type = object->type;
+			ray->object_type = node->type;
 			ray->hit_point = hit_point;
 			short_distance = get_distance(hit_point, ray->origin);
 		}
-		object = object->next;
+		node = node->next;
 	}
 	(void)(data);
 	return (short_distance);
@@ -44,6 +46,8 @@ static t_color	get_color_rgb(t_ray *ray, t_data *data)
 	background_color = sky_color(*ray, data->screen.view_height);
 	if (get_short_distance(data, data->object_list, ray) == INFINITY)
 		return (background_color);
+	t_color color = ((t_sphere*)(ray->object))->color;
+	printf("object color %d,%d,%d\n0", color.red, color.green, color.blue);
 	return (apply_phong_model(*data, ray));
 }
 
@@ -55,7 +59,6 @@ void	get_pixel_color(t_data *data)
 	int			color_hex;
 	double		u;
 	double		v;
-	// double		distortion_factor;
 
 	screen = data->screen;
 	for (int j = WINDOW_HEIGHT - 1; j >= 0; --j)
