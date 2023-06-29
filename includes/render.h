@@ -36,12 +36,12 @@ void			first_ppm(t_data *data);
 void			get_pixel_color(t_data *data);
 
 // phong
-t_color	apply_phong_model(t_data data, t_coordinate hit_point);
+t_color			apply_phong_model(t_data data, t_ray *ray);
 
 // shadow_center.c
 void			fix_hit_to_light(t_ray *hit_to_light);
 int				is_shadow(t_data data, t_ray ray_to_light);
 
-t_coordinate	get_closer_sphere_point(t_sphere sphere, t_ray ray);
+t_coordinate	get_closer_sphere_point(t_sphere sphere, t_ray *ray);
 
 #endif

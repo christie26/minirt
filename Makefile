@@ -46,10 +46,10 @@ HEADER       = $(addprefix $(HEADER_PATH), $(S_HEADER))
 all:		${NAME}
 
 %.o: 		%.c $(DYLIB) $(HEADER)
-			$(CC) $(CFLAGS) $(LDFLAGS) -Imlx -Ilibft -c $< -o $@
+			$(CC) $(CFLAGS) -Imlx -Ilibft -c $< -o $@
 
 $(NAME): 	$(OBJ) $(DYLIB) $(LIBFT)
-			$(CC) $(LDFLAGS) $(OBJ) -L./mlx -lmlx -L./libft -lft -framework OpenGL -framework AppKit -o $(NAME) 
+			$(CC) $(OBJ) -L./mlx -lmlx -L./libft -lft -framework OpenGL -framework AppKit -o $(NAME) 
 
 $(LIBFT):
 			@make -j3 -C ./libft all

@@ -6,7 +6,7 @@
 
 typedef struct s_node
 {
-	void			*shape;
+	void			*object;
 	int				type;
 	struct s_node	*next;
 }					t_node;
@@ -14,7 +14,6 @@ typedef struct s_node
 typedef struct s_list
 {
 	t_node			*headnode;
-	int				index;
 }					t_list;
 
 typedef struct s_color
@@ -96,7 +95,7 @@ typedef struct s_data
 	t_ambient		ambient;
 	t_camera		camera;
 	t_light			light;
-	t_list			*shapes;
+	t_list			*object_list;
 	t_screen		screen;
 	void			*mlx;
 	void			*win;

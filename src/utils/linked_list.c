@@ -10,14 +10,14 @@ t_list	*create_linkedlist(void)
 	return (linked_list);
 }
 
-t_node	*create_new_node(void *shape, int type)
+t_node	*create_new_node(void *object, int type)
 {
 	t_node	*new_node;
 
 	new_node = ft_calloc(1, sizeof(t_node));
 	if (!new_node)
 		exit(EXIT_FAILURE);
-	new_node->shape = shape;
+	new_node->object = object;
 	new_node->type = type;
 	return (new_node);
 }
@@ -53,7 +53,7 @@ t_node	*get_node(t_list *linked_list, size_t index)
 	}
 }
 
-int	add_node(t_list **linked_list, void *shape, int type)
+int	add_node(t_list **linked_list, void *object, int type)
 {
 	t_node	*dummy;
 	t_node	*new_node;
@@ -61,7 +61,7 @@ int	add_node(t_list **linked_list, void *shape, int type)
 	if (linked_list == NULL || *linked_list == NULL)
 		return (0);
 	dummy = (*linked_list)->headnode;
-	new_node = create_new_node(shape, type);
+	new_node = create_new_node(object, type);
 	if (dummy == NULL)
 	{
 		(*linked_list)->headnode = new_node;
@@ -85,7 +85,7 @@ void	destroy_list(t_list **linked_list)
 	while (dummy)
 	{
 		remove = dummy;
-		free(remove->shape);
+		free(remove->object);
 		dummy = dummy->next;
 		free(remove);
 		remove = NULL;

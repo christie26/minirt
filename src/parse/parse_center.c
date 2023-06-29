@@ -1,35 +1,35 @@
 
 #include "../../includes/minirt.h"
 
-static void	add_shape(t_list *shapes, char **tab, int type)
+static void	add_object(t_list *objects, char **tab, int type)
 {
-	void	*new_shape;
+	void	*new_object;
 
 	if (type == SPHERE)
-		new_shape = get_sphere(tab);
+		new_object = get_sphere(tab);
 	else if (type == PLANE)
-		new_shape = get_plane(tab);
+		new_object = get_plane(tab);
 	else
-		new_shape = get_cylinder(tab);
-	add_node(&shapes, new_shape, type);
+		new_object = get_cylinder(tab);
+	add_node(&objects, new_object, type);
 }
 
-static t_list	*parse_shape(char **tab)
+static t_list	*parse_object(char **tab)
 {
-	t_list *shapes;
+	t_list *objects;
 
-	shapes = ft_calloc(sizeof(t_list), 1);
+	objects = ft_calloc(sizeof(t_list), 1);
 	if (!ft_strcmp(tab[0], "pl"))
-		add_shape(shapes, tab, PLANE);
+		add_object(objects, tab, PLANE);
 	else if (!ft_strcmp(tab[0], "sp"))
-		add_shape(shapes, tab, SPHERE);
+		add_object(objects, tab, SPHERE);
 	else if (!ft_strcmp(tab[0], "cy"))
-		add_shape(shapes, tab, CYLINDER);
+		add_object(objects, tab, CYLINDER);
 	else
 	{
 		error_msg("Error\n");
 	}
-	return (shapes);
+	return (objects);
 }
 
 static t_data	parsing(t_data data, char *line)
@@ -49,7 +49,7 @@ static t_data	parsing(t_data data, char *line)
 		data.light = get_light(tab);
 	else
 	{
-		data.shapes = parse_shape(tab);
+		data.object_list = parse_object(tab);
 	}
 	free_two_dimensional_array(tab);
 	return (data);

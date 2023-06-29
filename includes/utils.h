@@ -8,9 +8,9 @@
 
 // linked list.c
 t_list			*create_linkedlist(void);
-t_node			*create_new_node(void *shape, int type);
+t_node			*create_new_node(void *object, int type);
 t_node			*get_node(t_list *linked_list, size_t index);
-int				add_node(t_list **linked_list, void *shape, int type);
+int				add_node(t_list **linked_list, void *object, int type);
 void			destroy_list(t_list **linked_list);
 
 // error.c
