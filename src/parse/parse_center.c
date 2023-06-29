@@ -10,9 +10,7 @@ static void	add_shape(t_list *shapes, char **tab, int type)
 	else if (type == PLANE)
 		new_shape = get_plane(tab);
 	else
-	{
 		new_shape = get_cylinder(tab);
-	}
 	add_node(&shapes, new_shape, type);
 }
 

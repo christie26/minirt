@@ -39,7 +39,7 @@ void	setup_screen(t_data *data)
 
 	screen = data->screen;
 	screen.distance = 1;
-	screen.view_width = 2 * fabs(tan(degree_to_radian(data->camera.fov)));
+	screen.view_width = 2 * fabs(tan(degree_to_radian(data->camera.fov / 2)));
 	screen.view_height = screen.view_width * (WINDOW_HEIGHT / (double)WINDOW_WIDTH);
 	printf("%.2f, %.2f\n", screen.view_height, screen.view_width);
 

@@ -6,6 +6,9 @@
 typedef struct s_ray {
 	t_coordinate	origin;
 	t_vector		direction;
+	t_coordinate	hit_point;
+	void			*object;
+	int		        object_type;
 }	t_ray;
 
 t_vector	init_vector(double x, double y, double z);
