@@ -18,6 +18,8 @@ t_coordinate	get_closer_sphere_point(t_sphere sphere, t_ray *ray)
 	t_hit_sphere	info;
 
 	info = hit_sphere(sphere, *ray);
+	if (info.discriminant < 0)
+		return (ray->origin);
 	hit_point = get_closer_hit_point(info.a, info.b, info.c, *ray);
 	// ray->hit_point = hit_point;
 	// return (get_distance(ray->origin, ray->hit_point));

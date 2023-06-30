@@ -23,7 +23,11 @@ static double	get_short_distance(t_data *data, t_list *object_list, t_ray *ray)
 	{
 		object = node->object;
 		if (node->type == SPHERE)
+		{
 			hit_point = get_closer_sphere_point(*(t_sphere *)object, ray);
+			if (is_same_coordinate(hit_point, ray->origin))
+				return (INFINITY);
+		}
 		// else if (object->type == PLANE)
 			// distance = get_closer_plane_point(*(t_plane *)object->object, ray);
 		if (short_distance > get_distance(hit_point, ray->origin))
@@ -46,8 +50,8 @@ static t_color	get_color_rgb(t_ray *ray, t_data *data)
 	background_color = sky_color(*ray, data->screen.view_height);
 	if (get_short_distance(data, data->object_list, ray) == INFINITY)
 		return (background_color);
-	t_color color = ((t_sphere*)(ray->object))->color;
-	printf("object color %d,%d,%d\n0", color.red, color.green, color.blue);
+	// t_color color = ((t_sphere*)(ray->object))->color;
+	// printf("object color %d,%d,%d\n0", color.red, color.green, color.blue);
 	return (apply_phong_model(*data, ray));
 }
 

@@ -45,5 +45,6 @@ t_coordinate	get_closer_hit_point(double a, double b, double c, t_ray ray);
 double			quadratic_equation_1(double a, double b, double c);
 double			quadratic_equation_2(double a, double b, double c);
 int				ft_min(int a, int b);
+int				is_same_coordinate(t_coordinate one, t_coordinate two);
 
 #endif

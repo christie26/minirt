@@ -16,3 +16,8 @@ int	ft_min(int a, int b)
 		return (a);
 	return (b);
 }
+
+int	is_same_coordinate(t_coordinate one, t_coordinate two)
+{
+	return (one.x == two.x && one.y == two.y && one.z == two.z);
+}
