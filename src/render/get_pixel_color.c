@@ -10,7 +10,7 @@ static t_color sky_color(t_ray ray, double vertical)
     return (color_rgb);
 }
 
-static double	get_short_distance(t_data *data, t_list *object_list, t_ray *ray)
+static double	get_short_distance(t_list *object_list, t_ray *ray)
 {
 	t_node			*node;
 	double			short_distance;
@@ -39,7 +39,6 @@ static double	get_short_distance(t_data *data, t_list *object_list, t_ray *ray)
 		}
 		node = node->next;
 	}
-	(void)(data);
 	return (short_distance);
 }
 
@@ -48,7 +47,10 @@ static t_color	get_color_rgb(t_ray *ray, t_data *data)
 	t_color			background_color;
 
 	background_color = sky_color(*ray, data->screen.view_height);
-	if (get_short_distance(data, data->object_list, ray) == INFINITY)
+	printf("check obj list\n");
+	printf("obj 1 = %d\n", ((t_sphere*)(data->object_list->headnode->object))->color.red);
+	printf("obj 2 = %d\n", ((t_sphere*)(data->object_list->headnode->next->object))->color.red);
+	if (get_short_distance(data->object_list, ray) == INFINITY)
 		return (background_color);
 	// t_color color = ((t_sphere*)(ray->object))->color;
 	// printf("object color %d,%d,%d\n0", color.red, color.green, color.blue);

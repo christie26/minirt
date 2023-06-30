@@ -14,22 +14,16 @@ static void	add_object(t_list *objects, char **tab, int type)
 	add_node(&objects, new_object, type);
 }
 
-static t_list	*parse_object(char **tab)
+static void parse_object(t_list **objects, char **tab)
 {
-	t_list *objects;
-
-	objects = ft_calloc(sizeof(t_list), 1);
 	if (!ft_strcmp(tab[0], "pl"))
-		add_object(objects, tab, PLANE);
+		add_object(*objects, tab, PLANE);
 	else if (!ft_strcmp(tab[0], "sp"))
-		add_object(objects, tab, SPHERE);
+		add_object(*objects, tab, SPHERE);
 	else if (!ft_strcmp(tab[0], "cy"))
-		add_object(objects, tab, CYLINDER);
+		add_object(*objects, tab, CYLINDER);
 	else
-	{
 		error_msg("Error\n");
-	}
-	return (objects);
 }
 
 static t_data	parsing(t_data data, char *line)
@@ -48,9 +42,7 @@ static t_data	parsing(t_data data, char *line)
 	else if (!ft_strcmp(tab[0], "L") || !ft_strcmp(tab[0], "l"))
 		data.light = get_light(tab);
 	else
-	{
-		data.object_list = parse_object(tab);
-	}
+		parse_object(&data.object_list, tab);
 	free_two_dimensional_array(tab);
 	return (data);
 }
@@ -63,6 +55,7 @@ t_data	parse_center(char *filename)
 
 	fd = formatcheck_open(filename);
 	ft_memset(&data, 0, sizeof(t_data));
+	data.object_list = create_linkedlist();
 	while (1)
 	{
 		line = get_next_line(fd);
