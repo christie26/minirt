@@ -1,4 +1,3 @@
-
 #include "../../includes/minirt.h"
 
 static void	add_object(t_list *objects, char **tab, int type)
@@ -14,7 +13,7 @@ static void	add_object(t_list *objects, char **tab, int type)
 	add_node(&objects, new_object, type);
 }
 
-static void parse_object(t_list **objects, char **tab)
+static void	parse_object(t_list **objects, char **tab)
 {
 	if (!ft_strcmp(tab[0], "pl"))
 		add_object(*objects, tab, PLANE);
@@ -23,45 +22,47 @@ static void parse_object(t_list **objects, char **tab)
 	else if (!ft_strcmp(tab[0], "cy"))
 		add_object(*objects, tab, CYLINDER);
 	else
-		error_msg("Error\n");
+		error_msg(INVALID_IDENTIFIER);
 }
 
-static t_data	parsing(t_data data, char *line)
+static void	parse_line(t_data *data, char *line, char *bit_mask)
 {
 	char	**tab;
 
 	if (!line || line[0] == '#' || line[0] == '\n')
-		return (data);
+		return ;
 	tab = ft_split(line, ' ');
 	if (!tab)
-		error_msg("Error\n");
-	else if (!ft_strcmp(tab[0], "A") || !ft_strcmp(tab[0], "a"))
-		data.ambient = get_ambient(tab);
-	else if (!ft_strcmp(tab[0], "C") || !ft_strcmp(tab[0], "c"))
-		data.camera = get_camera(tab);
-	else if (!ft_strcmp(tab[0], "L") || !ft_strcmp(tab[0], "l"))
-		data.light = get_light(tab);
+		error_msg(MALLOC_ERROR);
+	if (!ft_strcmp(tab[0], "A"))
+		data->ambient = get_ambient(tab, bit_mask);
+	else if (!ft_strcmp(tab[0], "C"))
+		data->camera = get_camera(tab, bit_mask);
+	else if (!ft_strcmp(tab[0], "L"))
+		data->light = get_light(tab, bit_mask);
 	else
-		parse_object(&data.object_list, tab);
+		parse_object(&data->object_list, tab);
 	free_two_dimensional_array(tab);
-	return (data);
+	return ;
 }
 
 t_data	parse_center(char *filename)
 {
-	int		fd;
 	t_data	data;
+	int		fd;
 	char	*line;
+	char	bit_mask;
 
 	fd = formatcheck_open(filename);
 	ft_memset(&data, 0, sizeof(t_data));
 	data.object_list = create_linkedlist();
+	bit_mask = 0;
 	while (1)
 	{
 		line = get_next_line(fd);
 		if (!line)
 			break ;
-		data = parsing(data, line);
+		parse_line(&data, line, &bit_mask);
 		free(line);
 	}
 	return (data);
