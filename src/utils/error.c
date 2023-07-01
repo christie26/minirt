@@ -15,6 +15,7 @@ void	ft_putendl_fd(char *s, int fd)
 
 void	*error_msg(char *error_message)
 {
+	ft_putendl_fd("Error", 2);
 	ft_putendl_fd(error_message, 2);
-	return (0);
+	exit (EXIT_FAILURE);
 }

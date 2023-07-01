@@ -24,7 +24,5 @@ t_coordinate	get_closer_sphere_point(t_sphere sphere, t_ray *ray)
 	if (info.discriminant < 0)
 		return (hit_point);
 	hit_point = get_closer_hit_point(info.a, info.b, info.c, *ray);
-	// ray->hit_point = hit_point;
-	// return (get_distance(ray->origin, ray->hit_point));
 	return (hit_point);
 }

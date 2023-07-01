@@ -1,4 +1,3 @@
-
 #include "../../includes/minirt.h"
 
 static int	open_file(char *filename)
@@ -21,5 +20,7 @@ int	formatcheck_open(char *filename)
 		error_msg(WRONG_FORMAT);
 	free(format);
 	fd = open_file(filename);
+	if (fd == -1)
+		handle_syscall();
 	return (fd);
 }

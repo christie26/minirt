@@ -22,12 +22,7 @@ static double	get_short_distance(t_list *object_list, t_ray *ray)
 	while (node)
 	{
 		object = node->object;
-		if (node->type == SPHERE)
-		{
-			hit_point = get_closer_sphere_point(*(t_sphere *)object, ray);
-		}
-		// else if (object->type == PLANE)
-			// distance = get_closer_plane_point(*(t_plane *)object->object, ray);
+		hit_point = get_hit_point(ray, node);
 		if (short_distance > get_distance(hit_point, ray->origin))
 		{
 			ray->object = object;

@@ -1,15 +1,18 @@
-
 #include "../../includes/minirt.h"
 
 t_coordinate	get_coordinate(char *coordinate_val)
 {
 	t_coordinate	coordinate;
-	char		**coordinate_values;
+	char			**coordinate_values;
 
 	coordinate_values = ft_split(coordinate_val, ',');
+	if (!coordinate_values)
+		error_msg(MALLOC_ERROR);
 	coordinate.x = get_double(coordinate_values[0]);
 	coordinate.y = get_double(coordinate_values[1]);
 	coordinate.z = get_double(coordinate_values[2]);
+	if (coordinate_values[3])
+		error_msg(PARSE_COORDINATE);
 	free_two_dimensional_array(coordinate_values);
 	return (coordinate);
 }
@@ -30,9 +33,16 @@ t_color	get_color(char *color_val)
 	char	**color_values;
 
 	color_values = ft_split(color_val, ',');
+	if (!color_values)
+		error_msg(MALLOC_ERROR);
 	color.red = ft_atoi(color_values[0]);
 	color.green = ft_atoi(color_values[1]);
 	color.blue = ft_atoi(color_values[2]);
+	if (color_values[3])
+		error_msg(PARSE_COLOR);
+	if (color.red < 0 || color.red > 255 || color.green < 0 || \
+		color.green > 255 || color.blue < 0 || color.blue > 255)
+		error_msg(PARSE_COLOR);
 	free_two_dimensional_array(color_values);
 	return (color);
 }
@@ -41,11 +51,19 @@ t_vector	get_vector(char *vector_val)
 {
 	t_vector	vector;
 	char		**vector_values;
+	double		size_of_vector;
 
 	vector_values = ft_split(vector_val, ',');
+	if (!vector_values)
+		error_msg(MALLOC_ERROR);
 	vector.x = get_double(vector_values[0]);
 	vector.y = get_double(vector_values[1]);
 	vector.z = get_double(vector_values[2]);
+	if (vector_values[3])
+		error_msg(PARSE_VECTOR);
+	size_of_vector = vector_length(vector);
+	if (size_of_vector > 1.01 || size_of_vector < 0.99)
+		error_msg(PARSE_VECTOR);
 	free_two_dimensional_array(vector_values);
 	return (vector);
 }

@@ -25,8 +25,9 @@ int				render(t_data *data);
 void			setup_screen(t_data *data);
 t_coordinate	get_start_corner(t_camera camera, t_vector horizontal, \
 					t_vector vertical, double focal_length);
-t_vector		get_ray_direction(t_coordinate lower_left_corner, t_vector horizontal, \
-					t_vector vertical, t_coordinate origin, double u, double v);
+t_vector		get_ray_direction(t_coordinate lower_left_corner, \
+					t_vector horizontal, t_vector vertical, t_coordinate origin, \
+					double u, double v);
 
 // utils.c
 void			write_pixel_image(t_data *data, int x, int y, int color);
@@ -43,5 +44,12 @@ void			fix_hit_to_light(t_ray *hit_to_light);
 int				is_shadow(t_data data, t_ray ray_to_light);
 
 t_coordinate	get_closer_sphere_point(t_sphere sphere, t_ray *ray);
+
+// hit_point
+t_coordinate	get_hit_point(t_ray *ray, t_node *node);
+
+// light ratio
+double			get_light_ratio(t_data data, t_coordinate hit_point, \
+					t_ray *ray);
 
 #endif

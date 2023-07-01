@@ -1,4 +1,3 @@
-
 #include "../../includes/minirt.h"
 
 t_cylinder	*get_cylinder(char **tab)
@@ -13,5 +12,7 @@ t_cylinder	*get_cylinder(char **tab)
 	cylinder->diameter = get_double(tab[3]);
 	cylinder->height = get_double(tab[4]);
 	cylinder->color = get_color(tab[5]);
+	if (tab[6])
+		error_msg(PARSE_CYLINDER);
 	return (cylinder);
 }
