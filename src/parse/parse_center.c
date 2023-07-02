@@ -37,11 +37,11 @@ static void	parse_line(t_data *data, char *line, char *bit_mask)
 	tab = ft_split(line, ' ');
 	if (!tab)
 		error_msg(MALLOC_ERROR);
-	if (!ft_strcmp(tab[0], "A") || !ft_strcmp(tab[0], "a"))
+	if (!ft_strcmp(tab[0], "A"))
 		data->ambient = get_ambient(tab, bit_mask);
-	else if (!ft_strcmp(tab[0], "C") || !ft_strcmp(tab[0], "c"))
+	else if (!ft_strcmp(tab[0], "C"))
 		data->camera = get_camera(tab, bit_mask);
-	else if (!ft_strcmp(tab[0], "L") || !ft_strcmp(tab[0], "l"))
+	else if (!ft_strcmp(tab[0], "L"))
 		data->light = get_light(tab, bit_mask);
 	else
 		parse_object(&data->object_list, tab);
