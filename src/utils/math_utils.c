@@ -21,3 +21,11 @@ int	is_same_coordinate(t_coordinate one, t_coordinate two)
 {
 	return (one.x == two.x && one.y == two.y && one.z == two.z);
 }
+
+double	radian_to_degree(double radian)
+{
+	double	degree;
+	
+	degree = radian * 180 / PI;
+	return (degree);
+}

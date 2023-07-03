@@ -1,21 +1,38 @@
 #include "../../includes/minirt.h"
 
-int shadow_sphere(t_sphere sphere, t_ray ray)
-{
-    t_vector dif;
-	double	a;
-	double	b;
-	double	c;
-	double t_1;
-	double t_2;
+double dmod(double x, double y) {
+    return (x - (int)(x/y) * y);
+}
 
-	dif = get_vector_two_point(sphere.center, ray.origin);
-	a = vector_dot(ray.direction, ray.direction);
-	b = 2 * vector_dot(dif, ray.direction);
-	c = vector_dot(dif, dif) - pow(sphere.diameter / 2, 2);
-	t_1 = quadratic_equation_1(a, b, c);
-	t_2 = quadratic_equation_2(a, b, c);
-	return (t_1 > 0 || t_2 > 0);
+t_color	get_checkerboard_sphere(t_sphere sphere, t_coordinate hit_point, t_screen screen)
+{
+	t_vector	center_to_hit;
+	t_vector	xy_plane;
+	t_vector	z_axis;
+	double		xy_angle;
+	double		z_angle;
+
+	center_to_hit = get_vector_two_point(sphere.center, hit_point);
+	xy_plane = screen.vertical;
+	z_axis = screen.horizontal;
+	xy_angle = radian_to_degree((vector_dot(xy_plane, center_to_hit) / vector_length(center_to_hit))) + 360;
+	z_angle = radian_to_degree((vector_dot(z_axis, center_to_hit) / vector_length(center_to_hit))) + 180;
+
+	if (dmod(xy_angle,30) > 0 && dmod(xy_angle,30) < 15)
+	{
+		if (dmod(z_angle,30) > 0 && dmod(z_angle,30) < 15)
+			return (get_color("255,255,255"));
+		else
+			return (get_color("0,0,0"));
+	}
+	else
+	{
+		if (dmod(z_angle,30) > 0 && dmod(z_angle,30) < 15)
+			return (get_color("0,0,0"));
+		else
+			return (get_color("255,255,255"));
+	}
+	return (sphere.color);
 }
 
 t_coordinate	get_closer_point(t_coordinate hit_point_1, t_coordinate hit_point_2, t_ray ray)
