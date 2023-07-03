@@ -1,6 +1,6 @@
 #include "../../includes/minirt.h"
 
-static int is_parallel(t_vector vector1, t_vector vector2, double *dot_product)
+int is_parallel(t_vector vector1, t_vector vector2, double *dot_product)
 {
 	*dot_product = vector_dot(vector1, vector2);
 	if (fabs(*dot_product) < 1e-6)
@@ -8,7 +8,7 @@ static int is_parallel(t_vector vector1, t_vector vector2, double *dot_product)
 	return (0);
 }
 
-t_coordinate	get_closer_plane_point(t_plane plane, t_ray *ray)
+static t_coordinate	get_closer_plane_point(t_plane plane, t_ray *ray)
 {
 	t_coordinate	hit_point;
 	double			denominator;
@@ -35,7 +35,6 @@ t_coordinate	get_hit_point(t_ray *ray, t_node *node)
 	object = node->object;
 	if (node->type == SPHERE)
 		hit_point = get_closer_sphere_point(*(t_sphere *)object, ray);
-	// else if (node->type == PLANE)
 	else
 		hit_point = get_closer_plane_point(*(t_plane *)object, ray);
 	return (hit_point);

@@ -52,4 +52,6 @@ t_coordinate	get_hit_point(t_ray *ray, t_node *node);
 double			get_light_ratio(t_data data, t_coordinate hit_point, \
 					t_ray *ray);
 
+int is_parallel(t_vector vector1, t_vector vector2, double *dot_product);
+
 #endif

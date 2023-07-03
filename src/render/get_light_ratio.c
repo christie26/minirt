@@ -11,7 +11,6 @@ static double	get_light_ratio_sphere(t_data data, t_coordinate hit_point, t_ray 
 	hit_to_light.origin = hit_point;
 	hit_to_light.direction = vector_unit(get_vector_two_point(hit_point, \
 		data.light.coordinate));
-	fix_hit_to_light(&hit_to_light);
 	if (is_shadow(data, hit_to_light))
 		return (0);
 	normal = vector_unit(get_vector_two_point(((t_sphere *)object)->center, hit_point));
@@ -30,7 +29,6 @@ static double	get_light_ratio_plane(t_data data, t_coordinate hit_point, t_ray *
 	hit_to_light.origin = hit_point;
 	hit_to_light.direction = vector_unit(get_vector_two_point(hit_point, \
 		data.light.coordinate));
-	fix_hit_to_light(&hit_to_light);
 	if (is_shadow(data, hit_to_light))
 		return (0);
 	normal = vector_unit(((t_plane *)object)->vector);
@@ -42,7 +40,6 @@ double	get_light_ratio(t_data data, t_coordinate hit_point, t_ray *ray)
 {
 	if (ray->object_type == SPHERE)
 		return (get_light_ratio_sphere(data, hit_point, ray));
-	// else if (ray->object_type == PLANE)
 	else
 		return (get_light_ratio_plane(data, hit_point, ray));
 }

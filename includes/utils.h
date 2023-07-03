@@ -35,7 +35,7 @@ t_color			add_color(t_color color_one, t_color color_two);
 t_color			multiply_color(t_color color_one, t_color color_two);
 
 // sphere
-int				shadow_sphere(t_sphere sphere, t_ray ray);
+int				blocked_sphere(t_sphere sphere, t_ray ray);
 t_coordinate	get_closer_point(t_coordinate hit_point_1,
 								t_coordinate hit_point_2,
 								t_ray ray);
