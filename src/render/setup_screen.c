@@ -41,14 +41,15 @@ void	setup_screen(t_data *data)
 	screen.distance = 1;
 	screen.view_width = 2 * fabs(tan(degree_to_radian(data->camera.fov / 2)));
 	screen.view_height = screen.view_width * (WINDOW_HEIGHT / (double)WINDOW_WIDTH);
-	world_vertical = init_vector(0, 1, 0);
-
+	// world_vertical = init_vector(0, -1, 0);
+	world_vertical = init_vector(0, 0, 1);
+	
 	screen.horizontal = vector_unit(vector_cross(world_vertical, data->camera.vector));
 	screen.horizontal = vector_mult_scalar(screen.horizontal, screen.view_width);
 
 	screen.vertical = vector_unit(vector_cross(data->camera.vector, screen.horizontal));
 	screen.vertical = vector_mult_scalar(screen.vertical, screen.view_height);
-
+	// printf("vertical = (%.2f)");
 	screen.start_point = get_start_corner(data->camera, screen.horizontal,screen.vertical, screen.distance);
 
 	data->screen = screen;
