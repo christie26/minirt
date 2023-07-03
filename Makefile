@@ -19,9 +19,12 @@ PARSING_SRCS = open.c parse_center.c parsing_helper.c \
 PARSING      = $(addprefix $(PARSING_PATH), $(PARSING_SRCS))
 
 RENDER_PATH  = render/
-RENDER_SRCS  = render.c key_press.c setup_screen.c get_pixel_color.c phong_model.c \
-				shadow_center.c plane_point.c sphere_point.c get_hit_point.c \
-				get_light_ratio.c point_cylinder.c
+RENDER_SRCS  = render.c key_press.c setup_screen.c \
+				get_pixel_color.c get_light_ratio.c phong_model.c \
+				get_hit_point.c point_sphere.c point_plane.c point_cylinder.c\
+				checker_sphere.c \
+				shadow_center.c render_utils.c 
+				
 RENDER       = $(addprefix $(RENDER_PATH), $(RENDER_SRCS))
 
 VECTOR_PATH  = vector/
@@ -29,7 +32,7 @@ VECTOR_SRCE	 = init_vector.c basic_calculations.c advanced_calculations.c other_
 VECTOR		 = $(addprefix $(VECTOR_PATH), $(VECTOR_SRCE))
 
 TOOL_PATH  	 = utils/
-TOOL_SRCE	 = error.c free.c get_double.c color_utils.c sphere_utils.c \
+TOOL_SRCE	 = error.c free.c get_double.c color_utils.c \
 				mlx_utils.c math_utils.c change_color.c linked_list.c
 TOOL		 = $(addprefix $(TOOL_PATH), $(TOOL_SRCE))
 
