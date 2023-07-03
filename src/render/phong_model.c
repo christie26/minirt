@@ -2,14 +2,16 @@
 
 static t_color get_obj_color(void *object, int type, t_coordinate hit_point, t_screen screen)
 {
-	(void)hit_point;
-	(void)screen;
 	if (type == SPHERE)
+		// return (get_checkerboard_sphere(*(t_sphere *)object, hit_point, screen));
 		return (((t_sphere *)object)->color);
 	else if (type == PLANE)
-		return (((t_plane *)object)->color);
+		return (get_checkerboard_plane(*(t_plane *)object, hit_point));
+		// return (((t_plane *)object)->color);
 	else
 		return (((t_cylinder *)object)->color);
+	(void)(hit_point);
+	(void)(screen);
 }
 
 static t_color	get_ambient_color(t_ambient ambient, t_ray *ray, t_screen screen)

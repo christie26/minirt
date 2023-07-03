@@ -28,6 +28,8 @@ t_coordinate	get_start_corner(t_camera camera, t_vector horizontal, \
 t_vector		get_ray_direction(t_coordinate lower_left_corner, \
 					t_vector horizontal, t_vector vertical, t_coordinate origin, \
 					double u, double v);
+t_vector		get_world_vertical(t_vector camera_direction);
+
 
 //pixel color
 double	get_short_distance(t_list *object_list, t_ray *ray);
@@ -39,6 +41,7 @@ void			write_pixel_image(t_data *data, int x, int y, int color);
 void			get_pixel_color(t_data *data);
 t_color			apply_phong_model(t_data data, t_ray *ray);
 t_color			get_checkerboard_sphere(t_sphere sphere, t_coordinate hit_point, t_screen screen);
+t_color			get_checkerboard_plane(t_plane plane, t_coordinate hit_point);
 
 // shadow_center.c
 void			fix_hit_to_light(t_ray *hit_to_light);
