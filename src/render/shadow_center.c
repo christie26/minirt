@@ -7,7 +7,7 @@ void	fix_hit_to_light(t_ray *hit_to_light)
 	hit_to_light->origin.z = hit_to_light->origin.z + 0.1 *  hit_to_light->direction.z;
 }
 
-int	blocked_plane(t_plane plane, t_ray ray)
+static int	blocked_plane(t_plane plane, t_ray ray)
 {
 	t_vector	ray_to_plane;
 	double		denominator;
@@ -41,6 +41,15 @@ int blocked_sphere(t_sphere sphere, t_ray ray)
 	return (t_1 > 0 || t_2 > 0);
 }
 
+// static int blocked_cylinder(t_cylinder cylinder, t_ray ray)
+// {
+// 	t_hit_cylinder	info;
+
+// 	info = hit_cylinder(cylinder, &ray);
+// 	if 
+	
+// }
+
 int	is_shadow(t_data data, t_ray hit_to_light)
 {
 	t_node			*node;
@@ -56,18 +65,17 @@ int	is_shadow(t_data data, t_ray hit_to_light)
 		{
 			if (blocked_sphere(*(t_sphere *)object, hit_to_light))
 				return (1);
-			// info = hit_sphere(*(t_sphere *)object, hit_to_light);
-			// if (info.discriminant > 0)
-				// return (1);
 		}
-		else
+		else if (node->type == PLANE)
 		{
-			// if (blocked_plane(*(t_plane *)object, hit_to_light))
-			// {
-			// 	printf("blocked by plane\n");
-			// 	return (1);
-			// }
+			if (blocked_plane(*(t_plane *)object, hit_to_light))
+				return (1);
 		}
+		// else if (node->type == CYLINDER)
+		// {
+		// 	if (blocked_cylinder(*(t_cylinder *)object, hit_to_light))
+		// 		return (1);
+		// }
 		node = node->next;
 	}
 	return (0);

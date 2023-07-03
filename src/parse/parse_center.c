@@ -22,14 +22,17 @@ static void	parse_object(t_list **objects, char **tab)
 	else if (!ft_strcmp(tab[0], "cy"))
 		add_object(*objects, tab, CYLINDER);
 	else
+	{
+		printf("%s\n", tab[0]);
 		error_msg(INVALID_IDENTIFIER);
+	}
 }
 
 static void	parse_line(t_data *data, char *line, char *bit_mask)
 {
 	char	**tab;
 
-	if (!line || line[0] == '#' || line[0] == '\n')
+	if (!line || line[0] == '\0' || line[0] == '\n' || ft_strchr(line, '#'))
 		return ;
 	tab = ft_split(line, ' ');
 	if (!tab)

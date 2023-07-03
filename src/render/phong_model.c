@@ -4,8 +4,10 @@ static t_color get_obj_color(void *object, int type)
 {
 	if (type == SPHERE)
 		return (((t_sphere *)object)->color);
-	// else if (type == PLANE)
-	return (((t_plane *)object)->color);
+	else if (type == PLANE)
+		return (((t_plane *)object)->color);
+	else
+		return (((t_cylinder *)object)->color);
 }
 
 static t_color	get_ambient_color(t_ambient ambient, t_ray *ray)

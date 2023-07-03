@@ -21,7 +21,7 @@ PARSING      = $(addprefix $(PARSING_PATH), $(PARSING_SRCS))
 RENDER_PATH  = render/
 RENDER_SRCS  = render.c key_press.c setup_screen.c get_pixel_color.c phong_model.c \
 				shadow_center.c plane_point.c sphere_point.c get_hit_point.c \
-				get_light_ratio.c
+				get_light_ratio.c point_cylinder.c
 RENDER       = $(addprefix $(RENDER_PATH), $(RENDER_SRCS))
 
 VECTOR_PATH  = vector/

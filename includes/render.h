@@ -56,6 +56,10 @@ double			get_light_ratio(t_data data, t_coordinate hit_point, \
 					t_ray *ray);
 
 t_hit_sphere	hit_sphere(t_sphere sphere, t_ray ray);
+t_hit_cylinder	hit_cylinder(t_cylinder cylinder, t_ray *ray);
+t_coordinate init_hit_point(void);
+t_coordinate	get_closer_cylinder_point(t_cylinder cylinder, t_ray *ray);
+
 
 int is_parallel(t_vector vector1, t_vector vector2, double *dot_product);
 

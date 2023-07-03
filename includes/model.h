@@ -135,6 +135,20 @@ typedef struct s_hit_sphere
 	double		t_2;
 }					t_hit_sphere;
 
+typedef struct s_hit_cylinder
+{
+	t_vector	oc;
+	double		k;
+	double		a;
+	double		b;
+	double		c;
+	double		discriminant;
+	double	    base;
+	double		top;
+	double		t_1;
+	double		t_2;
+}					t_hit_cylinder;
+
 enum				e_definition
 {
 	SPHERE = 1,
