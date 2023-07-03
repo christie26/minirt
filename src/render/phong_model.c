@@ -2,6 +2,8 @@
 
 static t_color get_obj_color(void *object, int type, t_coordinate hit_point, t_screen screen)
 {
+	(void)hit_point;
+	(void)screen;
 	if (type == SPHERE)
 		return (((t_sphere *)object)->color);
 	else if (type == PLANE)
