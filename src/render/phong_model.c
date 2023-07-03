@@ -1,19 +1,22 @@
 #include "../../includes/minirt.h"
 
-static t_color	get_ambient_color(t_ambient ambient)
-{
-	t_color	ambient_color;
-
-	ambient_color = apply_brightness(ambient.color, ambient.ratio);
-	return (ambient_color);
-}
-
 static t_color get_obj_color(void *object, int type)
 {
 	if (type == SPHERE)
 		return (((t_sphere *)object)->color);
 	// else if (type == PLANE)
 	return (((t_plane *)object)->color);
+}
+
+static t_color	get_ambient_color(t_ambient ambient, t_ray *ray)
+{
+	t_color	ambient_color;
+	t_color	object_color;
+
+	ambient_color = apply_brightness(ambient.color, ambient.ratio);
+	object_color = get_obj_color(ray->object, ray->object_type);
+	ambient_color = mix_color(ambient_color, object_color, 0.5);
+	return (ambient_color);
 }
 
 static t_color	get_diffuse_color(t_ray *ray, t_light light, \
@@ -50,7 +53,7 @@ t_color	apply_phong_model(t_data data, t_ray *ray)
 	light_ratio = get_light_ratio(data, hit_point, ray);
 	if (light_ratio < 0)
 		light_ratio = 0;
-	phong.ambient_color = get_ambient_color(data.ambient);
+	phong.ambient_color = get_ambient_color(data.ambient, ray);
 	phong.diffuse_color = get_diffuse_color(ray, data.light, \
 			light_ratio);
 	color_rgb = add_all_phong_colors(phong);
