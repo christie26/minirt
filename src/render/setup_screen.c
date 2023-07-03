@@ -32,6 +32,46 @@ t_vector get_ray_direction(t_coordinate lower_left_corner, t_vector horizontal, 
     return (ray_direction);
 }
 
+t_vector	get_world_vertical(t_vector camera_direction)
+{
+	t_vector	world_vertical;
+	double		x;
+	double		y;
+	double		z;
+	
+	x = camera_direction.x;
+	y = camera_direction.y;
+	z = camera_direction.z;
+	world_vertical = init_vector(0, 0, 1);
+	if (vector_dot(camera_direction, world_vertical) == 0)
+		return (world_vertical);
+	world_vertical = init_vector(0, 1, 0);
+	if (vector_dot(camera_direction, world_vertical) == 0)
+		return (world_vertical);
+	world_vertical = init_vector(1, 0, 0);
+	if (vector_dot(camera_direction, world_vertical) == 0)
+		return (world_vertical);
+	if (fabs(x) > fabs(y) && fabs(x) > fabs(z))
+	{
+		world_vertical.y = y;
+		world_vertical.z = z;
+		world_vertical.x = - (pow(y, 2) + pow(z, 2)) / x;
+	}
+	else if (fabs(y) > fabs(x) && fabs(y) > fabs(z))
+	{
+		world_vertical.x = x;
+		world_vertical.z = z;
+		world_vertical.y = - (pow(x, 2) + pow(z, 2)) / y;
+	}
+	else if (fabs(z) > fabs(y) && fabs(z) > fabs(x))
+	{
+		world_vertical.x = x;
+		world_vertical.y = y;
+		world_vertical.z = - (pow(x, 2) + pow(y, 2)) / z;
+	}
+	return (world_vertical);
+}
+
 void	setup_screen(t_data *data)
 {
 	t_vector	world_vertical;
@@ -41,9 +81,9 @@ void	setup_screen(t_data *data)
 	screen.distance = 1;
 	screen.view_width = 2 * fabs(tan(degree_to_radian(data->camera.fov / 2)));
 	screen.view_height = screen.view_width * (WINDOW_HEIGHT / (double)WINDOW_WIDTH);
-	// world_vertical = init_vector(0, -1, 0);
-	world_vertical = init_vector(0, 0, 1);
 	
+	world_vertical = get_world_vertical(data->camera.vector);
+
 	screen.horizontal = vector_unit(vector_cross(world_vertical, data->camera.vector));
 	screen.horizontal = vector_mult_scalar(screen.horizontal, screen.view_width);
 
