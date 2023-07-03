@@ -62,8 +62,8 @@ t_vector	get_vector(char *vector_val)
 	if (vector_values[3])
 		error_msg(PARSE_VECTOR);
 	size_of_vector = vector_length(vector);
-	if (size_of_vector > 1.01 || size_of_vector < 0.99)
-		error_msg(PARSE_VECTOR);
+	// if (size_of_vector > 1.01 || size_of_vector < 0.99)
+		// error_msg(PARSE_VECTOR);
 	free_two_dimensional_array(vector_values);
 	return (vector);
 }
