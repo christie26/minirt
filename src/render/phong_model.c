@@ -13,13 +13,8 @@ static t_color	get_ambient_color(t_ambient ambient, t_ray *ray)
 	t_color	ambient_color;
 	t_color	object_color;
 
-<<<<<<< HEAD
 	ambient_color = apply_brightness(ambient.color, ambient.ratio);
 	object_color = get_obj_color(ray->object, ray->object_type);
-=======
-	object_color = get_obj_color(ray->object, ray->object_type);
-	ambient_color = apply_brightness(ambient.color, ambient.ratio);
->>>>>>> cab27ad1aff974cba8a3ae339ab2497c7b22d13c
 	ambient_color = mix_color(ambient_color, object_color, 0.5);
 	return (ambient_color);
 }
