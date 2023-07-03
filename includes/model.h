@@ -131,6 +131,8 @@ typedef struct s_hit_sphere
 	double		b;
 	double		c;
 	double		discriminant;
+	double		t_1;
+	double		t_2;
 }					t_hit_sphere;
 
 enum				e_definition

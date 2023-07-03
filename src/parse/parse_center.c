@@ -22,10 +22,7 @@ static void	parse_object(t_list **objects, char **tab)
 	else if (!ft_strcmp(tab[0], "cy"))
 		add_object(*objects, tab, CYLINDER);
 	else
-	{
-		printf("tab[0]: %s\n", tab[0]);
 		error_msg(INVALID_IDENTIFIER);
-	}
 }
 
 static void	parse_line(t_data *data, char *line, char *bit_mask)
