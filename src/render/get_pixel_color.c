@@ -10,7 +10,7 @@ static t_color sky_color(t_ray ray, double vertical)
     return (color_rgb);
 }
 
-static double	get_short_distance(t_list *object_list, t_ray *ray)
+double	get_short_distance(t_list *object_list, t_ray *ray)
 {
 	t_node			*node;
 	double			short_distance;

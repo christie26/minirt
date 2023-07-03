@@ -29,6 +29,9 @@ t_vector		get_ray_direction(t_coordinate lower_left_corner, \
 					t_vector horizontal, t_vector vertical, t_coordinate origin, \
 					double u, double v);
 
+//pixel color
+double	get_short_distance(t_list *object_list, t_ray *ray);
+
 // utils.c
 void			write_pixel_image(t_data *data, int x, int y, int color);
 
