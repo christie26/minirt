@@ -42,13 +42,13 @@ t_vector	get_world_vertical(t_vector camera_direction)
 	x = camera_direction.x;
 	y = camera_direction.y;
 	z = camera_direction.z;
-	world_vertical = init_vector(0, 0, 1);
+	world_vertical = init_vector(0, 0, -1);
 	if (vector_dot(camera_direction, world_vertical) == 0)
 		return (world_vertical);
-	world_vertical = init_vector(0, 1, 0);
+	world_vertical = init_vector(0, -1, 0);
 	if (vector_dot(camera_direction, world_vertical) == 0)
 		return (world_vertical);
-	world_vertical = init_vector(1, 0, 0);
+	world_vertical = init_vector(-1, 0, 0);
 	if (vector_dot(camera_direction, world_vertical) == 0)
 		return (world_vertical);
 	if (fabs(x) > fabs(y) && fabs(x) > fabs(z))
