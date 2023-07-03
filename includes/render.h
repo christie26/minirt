@@ -34,27 +34,24 @@ void			write_pixel_image(t_data *data, int x, int y, int color);
 
 // get_pixel_color.c
 void			get_pixel_color(t_data *data);
-t_color			get_checkerboard_sphere(t_sphere sphere, t_coordinate hit_point, t_screen screen);
-
-// phong
 t_color			apply_phong_model(t_data data, t_ray *ray);
+t_color			get_checkerboard_sphere(t_sphere sphere, t_coordinate hit_point, t_screen screen);
 
 // shadow_center.c
 void			fix_hit_to_light(t_ray *hit_to_light);
 int				is_shadow(t_data data, t_ray ray_to_light);
 
-// hit_point
+// get hit_point
 t_coordinate	get_hit_point(t_ray *ray, t_node *node);
-
-// sphere_hit
 t_coordinate	get_closer_sphere_point(t_sphere sphere, t_ray *ray);
+t_coordinate	get_closer_plane_point(t_plane plane, t_ray *ray);
 t_hit_sphere	hit_sphere(t_sphere sphere, t_ray ray);
+int				is_parallel(t_vector vector1, t_vector vector2, double *dot_product);
 
 // light ratio
 double			get_light_ratio(t_data data, t_coordinate hit_point, \
 					t_ray *ray);
 
 
-int				is_parallel(t_vector vector1, t_vector vector2, double *dot_product);
 
 #endif

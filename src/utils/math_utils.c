@@ -29,3 +29,8 @@ double	radian_to_degree(double radian)
 	degree = radian * 180 / PI;
 	return (degree);
 }
+
+double	dmod(double x, double y)
+{
+    return (x - (int)(x/y) * y);
+}

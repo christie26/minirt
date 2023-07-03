@@ -25,20 +25,10 @@ int	blocked_plane(t_plane plane, t_ray ray)
 
 int blocked_sphere(t_sphere sphere, t_ray ray)
 {
-    t_vector	dif;
-	double		a;
-	double		b;
-	double		c;
-	double		t_1;
-	double		t_2;
+	t_hit_sphere	info;
 
-	dif = get_vector_two_point(sphere.center, ray.origin);
-	a = vector_dot(ray.direction, ray.direction);
-	b = 2 * vector_dot(dif, ray.direction);
-	c = vector_dot(dif, dif) - pow(sphere.diameter / 2, 2);
-	t_1 = quadratic_equation_1(a, b, c);
-	t_2 = quadratic_equation_2(a, b, c);
-	return (t_1 > 0 || t_2 > 0);
+	info = hit_sphere(sphere, ray);
+	return (info.t_1 > 0 || info.t_2 > 0);
 }
 
 int	is_shadow(t_data data, t_ray hit_to_light)
@@ -56,9 +46,6 @@ int	is_shadow(t_data data, t_ray hit_to_light)
 		{
 			if (blocked_sphere(*(t_sphere *)object, hit_to_light))
 				return (1);
-			// info = hit_sphere(*(t_sphere *)object, hit_to_light);
-			// if (info.discriminant > 0)
-				// return (1);
 		}
 		else
 		{
