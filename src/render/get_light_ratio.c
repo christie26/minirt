@@ -25,6 +25,8 @@ static double	get_light_ratio_sphere(t_data data, t_coordinate hit_point,
 		return (0);
 	normal = vector_unit(get_vector_two_point(sphere->center, \
 				hit_point));
+	ray->hit_normal = normal;
+	ray->hit_direction = hit_to_light.direction;
 	light_ratio = vector_dot(normal, hit_to_light.direction);
 	return (light_ratio);
 }
@@ -42,6 +44,8 @@ static double	get_light_ratio_plane(t_data data, t_coordinate hit_point,
 	if (is_shadow(data, hit_to_light))
 		return (0);
 	normal = vector_unit(plane->vector);
+	ray->hit_normal = normal;
+	ray->hit_direction = hit_to_light.direction;
 	light_ratio = vector_dot(normal, hit_to_light.direction);
 	return (light_ratio);
 }
@@ -66,6 +70,8 @@ static double	get_light_ratio_cylinder(t_data data, t_coordinate hit_point,
 				vector_dot(v, cylinder->vector)));
 	normal = vector_unit(vector_sub(init_vector(hit_point.x, hit_point.y, \
 					hit_point.z), p));
+	ray->hit_normal = normal;
+	ray->hit_direction = hit_to_light.direction;
 	light_ratio = vector_dot(normal, hit_to_light.direction);
 	return (vector_dot(normal, hit_to_light.direction));
 }

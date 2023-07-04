@@ -7,9 +7,12 @@ typedef struct s_ray {
 	t_coordinate	origin;
 	t_vector		direction;
 	t_coordinate	hit_point;
+	t_vector		hit_normal;
+	t_vector		hit_direction;
 	void			*object;
 	int		        object_type;
 }	t_ray;
+
 
 t_vector		init_vector(double x, double y, double z);
 t_vector		coordinate_to_vector(t_coordinate coordinate);

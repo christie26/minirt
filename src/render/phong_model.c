@@ -43,6 +43,7 @@ static t_color	add_all_phong_colors(t_phong phong)
 	t_color	phong_color;
 
 	phong_color = add_color(phong.ambient_color, phong.diffuse_color);
+	phong_color = add_color(phong_color, phong.specular_color);
 	return (phong_color);
 }
 
@@ -60,6 +61,8 @@ t_color	apply_phong_model(t_data data, t_ray *ray)
 	phong.ambient_color = get_ambient_color(data.ambient, ray, data.screen);
 	phong.diffuse_color = get_diffuse_color(ray, data.light, \
 			light_ratio, data.screen);
+	phong.specular_color = get_specular_color(ray, data.light, \
+			data.screen, light_ratio);
 	color_rgb = add_all_phong_colors(phong);
 	return (color_rgb);
 }
