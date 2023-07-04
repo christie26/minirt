@@ -20,7 +20,6 @@ t_color	get_specular_color(t_ray *ray, t_light light, double light_ratio)
 			shininess);
 	if (specular_intensity < 0)
 		specular_intensity = 0;
-	specular_color = apply_brightness(light.color, specular_intensity
-			* light.brightness);
+	specular_color = apply_brightness(light.color, specular_intensity);
 	return (specular_color);
 }

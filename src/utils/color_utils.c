@@ -17,3 +17,15 @@ int color_to_hex(t_color color)
 	color_hex = (color.red << 16) | (color.green << 8) | color.blue;
 	return (color_hex);
 }
+
+t_color get_obj_color(void *object, int type, t_coordinate hit_point, t_screen screen)
+{
+	(void)hit_point;
+	(void)screen;
+	if (type == SPHERE)
+		return (((t_sphere *)object)->color);
+	else if (type == PLANE)
+		return (((t_plane *)object)->color);
+	else
+		return (((t_cylinder *)object)->color);
+}

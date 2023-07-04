@@ -57,7 +57,6 @@ t_coordinate	init_hit_point(void);
 // light ratio
 double			get_light_ratio(t_data data, t_coordinate hit_point, \
 					t_ray *ray);
-t_color get_specular_color(t_ray *ray, t_light light, double light_ratio);
-
+t_color	get_specular_color(t_ray *ray, t_light light, double light_ratio);
 
 #endif

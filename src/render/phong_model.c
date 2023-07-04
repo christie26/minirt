@@ -1,17 +1,5 @@
 #include "../../includes/minirt.h"
 
-static t_color get_obj_color(void *object, int type, t_coordinate hit_point, t_screen screen)
-{
-	(void)hit_point;
-	(void)screen;
-	if (type == SPHERE)
-		return (((t_sphere *)object)->color);
-	else if (type == PLANE)
-		return (((t_plane *)object)->color);
-	else
-		return (((t_cylinder *)object)->color);
-}
-
 static t_color	get_ambient_color(t_ambient ambient, t_ray *ray, t_screen screen)
 {
 	t_color	ambient_color;
@@ -19,7 +7,7 @@ static t_color	get_ambient_color(t_ambient ambient, t_ray *ray, t_screen screen)
 
 	ambient_color = apply_brightness(ambient.color, ambient.ratio);
 	object_color = get_obj_color(ray->object, ray->object_type, ray->hit_point, screen);
-	ambient_color = mix_color(ambient_color, object_color, 0.5);
+	ambient_color = mix_color(object_color, ambient_color, ambient.ratio);
 	return (ambient_color);
 }
 
@@ -62,7 +50,7 @@ t_color	apply_phong_model(t_data data, t_ray *ray)
 	phong.diffuse_color = get_diffuse_color(ray, data.light, \
 			light_ratio, data.screen);
 	phong.specular_color = get_specular_color(ray, data.light, \
-			data.screen, light_ratio);
+			light_ratio);
 	color_rgb = add_all_phong_colors(phong);
 	return (color_rgb);
 }
