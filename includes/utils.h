@@ -27,6 +27,7 @@ double			get_double(const char *str);
 // color_utils.c
 int				rgb_to_hex(int r, int g, int b);
 int				color_to_hex(t_color color);
+t_color 		get_obj_color(void *object, int type, t_coordinate hit_point, t_screen screen);
 
 // change_color.c
 t_color			mix_color(t_color color_one, t_color color_two, double ratio);

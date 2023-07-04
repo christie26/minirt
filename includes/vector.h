@@ -7,11 +7,15 @@ typedef struct s_ray {
 	t_coordinate	origin;
 	t_vector		direction;
 	t_coordinate	hit_point;
+	t_vector		hit_normal;
+	t_vector		hit_direction;
 	void			*object;
 	int		        object_type;
 }	t_ray;
 
+
 t_vector		init_vector(double x, double y, double z);
+t_vector		coordinate_to_vector(t_coordinate coordinate);
 t_vector		get_vector_two_point(t_coordinate start, t_coordinate end);
 
 t_coordinate	calculate_hit_point(t_ray ray, double t);
@@ -26,5 +30,6 @@ double			vector_length(t_vector v);
 double			vector_dot(t_vector v1, t_vector v2);
 t_vector		vector_cross(t_vector v1, t_vector v2);
 t_vector		vector_unit(t_vector v);
+
 
 #endif

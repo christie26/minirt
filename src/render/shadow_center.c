@@ -7,38 +7,38 @@ void	fix_hit_to_light(t_ray *hit_to_light)
 	hit_to_light->origin.z = hit_to_light->origin.z + 0.1 *  hit_to_light->direction.z;
 }
 
-static int	blocked_plane(t_plane plane, t_ray ray)
+static int	blocked_plane(t_plane plane, t_ray hit_to_light)
 {
 	t_vector	ray_to_plane;
 	double		denominator;
 	double		t;
 
-	ray_to_plane = vector_sub(init_vector(ray.origin.x, ray.origin.y, ray.origin.z), \
-		init_vector(plane.coordinate.x, plane.coordinate.y, plane.coordinate.z));
-	if (is_parallel(plane.vector, ray.direction, &denominator))
+	ray_to_plane = get_vector_two_point(hit_to_light.origin, plane.coordinate);
+	if (is_parallel(plane.vector, hit_to_light.direction, &denominator))
 		return (0);
 	t = vector_dot(ray_to_plane, plane.vector) / denominator;
-	if (t < 0 || t > 1)
-		return (0);
-	return (1);
+	return (t >= 0);
 }
 
-int blocked_sphere(t_sphere sphere, t_ray ray)
+int blocked_sphere(t_sphere sphere, t_ray hit_to_light)
 {
 	t_hit_sphere	info;
 
-	info = hit_sphere(sphere, ray);
+	info = hit_sphere(sphere, hit_to_light);
 	return (info.t_1 > 0 || info.t_2 > 0);
 }
 
-// static int blocked_cylinder(t_cylinder cylinder, t_ray ray)
-// {
-// 	t_hit_cylinder	info;
+static int blocked_cylinder(t_cylinder cylinder, t_ray hit_to_light)
+{
+	t_hit_cylinder	info;
+	t_coordinate	hit_point;
 
-// 	info = hit_cylinder(cylinder, &ray);
-// 	if 
-	
-// }
+	info = hit_cylinder(cylinder, &hit_to_light);
+	if (info.t_1 > 0 || info.t_2 > 0)
+		return (1);
+	hit_point = get_closer_hit_point(info.t_1, info.t_2, hit_to_light);
+	return (is_hit_point_between_top_and_bottom(info.base, info.top, cylinder.height));	
+}
 
 int	is_shadow(t_data data, t_ray hit_to_light)
 {
@@ -61,11 +61,11 @@ int	is_shadow(t_data data, t_ray hit_to_light)
 			if (blocked_plane(*(t_plane *)object, hit_to_light))
 				return (1);
 		}
-		// else if (node->type == CYLINDER)
-		// {
-		// 	if (blocked_cylinder(*(t_cylinder *)object, hit_to_light))
-		// 		return (1);
-		// }
+		else if (node->type == CYLINDER)
+		{
+			if (blocked_cylinder(*(t_cylinder *)object, hit_to_light))
+				return (1);
+		}
 		node = node->next;
 	}
 	return (0);

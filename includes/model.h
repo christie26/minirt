@@ -86,6 +86,7 @@ typedef struct s_paraboloid
 	t_vector		vector;
 	double			parameter_x;
 	double			parameter_y;
+	double			height;
 	t_color			color;
 }	t_paraboloid;
 

@@ -11,6 +11,17 @@ t_vector	init_vector(double x, double y, double z)
 	return (vector);
 }
 
+t_vector	coordinate_to_vector(t_coordinate coordinate)
+{
+	t_vector vector;
+
+	vector.x = coordinate.x;
+	vector.y = coordinate.y;
+	vector.z = coordinate.z;
+	return (vector);
+}
+
+
 t_vector	get_vector_two_point(t_coordinate start, t_coordinate end)
 {
 	t_vector	vector;
