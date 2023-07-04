@@ -171,6 +171,8 @@ typedef struct s_hit_paraboloid
 	double		top;
 	double		t_1;
 	double		t_2;
+	t_coordinate hit_point_1;
+	t_coordinate hit_point_2;
 }				t_hit_paraboloid;
 
 enum				e_definition
