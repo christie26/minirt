@@ -14,6 +14,7 @@ t_color	get_checkerboard_plane(t_plane plane, t_coordinate hit_point)
 	vertical_len = vector_dot(point_to_hit, vertical) / vector_length(vertical) + 1000;
 	horizontal_len = vector_dot(point_to_hit, horizontal) / vector_length(horizontal) + 1000;
 	
+	return (plane.color);
 	if (dmod(vertical_len, 1) > 0 && dmod(vertical_len, 1) < 0.5)
 	{
 		if (dmod(horizontal_len, 1) > 0 && dmod(horizontal_len, 1) < 0.5)
@@ -28,5 +29,4 @@ t_color	get_checkerboard_plane(t_plane plane, t_coordinate hit_point)
 		else
 			return (get_color("255,255,255"));
 	}
-	return (plane.color);
 }

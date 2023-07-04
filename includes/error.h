@@ -15,6 +15,7 @@
 # define PARSE_SPHERE "parsing error: sphere"
 # define PARSE_PLANE "parsing error: plane"
 # define PARSE_CYLINDER "parsing error: cylinder"
+# define PARSE_PARABOLOID "parsing error: paraboloid"
 
 # define NO_AMBIENT "No ambient light element in .rt file"
 

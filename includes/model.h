@@ -80,6 +80,15 @@ typedef struct s_cylinder
 	t_color			color;
 }					t_cylinder;
 
+typedef struct s_paraboloid
+{
+	t_coordinate	coordinate;
+	t_vector		vector;
+	double			parameter_x;
+	double			parameter_y;
+	t_color			color;
+}	t_paraboloid;
+
 typedef struct s_screen
 {
 	double			view_width;
@@ -149,13 +158,24 @@ typedef struct s_hit_cylinder
 	double		t_2;
 }					t_hit_cylinder;
 
+typedef struct s_hit_paraboloid
+{
+	t_vector	oc;
+	double		k;
+	double		a;
+	double		b;
+	double		c;
+	double		discriminant;
+	double		t_1;
+	double		t_2;
+}				t_hit_paraboloid;
+
 enum				e_definition
 {
 	SPHERE = 1,
 	PLANE = 2,
-	SQUARE = 3,
-	CYLINDER = 4,
-	TRIANGLE = 5,
+	CYLINDER = 3,
+	PARABOLOID = 4,
 	NONE = -1
 };
 

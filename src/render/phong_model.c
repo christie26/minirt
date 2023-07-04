@@ -3,8 +3,8 @@
 static t_color get_obj_color(void *object, int type, t_coordinate hit_point, t_screen screen)
 {
 	if (type == SPHERE)
-		// return (get_checkerboard_sphere(*(t_sphere *)object, hit_point, screen));
-		return (((t_sphere *)object)->color);
+		return (get_checkerboard_sphere(*(t_sphere *)object, hit_point, screen));
+		// return (((t_sphere *)object)->color);
 	else if (type == PLANE)
 		return (get_checkerboard_plane(*(t_plane *)object, hit_point));
 		// return (((t_plane *)object)->color);

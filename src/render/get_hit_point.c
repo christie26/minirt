@@ -20,7 +20,9 @@ t_coordinate	get_hit_point(t_ray *ray, t_node *node)
 		hit_point = get_closer_sphere_point(*(t_sphere *)object, ray);
 	else if (node->type == PLANE)
 		hit_point = get_closer_plane_point(*(t_plane *)object, ray);
-	else
+	else if (node->type == CYLINDER)
 		hit_point = get_closer_cylinder_point(*(t_cylinder *)object, ray);
+	else
+		hit_point = get_closer_paraboloid_point(*(t_paraboloid *)object, ray);
 	return (hit_point);
 }

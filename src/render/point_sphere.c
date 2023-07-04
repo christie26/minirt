@@ -14,13 +14,13 @@ t_hit_sphere	hit_sphere(t_sphere sphere, t_ray ray)
 	return (hit);
 }
 
-t_coordinate get_closer_hit_point(double t_1, double t_2, t_ray ray)
-{
-	t_coordinate closer_hit_point;
+// t_coordinate get_closer_hit_point(double t_1, double t_2, t_ray ray)
+// {
+// 	t_coordinate closer_hit_point;
 
-	closer_hit_point = get_closer_point(calculate_hit_point(ray, t_1), calculate_hit_point(ray, t_2), ray);
-	return (closer_hit_point);
-}
+// 	closer_hit_point = get_closer_point(calculate_hit_point(ray, t_1), calculate_hit_point(ray, t_2), ray);
+// 	return (closer_hit_point);
+// }
 
 // t_coordinate get_closer_hit_point(double a, double b, double c, t_ray ray)
 // {

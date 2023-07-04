@@ -48,14 +48,19 @@ void			fix_hit_to_light(t_ray *hit_to_light);
 int				is_shadow(t_data data, t_ray ray_to_light);
 
 // get hit_point
+t_coordinate	get_closer_hit_point(double t_1, double t_2, t_ray ray);
+
 t_coordinate	get_hit_point(t_ray *ray, t_node *node);
 t_coordinate	get_closer_sphere_point(t_sphere sphere, t_ray *ray);
 t_coordinate	get_closer_plane_point(t_plane plane, t_ray *ray);
 t_coordinate	get_closer_cylinder_point(t_cylinder cylinder, t_ray *ray);
+t_coordinate	get_closer_paraboloid_point(t_paraboloid paraboloid, t_ray *ray);
+
 t_hit_sphere	hit_sphere(t_sphere sphere, t_ray ray);
 int				is_parallel(t_vector vector1, t_vector vector2, double *dot_product);
 t_hit_cylinder	hit_cylinder(t_cylinder cylinder, t_ray *ray);
 t_coordinate	init_hit_point(void);
+
 
 // light ratio
 double			get_light_ratio(t_data data, t_coordinate hit_point, \

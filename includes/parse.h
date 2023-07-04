@@ -20,6 +20,7 @@ t_light			get_light(char **, char *bit_mask);
 t_sphere		*get_sphere(char **tab);
 t_plane			*get_plane(char **tab);
 t_cylinder		*get_cylinder(char **tab);
+t_paraboloid	*get_paraboloid(char **tab);
 
 //open.c
 int				formatcheck_open(char *filename);

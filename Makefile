@@ -15,13 +15,14 @@ MAIN       	 = $(addprefix $(MAIN_PATH), $(MAIN_SRCS))
 PARSING_PATH = parse/
 PARSING_SRCS = open.c parse_center.c parsing_helper.c \
 				ambient.c camera.c light.c plane.c \
-				sphere.c cylinder.c
+				sphere.c cylinder.c paraboloid.c
+				
 PARSING      = $(addprefix $(PARSING_PATH), $(PARSING_SRCS))
 
 RENDER_PATH  = render/
 RENDER_SRCS  = render.c key_press.c setup_screen.c \
 				get_pixel_color.c get_light_ratio.c phong_model.c \
-				get_hit_point.c point_sphere.c point_plane.c point_cylinder.c\
+				get_hit_point.c point_sphere.c point_plane.c point_cylinder.c point_paraboloid.c \
 				checker_sphere.c checker_plane.c\
 				shadow_center.c render_utils.c 
 				
@@ -33,7 +34,8 @@ VECTOR		 = $(addprefix $(VECTOR_PATH), $(VECTOR_SRCE))
 
 TOOL_PATH  	 = utils/
 TOOL_SRCE	 = error.c free.c get_double.c color_utils.c \
-				mlx_utils.c math_utils.c change_color.c linked_list.c
+				mlx_utils.c math_utils.c change_color.c linked_list.c \
+				sphere_utils.c
 TOOL		 = $(addprefix $(TOOL_PATH), $(TOOL_SRCE))
 
 SRC			 := $(addprefix $(SRCDIR), $(MAIN)) \

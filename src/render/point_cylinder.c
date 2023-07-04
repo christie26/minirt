@@ -26,11 +26,11 @@ t_hit_cylinder	hit_cylinder(t_cylinder cylinder, t_ray *ray)
 
 	hit.oc = get_vector_two_point(cylinder.coordinate, ray->origin);
 	hit.k = vector_dot(ray->direction, cylinder.vector);
+	
 	hit.a = vector_dot(ray->direction, ray->direction) - pow(hit.k, 2);
-	hit.b = 2.0 * (vector_dot(ray->direction, hit.oc) - \
-		hit.k * vector_dot(hit.oc, cylinder.vector));
-	hit.c = vector_dot(hit.oc, hit.oc) - pow(vector_dot(hit.oc, \
-		cylinder.vector), 2) - pow(cylinder.diameter / 2, 2);
+	hit.b = 2.0 * (vector_dot(ray->direction, hit.oc) - hit.k * vector_dot(hit.oc, cylinder.vector));
+	hit.c = vector_dot(hit.oc, hit.oc) - pow(vector_dot(hit.oc, cylinder.vector), 2) - pow(cylinder.diameter / 2, 2);
+	
 	hit.discriminant = pow(hit.b, 2) - 4 * hit.a * hit.c;
 	hit.t_1 = quadratic_equation_1(hit.a, hit.b, hit.c);
 	hit.t_2 = quadratic_equation_2(hit.a, hit.b, hit.c);

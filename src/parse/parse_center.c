@@ -8,8 +8,10 @@ static void	add_object(t_list *objects, char **tab, int type)
 		new_object = get_sphere(tab);
 	else if (type == PLANE)
 		new_object = get_plane(tab);
-	else
+	else if (type == CYLINDER)
 		new_object = get_cylinder(tab);
+	else
+		new_object = get_paraboloid(tab);
 	add_node(&objects, new_object, type);
 }
 
@@ -21,6 +23,8 @@ static void	parse_object(t_list **objects, char **tab)
 		add_object(*objects, tab, SPHERE);
 	else if (!ft_strcmp(tab[0], "cy"))
 		add_object(*objects, tab, CYLINDER);
+	else if (!ft_strcmp(tab[0], "pa"))
+		add_object(*objects, tab, PARABOLOID);
 	else
 	{
 		printf("%s\n", tab[0]);
