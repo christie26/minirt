@@ -5,7 +5,7 @@ static t_color sky_color(t_ray ray, double vertical)
     t_color     color_rgb;
     double      ratio;
 
-    ratio = (ray.direction.y + vertical) / (2 * vertical);
+    ratio = (ray.direction.x + vertical) / (2 * vertical);
     color_rgb = mix_color(get_color("255,255,255"), get_color("30,144,255"), ratio);
     return (color_rgb);
 }
