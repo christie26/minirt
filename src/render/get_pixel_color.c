@@ -42,7 +42,7 @@ static t_color	get_color_rgb(t_ray *ray, t_data *data)
 	background_color = sky_color(*ray, data->screen.view_height);
 	if (get_short_distance(data->object_list, ray) == INFINITY)
 		return (background_color);
-	return (apply_phong_model(*data, ray));
+	return (apply_phong_model_to_all_lights(*data, ray));
 }
 
 void	get_pixel_color(t_data *data)

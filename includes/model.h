@@ -14,6 +14,7 @@ typedef struct s_node
 typedef struct s_list
 {
 	t_node			*headnode;
+	int				size;
 }					t_list;
 
 typedef struct s_color
@@ -100,11 +101,12 @@ typedef struct s_screen
 	t_coordinate	start_point;
 }					t_screen;
 
+
 typedef struct s_data
 {
 	t_ambient		ambient;
 	t_camera		camera;
-	t_light			light;
+	t_list			*light_list;
 	t_list			*object_list;
 	t_screen		screen;
 	void			*mlx;

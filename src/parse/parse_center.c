@@ -15,21 +15,29 @@ static void	add_object(t_list *objects, char **tab, int type)
 	add_node(&objects, new_object, type);
 }
 
-static void	parse_object(t_list **objects, char **tab)
+static void	parse_object(t_list **obj_list, char **tab)
 {
 	if (!ft_strcmp(tab[0], "pl"))
-		add_object(*objects, tab, PLANE);
+		add_object(*obj_list, tab, PLANE);
 	else if (!ft_strcmp(tab[0], "sp"))
-		add_object(*objects, tab, SPHERE);
+		add_object(*obj_list, tab, SPHERE);
 	else if (!ft_strcmp(tab[0], "cy"))
-		add_object(*objects, tab, CYLINDER);
+		add_object(*obj_list, tab, CYLINDER);
 	else if (!ft_strcmp(tab[0], "pa"))
-		add_object(*objects, tab, PARABOLOID);
+		add_object(*obj_list, tab, PARABOLOID);
 	else
 	{
 		printf("%s\n", tab[0]);
 		error_msg(INVALID_IDENTIFIER);
 	}
+}
+
+static void parse_light(t_list **light_list, char **tab)
+{
+	t_light *new_light;
+
+	new_light = get_light(tab);
+	add_node(light_list, new_light, -1);
 }
 
 static void	parse_line(t_data *data, char *line, char *bit_mask)
@@ -45,8 +53,8 @@ static void	parse_line(t_data *data, char *line, char *bit_mask)
 		data->ambient = get_ambient(tab, bit_mask);
 	else if (!ft_strcmp(tab[0], "C"))
 		data->camera = get_camera(tab, bit_mask);
-	else if (!ft_strcmp(tab[0], "L"))
-		data->light = get_light(tab, bit_mask);
+	else if (!ft_strcmp(tab[0], "L") || !ft_strcmp(tab[0], "l"))
+		parse_light(&data->light_list, tab);
 	else
 		parse_object(&data->object_list, tab);
 	free_two_dimensional_array(tab);
@@ -63,6 +71,7 @@ t_data	parse_center(char *filename)
 	fd = formatcheck_open(filename);
 	ft_memset(&data, 0, sizeof(t_data));
 	data.object_list = create_linkedlist();
+	data.light_list = create_linkedlist();
 	bit_mask = 0;
 	while (1)
 	{

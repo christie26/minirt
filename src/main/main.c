@@ -18,10 +18,10 @@
 // 	printf("print plane color rgb = %d %d %d\n", data.plane.color.red, data.plane.color.green, data.plane.color.blue);
 // }
 
-// void	leaks(void)
-// {
-// 	system("leaks minirt");
-// }
+void	leaks(void)
+{
+	system("leaks minirt");
+}
 
 static void	add_mlx_data(t_data *data)
 {
@@ -36,7 +36,7 @@ int	main(int ac, char **av)
 {
 	t_data	data;
 
-	// atexit(leaks);
+	atexit(leaks);
 	if (ac != 2)
 	{
 		error_msg(INVALID_ARGUMENT);
@@ -49,5 +49,6 @@ int	main(int ac, char **av)
 	mlx_loop_hook(data.mlx, render, &data);
 	mlx_loop(data.mlx);
 	destroy_list(&data.object_list);
+	destroy_list(&data.light_list);
 	return (0);
 }

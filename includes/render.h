@@ -39,7 +39,7 @@ void			write_pixel_image(t_data *data, int x, int y, int color);
 
 // get_pixel_color.c
 void			get_pixel_color(t_data *data);
-t_color			apply_phong_model(t_data data, t_ray *ray);
+t_color	apply_phong_model_to_all_lights(t_data data, t_ray *ray);
 t_color			get_checkerboard_sphere(t_sphere sphere, t_coordinate hit_point, t_screen screen);
 t_color			get_checkerboard_plane(t_plane plane, t_coordinate hit_point);
 
@@ -64,8 +64,8 @@ int is_hit_point_between_top_and_bottom(double hit_base, double hit_top, double 
 
 
 // light ratio
-double			get_light_ratio(t_data data, t_coordinate hit_point, \
-					t_ray *ray);
-t_color	get_specular_color(t_ray *ray, t_light light, double light_ratio);
+double	get_light_ratio(t_data data, t_coordinate hit_point, t_ray *ray, t_light light);
+
+t_color	get_specular_color(t_ray *ray, t_light *light, double light_ratio);
 
 #endif
