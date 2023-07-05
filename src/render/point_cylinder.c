@@ -1,16 +1,6 @@
 #include "../../includes/minirt.h"
 
-double get_hit_base(t_ray *ray, t_cylinder cylinder, double t)
-{
-	t_coordinate	intersection_point;
-	t_vector		base_to_intersection;
-
-	intersection_point = calculate_hit_point(*ray, t);
-	base_to_intersection = get_vector_two_point(cylinder.coordinate, intersection_point);
-	return vector_dot(base_to_intersection, cylinder.vector);
-}
-
-double get_hit_top(t_ray *ray, t_cylinder cylinder, double t)
+double border_check(t_ray *ray, t_cylinder cylinder, double t)
 {
 	t_coordinate	intersection_point;
 	t_vector		base_to_intersection;
@@ -34,8 +24,8 @@ t_hit_cylinder	hit_cylinder(t_cylinder cylinder, t_ray *ray)
 	hit.discriminant = pow(hit.b, 2) - 4 * hit.a * hit.c;
 	hit.t_1 = quadratic_equation_1(hit.a, hit.b, hit.c);
 	hit.t_2 = quadratic_equation_2(hit.a, hit.b, hit.c);
-	hit.base = get_hit_base(ray, cylinder, hit.t_1);
-	hit.top = get_hit_top(ray, cylinder, hit.t_2);
+	hit.base = border_check(ray, cylinder, hit.t_1);
+	hit.top = border_check(ray, cylinder, hit.t_2);
 	return (hit);
 }
 
