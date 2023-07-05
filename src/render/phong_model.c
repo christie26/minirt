@@ -7,7 +7,7 @@ static t_color	get_ambient_color(t_ambient ambient, t_ray *ray, t_screen screen)
 
 	ambient_color = apply_brightness(ambient.color, ambient.ratio);
 	object_color = get_obj_color(ray->object, ray->object_type, ray->hit_point, screen);
-	ambient_color = mix_color(object_color, ambient_color, ambient.ratio);
+	ambient_color = multiply_color(object_color, ambient_color);
 	return (ambient_color);
 }
 
@@ -22,7 +22,8 @@ static t_color	get_diffuse_color(t_ray *ray, t_light light, \
 	object = ray->object;
 	obj_color = get_obj_color(object, ray->object_type, ray->hit_point, screen);
 	scala = light_ratio * light.brightness;
-	diffuse_color = apply_brightness(obj_color, scala);
+	diffuse_color = apply_brightness(light.color, scala);
+	diffuse_color = multiply_color(diffuse_color, obj_color);
 	return (diffuse_color);
 }
 
