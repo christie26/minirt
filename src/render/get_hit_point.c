@@ -12,8 +12,8 @@ t_coordinate init_hit_point(void)
 
 t_coordinate	get_hit_point(t_ray *ray, t_node *node)
 {
-	t_coordinate hit_point;
-	void *object;
+	t_coordinate	hit_point;
+	void			*object;
 
 	object = node->object;
 	if (node->type == SPHERE)

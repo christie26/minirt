@@ -28,8 +28,10 @@ t_color get_obj_color(void *object, int type, t_coordinate hit_point, t_screen s
 	else if (type == PLANE)
 		return (((t_plane *)object)->color);
 		// return (get_checkerboard_plane(*(t_plane *)object, hit_point));
-	else
+	else if (type == CYLINDER)
 		return (((t_cylinder *)object)->color);
+	else
+		return (((t_paraboloid *)object)->color);
 }
 
 t_color adjust_color(t_color color, double scala)
