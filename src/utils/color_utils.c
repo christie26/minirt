@@ -31,3 +31,13 @@ t_color get_obj_color(void *object, int type, t_coordinate hit_point, t_screen s
 	else
 		return (((t_cylinder *)object)->color);
 }
+
+t_color adjust_color(t_color color, double scala)
+{
+	t_color new_color;
+
+	new_color.red = color.red * scala;
+	new_color.green = color.green * scala;
+	new_color.blue = color.blue * scala;
+	return (new_color);
+}

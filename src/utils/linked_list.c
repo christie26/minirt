@@ -65,11 +65,13 @@ int	add_node(t_list **linked_list, void *object, int type)
 	if (dummy == NULL)
 	{
 		(*linked_list)->headnode = new_node;
+		(*linked_list)->size = 1;
 		return (1);
 	}
 	while (dummy && dummy->next)
 		dummy = dummy->next;
 	dummy->next = new_node;
+	(*linked_list)->size += 1;
 	return (1);
 }
 

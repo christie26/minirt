@@ -2,7 +2,7 @@
 
 	// R = 2*(N.L)*N - L
 	// I = k * dot(R, V)^n
-t_color	get_specular_color(t_ray *ray, t_light light, double light_ratio)
+t_color	get_specular_color(t_ray *ray, t_light *light, double light_ratio)
 {
 	t_vector	reflected_light;
 	t_vector	viewer_direction;
@@ -22,6 +22,6 @@ t_color	get_specular_color(t_ray *ray, t_light light, double light_ratio)
 		specular_intensity = 0;
 	else
 		specular_intensity = pow(ambient_ratio, shininess);
-	specular_color = apply_brightness(light.color, specular_intensity);
+	specular_color = apply_brightness(light->color, specular_intensity);
 	return (specular_color);
 }

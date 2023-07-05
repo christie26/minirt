@@ -32,6 +32,24 @@ static void	add_mlx_data(t_data *data)
 								&data->endian);
 }
 
+
+static void print_rgb_light(t_list *light_list)
+{
+	t_node	*light_node;
+	t_light	*light;
+	t_color	color_rgb;
+
+	light_node = light_list->headnode;
+	while (light_node)
+	{
+		light = (t_light *)light_node->object;
+		color_rgb = light->color;
+		printf("R: %d, G: %d, B: %d\n", color_rgb.red, color_rgb.green, color_rgb.blue);
+		light_node = light_node->next;
+	}
+	printf("num_of_light: %d\n", light_list->size);
+}
+
 int	main(int ac, char **av)
 {
 	t_data	data;
@@ -43,6 +61,7 @@ int	main(int ac, char **av)
 		return (EXIT_FAILURE);
 	}
 	data = parse_center(av[1]);
+	print_rgb_light(data.light_list);
 	add_mlx_data(&data);
 	mlx_hook(data.win, 2, 0, key_press, &data);
 	mlx_hook(data.win, 17, 0, win_close, 0);
