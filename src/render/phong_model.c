@@ -59,7 +59,7 @@ static t_color	apply_phong_model(t_data data, t_ray *ray, t_light *light)
 t_color	apply_phong_model_to_all_lights(t_data data, t_ray *ray)
 {
 	const t_node *light_list = data.light_list->headnode;
-	const double		num_lights = (double)data.light_list->size;
+	const double	num_lights = (double)data.light_list->size;
 	t_light *light;
 	t_color			color_rgb;
 	t_color			phong_color;

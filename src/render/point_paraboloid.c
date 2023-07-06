@@ -28,6 +28,17 @@ t_vector	rotate_vector(t_vector vec, t_vector rotation_angle)
 	return (result);
 }
 
+t_vector	get_normal_vector(t_coordinate hit_point, t_paraboloid paraboloid)
+{
+	t_vector	normal;
+
+	normal.x = pow(paraboloid.parameter_y, 2) * hit_point.x;
+	normal.y = pow(paraboloid.parameter_x, 2) * hit_point.y;
+	normal.z = - pow(paraboloid.parameter_x, 2) * pow(paraboloid.parameter_y, 2) / 2;
+	normal = vector_unit(normal);
+	return (normal);
+}
+
 t_hit_paraboloid	hit_normalized_paraboloid(t_paraboloid paraboloid, t_ray *ray)
 {
 	t_hit_paraboloid	hit;
@@ -56,6 +67,7 @@ t_hit_paraboloid	hit_normalized_paraboloid(t_paraboloid paraboloid, t_ray *ray)
 	return hit;
 }
 
+
 t_hit_paraboloid hit_paraboloid(t_paraboloid paraboloid, t_ray *ray)
 {
 	t_vector			rotation_angle;
@@ -63,6 +75,7 @@ t_hit_paraboloid hit_paraboloid(t_paraboloid paraboloid, t_ray *ray)
 	t_vector			inverse_rotation;
 	t_ray				transformed_ray;
 	t_hit_paraboloid	hit;
+	// t_vector			normal;
 
 	if (paraboloid.vector.y == 0)
 		rotation_angle.x = 0;
@@ -78,8 +91,13 @@ t_hit_paraboloid hit_paraboloid(t_paraboloid paraboloid, t_ray *ray)
 	hit = hit_normalized_paraboloid(paraboloid, &transformed_ray);
 	hit.hit_point_1 = calculate_hit_point(transformed_ray, hit.t_1);
 	hit.hit_point_2 = calculate_hit_point(transformed_ray, hit.t_2);
+	hit.normal_1 = get_normal_vector(hit.hit_point_1, paraboloid);
+	hit.normal_2 = get_normal_vector(hit.hit_point_2, paraboloid);
+
 	hit.hit_point_1 = vector_to_coordinate(vector_add(rotate_vector(coordinate_to_vector(hit.hit_point_1), rotation_angle), coordinate_to_vector(paraboloid.coordinate)));
 	hit.hit_point_2 = vector_to_coordinate(vector_add(rotate_vector(coordinate_to_vector(hit.hit_point_2), rotation_angle), coordinate_to_vector(paraboloid.coordinate)));
+	hit.normal_1 = rotate_vector(hit.normal_1, rotation_angle);
+	hit.normal_2 = rotate_vector(hit.normal_2, rotation_angle);
 	return (hit);
 }
 
@@ -92,14 +110,30 @@ int is_hit_point_within_paraboloid(double hit_base, double hit_top, double heigh
 
 t_coordinate	get_closer_paraboloid_point(t_paraboloid paraboloid, t_ray *ray)
 {
-	t_coordinate	hit_point;
+	t_coordinate		hit_point;
 	t_hit_paraboloid	info;
+	double				distance_1;
+	double				distance_2;
 
 	hit_point = init_hit_point();
 	info = hit_paraboloid(paraboloid, ray);
 	if (info.t_1 < 0 && info.t_2 < 0)
 		return hit_point;
-	hit_point = get_closer_hit_point(info.t_1, info.t_2, *ray);
+	
+	distance_1 = get_distance(ray->origin, calculate_hit_point(*ray, info.t_1));
+	distance_2 = get_distance(ray->origin, calculate_hit_point(*ray, info.t_2));
+	if (distance_1 < distance_2)
+	{
+		hit_point = info.hit_point_1;
+		ray->hit_normal = info.normal_1;
+	}
+	else
+	{
+		hit_point = info.hit_point_2;
+		ray->hit_normal = info.normal_2;
+	}
+	// hit_point = get_closer_hit_point(info.t_1, info.t_2, *ray);
+	
 	// if (!is_hit_point_within_paraboloid(info.base, info.top, paraboloid.height))
 	// 	return init_hit_point();
 	return hit_point;

@@ -163,18 +163,20 @@ typedef struct s_hit_cylinder
 
 typedef struct s_hit_paraboloid
 {
-	t_vector	oc;
-	double		k;
-	double		a;
-	double		b;
-	double		c;
-	double		discriminant;
-	double	    base;
-	double		top;
-	double		t_1;
-	double		t_2;
-	t_coordinate hit_point_1;
-	t_coordinate hit_point_2;
+	t_vector		oc;
+	double			k;
+	double			a;
+	double			b;
+	double			c;
+	double			discriminant;
+	double			base;
+	double			top;
+	double			t_1;
+	double			t_2;
+	t_coordinate	hit_point_1;
+	t_coordinate	hit_point_2;
+	t_vector		normal_1;
+	t_vector		normal_2;
 }				t_hit_paraboloid;
 
 enum				e_definition

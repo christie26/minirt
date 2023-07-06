@@ -73,7 +73,7 @@ static double	get_light_ratio_cylinder(t_data data, t_coordinate hit_point,
 	ray->hit_normal = normal;
 	ray->hit_direction = hit_to_light.direction;
 	light_ratio = vector_dot(normal, hit_to_light.direction);
-	return (vector_dot(normal, hit_to_light.direction));
+	return (light_ratio);
 }
 
 static double	get_light_ratio_paraboloid(t_data data, t_coordinate hit_point, t_ray *ray, t_light light)
@@ -84,12 +84,13 @@ static double	get_light_ratio_paraboloid(t_data data, t_coordinate hit_point, t_
     t_paraboloid	*paraboloid;
 
     paraboloid = (t_paraboloid *)(ray->object);
-	hit_to_light.origin = hit_point;
-	hit_to_light.direction = vector_unit(get_vector_two_point(hit_point, light.coordinate));
-	fix_hit_to_light(&hit_to_light);
+	hit_to_light = get_hit_to_light(hit_point, light);
 	if (is_shadow(data, hit_to_light))
 		return (0);
-	light_ratio = 1;
+	ray->hit_direction = hit_to_light.direction;
+	light_ratio = vector_dot(ray->hit_normal, hit_to_light.direction);
+	// printf("light_ratio = %.2f\n", light_ratio);
+	// light_ratio = 1;
 	return (light_ratio);
 }
 
