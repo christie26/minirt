@@ -79,7 +79,8 @@ typedef struct s_plane
 
 typedef struct s_cylinder
 {
-	t_coordinate	coordinate;
+	t_coordinate	base;
+	t_coordinate	top;
 	t_vector		vector;
 	double			diameter;
 	double			height;
