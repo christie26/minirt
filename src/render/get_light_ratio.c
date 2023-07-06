@@ -83,9 +83,6 @@ static double	get_light_ratio_cylinder(t_data data, t_coordinate hit_point,
 	ray->hit_normal = normal;
 	ray->hit_direction = hit_to_light.direction;
 	light_ratio = vector_dot(normal, hit_to_light.direction);
-	if (light_ratio < 0.001)
-		printf("hit_point:(%.2f,%.2f,%.2f), lid_point(%.2f,%.2f,%.2f)\n", hit_point.x, hit_point.y, hit_point.z,
-				 lid_point.x, lid_point.y, lid_point.z);
 	return (light_ratio);
 }
 
