@@ -52,34 +52,18 @@ t_coordinate hit_cylinder_lid(t_cylinder cylinder, t_ray *ray, t_coordinate top_
 	return get_closer_point(hit_point1, hit_point2, *ray);
 }
 
-
 t_coordinate	get_closer_cylinder_point(t_cylinder cylinder, t_ray *ray)
 {
 	t_coordinate	hit_point;
 	t_coordinate	lid_point;
-	t_coordinate	init_point;
 	t_hit_cylinder	info;
 
-	init_point = init_hit_point();
-	hit_point = init_hit_point();
 	info = hit_cylinder(cylinder, ray);
-	if (info.t_1 < 0 && info.t_2 < 0)
-	{
-		lid_point = hit_cylinder_lid(cylinder, ray, cylinder.top, cylinder.base);
-		if (is_same_coordinate(lid_point, init_point))
-			return (init_point);
-	}
-	else
-	{
-		hit_point = get_closer_hit_point(info.t_1, info.t_2, *ray);
-		lid_point = hit_cylinder_lid(cylinder, ray, cylinder.top, cylinder.base);
-		hit_point = get_closer_point(hit_point, lid_point, *ray);
-	}
-	if (!is_hit_point_between_top_and_bottom(info.base, info.top, cylinder.height))
-	{
-		if (is_same_coordinate(lid_point, init_point))
-			return (init_point);
-	}
+	hit_point = init_hit_point();
+	lid_point = hit_cylinder_lid(cylinder, ray, cylinder.top, cylinder.base);
+	if (info.discriminant > 0 && (info.t_1 > 0 || info.t_2 > 0))
+		if (is_hit_point_between_top_and_bottom(info.base, info.top, cylinder.height))
+			hit_point = get_closer_hit_point(info.t_1, info.t_2, *ray);	
 	hit_point = get_closer_point(hit_point, lid_point, *ray);
 	return (hit_point);
 }

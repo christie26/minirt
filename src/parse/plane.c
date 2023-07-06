@@ -12,6 +12,7 @@ t_plane	*get_plane(char **tab)
 	plane->coordinate = get_coordinate(tab[1]);
 	plane->vector = vector_unit(get_vector(tab[2]));
 	plane->color = get_color(tab[3]);
+	plane->checker = 0;
 	if (tab[4])
 	{
 		if (ft_strcmp(tab[4], "ch"))
