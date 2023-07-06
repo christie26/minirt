@@ -4,6 +4,7 @@
 # include "model.h"
 # include "vector.h"
 # include <stdbool.h>
+# include <pthread.h>
 
 # define DEG_TO_RAD(degrees) ((degrees)*PI / 180.0)
 # define ESC 53
@@ -19,7 +20,7 @@
 // render.c
 int				key_press(int keycode, t_data *data);
 int				win_close(void);
-int				render(t_data *data);
+void			*render_thread(void *arg);
 
 // setup_screen.c
 void			setup_screen(t_data *data);
@@ -69,5 +70,9 @@ int 				is_hit_point_between_top_and_bottom(double hit_base, double hit_top, dou
 double	get_light_ratio(t_data data, t_coordinate hit_point, t_ray *ray, t_light light);
 
 t_color	get_specular_color(t_ray *ray, t_light *light, double light_ratio);
+void* render_thread(void* arg);
+void	make_threads(t_data *data, pthread_t threads[], \
+		t_render_thread thread_data[]);
+void	join_threads(pthread_t threads[]);
 
 #endif

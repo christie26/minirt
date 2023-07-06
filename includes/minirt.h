@@ -18,5 +18,6 @@
 # include <stdlib.h>
 # include <math.h>
 # include <stdbool.h>
+# include <pthread.h>
 
 #endif

@@ -3,6 +3,9 @@
 
 # define WINDOW_WIDTH 1000
 # define WINDOW_HEIGHT 1000
+// # define NUM_THREADS 9
+#define THREADS_PER_DIMENSION 3
+#define NUM_THREADS (THREADS_PER_DIMENSION * THREADS_PER_DIMENSION)
 
 typedef struct s_node
 {
@@ -105,7 +108,6 @@ typedef struct s_screen
 	t_coordinate	start_point;
 }					t_screen;
 
-
 typedef struct s_data
 {
 	t_ambient		ambient;
@@ -142,27 +144,27 @@ typedef struct s_phong
 
 typedef struct s_hit_sphere
 {
-	t_vector	dif;
-	double		a;
-	double		b;
-	double		c;
-	double		discriminant;
-	double		t_1;
-	double		t_2;
+	t_vector		dif;
+	double			a;
+	double			b;
+	double			c;
+	double			discriminant;
+	double			t_1;
+	double			t_2;
 }					t_hit_sphere;
 
 typedef struct s_hit_cylinder
 {
-	t_vector	oc;
-	double		k;
-	double		a;
-	double		b;
-	double		c;
-	double		discriminant;
-	double	    base;
-	double		top;
-	double		t_1;
-	double		t_2;
+	t_vector		oc;
+	double			k;
+	double			a;
+	double			b;
+	double			c;
+	double			discriminant;
+	double			base;
+	double			top;
+	double			t_1;
+	double			t_2;
 }					t_hit_cylinder;
 
 typedef struct s_hit_paraboloid
@@ -191,5 +193,15 @@ enum				e_definition
 	PARABOLOID = 4,
 	NONE = -1
 };
+
+typedef struct s_render_thread
+{
+	t_data			*data;
+	int				start_x;
+	int				end_x;
+	int				start_y;
+	int				end_y;
+	int				thread_index;
+}					t_render_thread;
 
 #endif
