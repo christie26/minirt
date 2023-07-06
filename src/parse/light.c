@@ -11,6 +11,8 @@ t_light	*get_light(char **tab)
 		error_msg(LACK_ELEMENT);
 	light->coordinate = get_coordinate(tab[1]);
 	light->brightness = get_double(tab[2]);
+	if (light->brightness < 0 || light->brightness > 1)
+		error_msg(PARSE_LIGHT);
 	light->color = get_color(tab[3]);
 	if (tab[4])
 		error_msg(PARSE_LIGHT);

@@ -10,7 +10,7 @@ t_plane	*get_plane(char **tab)
 	if (!tab[1] || !tab[2] || !tab[3])
 		error_msg(LACK_ELEMENT);
 	plane->coordinate = get_coordinate(tab[1]);
-	plane->vector = get_vector(tab[2]);
+	plane->vector = vector_unit(get_vector(tab[2]));
 	plane->color = get_color(tab[3]);
 	if (tab[4])
 	{
