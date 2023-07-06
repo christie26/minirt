@@ -64,6 +64,7 @@ t_hit_paraboloid	hit_paraboloid(t_paraboloid paraboloid, t_ray *ray);
 int					is_parallel(t_vector vector1, t_vector vector2, double *dot_product);
 t_coordinate		init_hit_point(void);
 int 				is_hit_point_between_top_and_bottom(double hit_base, double hit_top, double height);
+t_coordinate hit_cylinder_lid(t_cylinder cylinder, t_ray *ray, t_coordinate top_center, t_coordinate base_center);
 
 
 // light ratio

@@ -31,12 +31,19 @@ int blocked_sphere(t_sphere sphere, t_ray hit_to_light)
 static int blocked_cylinder(t_cylinder cylinder, t_ray hit_to_light)
 {
 	t_hit_cylinder	info;
+	t_coordinate	hit_point;
 
 	info = hit_cylinder(cylinder, &hit_to_light);
 	if (info.t_1 < 0 && info.t_2 < 0)
 		return (0);
-	if ((info.base >= 0 && info.base <= cylinder.height) || (info.top >= 0 && info.top <= cylinder.height))
+	if (!is_hit_point_between_top_and_bottom(info.base, info.top, cylinder.height))
+	{
+		hit_point = hit_cylinder_lid(cylinder, &hit_to_light, cylinder.top, cylinder.base);
+		if (hit_point.x == INFINITY && hit_point.y == INFINITY && hit_point.z == INFINITY)
+			return (0);
 		return (0);
+	}
+	// printf("hit_point: %f, %f, %f\n", hit_to_light.hit_point.x, hit_to_light.hit_point.y, hit_to_light.hit_point.z);
 	return (1);
 }
 

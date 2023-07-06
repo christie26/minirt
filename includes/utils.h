@@ -51,4 +51,9 @@ int				is_same_coordinate(t_coordinate one, t_coordinate two);
 double			radian_to_degree(double radian);
 double			dmod(double x, double y);
 
+t_coordinate add_coordinates(t_coordinate v1, t_coordinate v2);
+t_coordinate add_coordinates_scalar(t_coordinate v1, double scalar);
+t_coordinate sub_coordinates(t_coordinate v1, t_coordinate v2);
+t_coordinate coordinate_mult_scalar(t_coordinate vector, double scalar);
+
 #endif

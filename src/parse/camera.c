@@ -9,7 +9,7 @@ t_camera	get_camera(char **tab, char *bit_mask)
 	if (!tab[1] || !tab[2] || !tab[3])
 		error_msg(LACK_ELEMENT);
 	camera.coordinate = get_coordinate(tab[1]);
-	camera.vector = get_vector(tab[2]);
+	camera.vector = vector_unit(get_vector(tab[2]));
 	camera.fov = get_double(tab[3]);
 	if (tab[4])
 		error_msg(PARSE_CAMERA);

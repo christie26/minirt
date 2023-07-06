@@ -35,7 +35,7 @@ VECTOR		 = $(addprefix $(VECTOR_PATH), $(VECTOR_SRCE))
 TOOL_PATH  	 = utils/
 TOOL_SRCE	 = error.c free.c get_double.c color_utils.c \
 				mlx_utils.c math_utils.c change_color.c linked_list.c \
-				sphere_utils.c
+				sphere_utils.c coordinate.c
 TOOL		 = $(addprefix $(TOOL_PATH), $(TOOL_SRCE))
 
 SRC			 := $(addprefix $(SRCDIR), $(MAIN)) \

@@ -15,6 +15,14 @@ t_color	get_checkerboard_cylinder(t_cylinder cylinder, t_coordinate hit_point)
 	t_vector		new_vector;
 	double			angle;
 
+<<<<<<< HEAD
+=======
+	vertical = get_world_vertical(cylinder.vector);
+	horizontal = vector_cross(cylinder.vector, vertical);
+	point_to_hit = get_vector_two_point(cylinder.base, hit_point);
+	vertical_len = vector_dot(point_to_hit, vertical) / vector_length(vertical) + 1000;
+	horizontal_len = vector_dot(point_to_hit, horizontal) / vector_length(horizontal) + 1000;
+>>>>>>> minkim3
 	if (!cylinder.checker)
 		return (cylinder.color);
 	
