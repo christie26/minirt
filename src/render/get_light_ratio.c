@@ -66,9 +66,13 @@ static double	get_light_ratio_cylinder(t_data data, t_coordinate hit_point,
 	if (is_shadow(data, hit_to_light))
 		return (0);
 	lid_point = hit_cylinder_lid(*cylinder, ray, cylinder->top, cylinder->base);
-	lid_point = get_closer_point(hit_point, lid_point, *ray);
-	if (is_same_coordinate(lid_point, hit_to_light.hit_point))
-		normal = cylinder->vector;
+	if (is_same_coordinate(lid_point, hit_point))
+	{
+		if (get_distance(lid_point, cylinder->base) > (cylinder->diameter / 2))
+			normal = vector_mult_scalar(cylinder->vector, -1);
+		else
+			normal = cylinder->vector;
+	}
 	else
 	{
 		v = get_vector_two_point(cylinder->base, hit_point);
@@ -76,7 +80,7 @@ static double	get_light_ratio_cylinder(t_data data, t_coordinate hit_point,
 				vector_mult_scalar(cylinder->vector, \
 					vector_dot(v, cylinder->vector)));
 		normal = vector_unit(vector_sub(init_vector(hit_point.x, hit_point.y, \
-						hit_point.z), p));
+		hit_point.z), p));
 	}
 	ray->hit_normal = normal;
 	ray->hit_direction = hit_to_light.direction;

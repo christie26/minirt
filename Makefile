@@ -24,7 +24,8 @@ RENDER_SRCS  = render.c key_press.c setup_screen.c \
 				get_pixel_color.c get_light_ratio.c phong_model.c \
 				get_hit_point.c point_sphere.c point_plane.c point_cylinder.c point_paraboloid.c \
 				checker_sphere.c checker_plane.c checker_cylinder.c \
-				shadow_center.c render_utils.c specular.c threads.c 
+				shadow_center.c render_utils.c specular.c threads.c \
+				cylinder_utils.c
 				
 RENDER       = $(addprefix $(RENDER_PATH), $(RENDER_SRCS))
 

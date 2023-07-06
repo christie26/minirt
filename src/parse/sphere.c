@@ -10,6 +10,7 @@ t_sphere	*get_sphere(char **tab)
 	sphere->center = get_coordinate(tab[1]);
 	sphere->diameter = get_double(tab[2]);
 	sphere->color = get_color(tab[3]);
+	sphere->checker = 0;
 	if (tab[4])
 	{
 		if (!ft_strcmp(tab[4], "ch"))

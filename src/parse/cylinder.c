@@ -14,6 +14,7 @@ t_cylinder	*get_cylinder(char **tab)
 	cylinder->diameter = get_double(tab[3]);
 	cylinder->height = get_double(tab[4]);
 	cylinder->color = get_color(tab[5]);
+	cylinder->checker = 0;
 	if (tab[6])
 	{
 		if (!ft_strcmp(tab[6], "ch"))

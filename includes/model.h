@@ -202,6 +202,13 @@ enum				e_definition
 	NONE = -1
 };
 
+enum e_cylinder
+{
+	BASE,
+	TOP,
+	NOT_LID
+};
+
 typedef struct s_render_thread
 {
 	t_data			*data;
