@@ -43,3 +43,8 @@ t_coordinate coordinate_mult_scalar(t_coordinate vector, double scalar)
 
 	return result;
 }
+
+int is_same_coordinate(t_coordinate v1, t_coordinate v2)
+{
+	return (v1.x == v2.x && v1.y == v2.y && v1.z == v2.z);
+}

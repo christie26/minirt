@@ -47,7 +47,6 @@ t_coordinate	get_closer_point(t_coordinate hit_point_1,
 double			quadratic_equation_1(double a, double b, double c);
 double			quadratic_equation_2(double a, double b, double c);
 int				ft_min(int a, int b);
-int				is_same_coordinate(t_coordinate one, t_coordinate two);
 double			radian_to_degree(double radian);
 double			dmod(double x, double y);
 
@@ -55,5 +54,6 @@ t_coordinate add_coordinates(t_coordinate v1, t_coordinate v2);
 t_coordinate add_coordinates_scalar(t_coordinate v1, double scalar);
 t_coordinate sub_coordinates(t_coordinate v1, t_coordinate v2);
 t_coordinate coordinate_mult_scalar(t_coordinate vector, double scalar);
+int				is_same_coordinate(t_coordinate one, t_coordinate two);
 
 #endif
