@@ -8,7 +8,8 @@ t_coordinate	get_coordinate(char *coordinate_val)
 	coordinate_values = ft_split(coordinate_val, ',');
 	if (!coordinate_values)
 		error_msg(MALLOC_ERROR);
-	else if (!coordinate_values[0] || !coordinate_values[1] || !coordinate_values[2])
+	else if (!coordinate_values[0] || !coordinate_values[1] \
+			|| !coordinate_values[2])
 		error_msg(PARSE_COORDINATE);
 	coordinate.x = get_double(coordinate_values[0]);
 	coordinate.y = get_double(coordinate_values[1]);
@@ -50,7 +51,6 @@ t_color	get_color(char *color_val)
 	free_two_dimensional_array(color_values);
 	return (color);
 }
-
 
 t_vector	get_vector(char *vector_val)
 {
