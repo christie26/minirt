@@ -27,6 +27,7 @@ int	main(int ac, char **av)
 	}
 	data = parse_center(av[1]);
 	add_mlx_data(&data);
+	setup_screen(&data);
 	make_threads(&data, threads, thread_data);
 	join_threads(threads);
 	mlx_put_image_to_window(data.mlx, data.win, data.img, 0, 0);

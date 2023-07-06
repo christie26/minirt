@@ -3,7 +3,9 @@
 
 # define WINDOW_WIDTH 1000
 # define WINDOW_HEIGHT 1000
-# define NUM_THREADS 9
+// # define NUM_THREADS 9
+#define THREADS_PER_DIMENSION 3
+#define NUM_THREADS (THREADS_PER_DIMENSION * THREADS_PER_DIMENSION)
 
 typedef struct s_node
 {
@@ -188,11 +190,12 @@ enum				e_definition
 
 typedef struct s_render_thread
 {
-	t_data			data;
+	t_data			*data;
 	int				start_x;
 	int				end_x;
 	int				start_y;
 	int				end_y;
+	int				thread_index;
 }					t_render_thread;
 
 #endif
