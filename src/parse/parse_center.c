@@ -32,12 +32,13 @@ static void	parse_object(t_list **obj_list, char **tab)
 	}
 }
 
-static void parse_light(t_list **light_list, char **tab)
+static void parse_light(t_list **light_list, char **tab, char *bit_mask)
 {
 	t_light *new_light;
-
+	
 	new_light = get_light(tab);
 	add_node(light_list, new_light, -1);
+	*bit_mask |= 4;
 }
 
 static void	parse_line(t_data *data, char *line, char *bit_mask)
@@ -49,12 +50,14 @@ static void	parse_line(t_data *data, char *line, char *bit_mask)
 	tab = ft_split(line, ' ');
 	if (!tab)
 		error_msg(MALLOC_ERROR);
+	if (!tab[0]|| tab[0][0] == '\n')
+		return ;
 	if (!ft_strcmp(tab[0], "A"))
 		data->ambient = get_ambient(tab, bit_mask);
 	else if (!ft_strcmp(tab[0], "C"))
 		data->camera = get_camera(tab, bit_mask);
-	else if (!ft_strcmp(tab[0], "L") || !ft_strcmp(tab[0], "l"))
-		parse_light(&data->light_list, tab);
+	else if (!ft_strcmp(tab[0], "L"))
+		parse_light(&data->light_list, tab, bit_mask);
 	else
 		parse_object(&data->object_list, tab);
 	free_two_dimensional_array(tab);
@@ -81,5 +84,7 @@ t_data	parse_center(char *filename)
 		parse_line(&data, line, &bit_mask);
 		free(line);
 	}
+	if (bit_mask != 7)
+		error_msg(LACK_ELEMENT);
 	return (data);
 }

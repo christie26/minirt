@@ -20,16 +20,12 @@ int color_to_hex(t_color color)
 
 t_color get_obj_color(void *object, int type, t_coordinate hit_point, t_screen screen)
 {
-	(void)hit_point;
-	(void)screen;
 	if (type == SPHERE)
-		return (((t_sphere *)object)->color);
-		// return (get_checkerboard_sphere(*(t_sphere *)object, hit_point, screen));
+		return (get_checkerboard_sphere(*(t_sphere *)object, hit_point, screen));
 	else if (type == PLANE)
-		return (((t_plane *)object)->color);
-		// return (get_checkerboard_plane(*(t_plane *)object, hit_point));
+		return (get_checkerboard_plane(*(t_plane *)object, hit_point));
 	else if (type == CYLINDER)
-		return (((t_cylinder *)object)->color);
+		return (get_checkerboard_cylinder(*(t_cylinder *)object, hit_point));
 	else
 		return (((t_paraboloid *)object)->color);
 }

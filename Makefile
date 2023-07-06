@@ -4,7 +4,7 @@ DYLIB		 = ./mlx/libmlx.dylib
 
 CC			 = cc
 CFLAGS		 = -Wall -Wextra -Werror -O3 -ffast-math -g
-LDFLAGS	     = -fsanitize=address
+# LDFLAGS	     = -fsanitize=address
 
 SRCDIR		 = ./src/
 
@@ -23,7 +23,7 @@ RENDER_PATH  = render/
 RENDER_SRCS  = render.c key_press.c setup_screen.c \
 				get_pixel_color.c get_light_ratio.c phong_model.c \
 				get_hit_point.c point_sphere.c point_plane.c point_cylinder.c point_paraboloid.c \
-				checker_sphere.c checker_plane.c\
+				checker_sphere.c checker_plane.c checker_cylinder.c \
 				shadow_center.c render_utils.c specular.c
 				
 RENDER       = $(addprefix $(RENDER_PATH), $(RENDER_SRCS))
@@ -52,12 +52,12 @@ HEADER       = $(addprefix $(HEADER_PATH), $(S_HEADER))
 all:		${NAME}
 
 %.o: 		%.c $(DYLIB) $(HEADER)
-			# $(CC) $(CFLAGS) -Imlx -Ilibft -c $< -o $@
-			$(CC) $(CFLAGS) $(LDFLAGS) -Imlx -Ilibft -c $< -o $@
+			$(CC) $(CFLAGS) -Imlx -Ilibft -c $< -o $@
+			# $(CC) $(CFLAGS) $(LDFLAGS) -Imlx -Ilibft -c $< -o $@
 
 $(NAME): 	$(OBJ) $(DYLIB) $(LIBFT)
-			# $(CC) $(OBJ) -L./mlx -lmlx -L./libft -lft -framework OpenGL -framework AppKit -o $(NAME) 
-			$(CC) $(OBJ) $(LDFLAGS) -L./mlx -lmlx -L./libft -lft -framework OpenGL -framework AppKit -o $(NAME) 
+			$(CC) $(OBJ) -L./mlx -lmlx -L./libft -lft -framework OpenGL -framework AppKit -o $(NAME) 
+			# $(CC) $(OBJ) $(LDFLAGS) -L./mlx -lmlx -L./libft -lft -framework OpenGL -framework AppKit -o $(NAME) 
 
 $(LIBFT):
 			@make -j3 -C ./libft all

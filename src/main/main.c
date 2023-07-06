@@ -36,7 +36,7 @@ int	main(int ac, char **av)
 {
 	t_data	data;
 
-	atexit(leaks);
+	// atexit(leaks);
 	if (ac != 2)
 	{
 		error_msg(INVALID_ARGUMENT);

@@ -63,6 +63,7 @@ typedef struct s_sphere
 	t_coordinate	center;
 	double			diameter;
 	t_color			color;
+	int				checker;
 }					t_sphere;
 
 typedef struct s_plane
@@ -70,6 +71,7 @@ typedef struct s_plane
 	t_coordinate	coordinate;
 	t_vector		vector;
 	t_color			color;
+	int				checker;
 }					t_plane;
 
 typedef struct s_cylinder
@@ -79,6 +81,7 @@ typedef struct s_cylinder
 	double			diameter;
 	double			height;
 	t_color			color;
+	int				checker;
 }					t_cylinder;
 
 typedef struct s_paraboloid
@@ -89,6 +92,7 @@ typedef struct s_paraboloid
 	double			parameter_y;
 	double			height;
 	t_color			color;
+	int				checker;
 }	t_paraboloid;
 
 typedef struct s_screen

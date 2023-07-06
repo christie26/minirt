@@ -42,6 +42,7 @@ void			get_pixel_color(t_data *data);
 t_color	apply_phong_model_to_all_lights(t_data data, t_ray *ray);
 t_color			get_checkerboard_sphere(t_sphere sphere, t_coordinate hit_point, t_screen screen);
 t_color			get_checkerboard_plane(t_plane plane, t_coordinate hit_point);
+t_color			get_checkerboard_cylinder(t_cylinder cylinder, t_coordinate hit_point);
 
 // shadow_center.c
 void			fix_hit_to_light(t_ray *hit_to_light);

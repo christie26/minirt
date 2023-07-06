@@ -13,11 +13,12 @@ t_color	get_checkerboard_sphere(t_sphere sphere, t_coordinate hit_point, t_scree
 	z_axis = screen.horizontal;
 	xy_angle = radian_to_degree((vector_dot(xy_plane, center_to_hit) / vector_length(center_to_hit))) + 360;
 	z_angle = radian_to_degree((vector_dot(z_axis, center_to_hit) / vector_length(center_to_hit))) + 180;
-
+	if (!sphere.checker)
+		return (sphere.color);
 	if (dmod(xy_angle,30) > 0 && dmod(xy_angle,30) < 15)
 	{
 		if (dmod(z_angle,30) > 0 && dmod(z_angle,30) < 15)
-			return (get_color("255,255,255"));
+			return (sphere.color);
 		else
 			return (get_color("0,0,0"));
 	}
@@ -26,7 +27,6 @@ t_color	get_checkerboard_sphere(t_sphere sphere, t_coordinate hit_point, t_scree
 		if (dmod(z_angle,30) > 0 && dmod(z_angle,30) < 15)
 			return (get_color("0,0,0"));
 		else
-			return (get_color("255,255,255"));
+			return (sphere.color);
 	}
-	return (sphere.color);
 }
