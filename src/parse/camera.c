@@ -11,6 +11,8 @@ t_camera	get_camera(char **tab, char *bit_mask)
 	camera.coordinate = get_coordinate(tab[1]);
 	camera.vector = vector_unit(get_vector(tab[2]));
 	camera.fov = get_double(tab[3]);
+	if (camera.fov < 0 || camera.fov > 180)
+		error_msg(PARSE_CAMERA);
 	if (tab[4])
 		error_msg(PARSE_CAMERA);
 	*bit_mask |= 2;

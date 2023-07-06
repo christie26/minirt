@@ -1,25 +1,23 @@
 #include "../../includes/minirt.h"
 
-// void	leaks(void)
-// {
-// 	system("leaks minirt");
-// }
-
 static void	add_mlx_data(t_data *data)
 {
 	data->mlx = mlx_init();
-	data->win = mlx_new_window(data->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "miniRT");
+	data->win = mlx_new_window(data->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, \
+			"miniRT");
 	data->img = mlx_new_image(data->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
-	data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel, &data->line_length,
-								&data->endian);
+	data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel,
+			&data->line_length, &data->endian);
 }
 
 int	main(int ac, char **av)
 {
-	t_data	data;
-	pthread_t *threads = malloc(NUM_THREADS * sizeof(pthread_t));
-	t_render_thread *thread_data = malloc(NUM_THREADS * sizeof(t_render_thread));
-	// atexit(leaks);
+	t_data			data;
+	pthread_t		*threads;
+	t_render_thread	*thread_data;
+
+	threads = malloc(NUM_THREADS * sizeof(pthread_t));
+	thread_data = malloc(NUM_THREADS * sizeof(t_render_thread));
 	if (ac != 2)
 	{
 		error_msg(INVALID_ARGUMENT);

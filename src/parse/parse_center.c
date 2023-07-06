@@ -32,10 +32,10 @@ static void	parse_object(t_list **obj_list, char **tab)
 	}
 }
 
-static void parse_light(t_list **light_list, char **tab, char *bit_mask)
+static void	parse_light(t_list **light_list, char **tab, char *bit_mask)
 {
-	t_light *new_light;
-	
+	t_light	*new_light;
+
 	new_light = get_light(tab);
 	add_node(light_list, new_light, -1);
 	*bit_mask |= 4;
@@ -50,7 +50,7 @@ static void	parse_line(t_data *data, char *line, char *bit_mask)
 	tab = ft_split(line, ' ');
 	if (!tab)
 		error_msg(MALLOC_ERROR);
-	if (!tab[0]|| tab[0][0] == '\n')
+	if (!tab[0] || tab[0][0] == '\n')
 		return ;
 	if (!ft_strcmp(tab[0], "A"))
 		data->ambient = get_ambient(tab, bit_mask);

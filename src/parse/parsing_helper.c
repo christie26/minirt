@@ -8,6 +8,9 @@ t_coordinate	get_coordinate(char *coordinate_val)
 	coordinate_values = ft_split(coordinate_val, ',');
 	if (!coordinate_values)
 		error_msg(MALLOC_ERROR);
+	else if (!coordinate_values[0] || !coordinate_values[1] \
+			|| !coordinate_values[2])
+		error_msg(PARSE_COORDINATE);
 	coordinate.x = get_double(coordinate_values[0]);
 	coordinate.y = get_double(coordinate_values[1]);
 	coordinate.z = get_double(coordinate_values[2]);
@@ -35,6 +38,8 @@ t_color	get_color(char *color_val)
 	color_values = ft_split(color_val, ',');
 	if (!color_values)
 		error_msg(MALLOC_ERROR);
+	else if (!color_values[0] || !color_values[1] || !color_values[2])
+		error_msg(PARSE_COLOR);
 	color.red = ft_atoi(color_values[0]);
 	color.green = ft_atoi(color_values[1]);
 	color.blue = ft_atoi(color_values[2]);
@@ -56,14 +61,19 @@ t_vector	get_vector(char *vector_val)
 	vector_values = ft_split(vector_val, ',');
 	if (!vector_values)
 		error_msg(MALLOC_ERROR);
+	else if (!vector_values[0] || !vector_values[1] || !vector_values[2])
+		error_msg(PARSE_VECTOR);
 	vector.x = get_double(vector_values[0]);
 	vector.y = get_double(vector_values[1]);
 	vector.z = get_double(vector_values[2]);
+	if (vector.x < -1 || vector.x > 1 || vector.y < -1 || \
+		vector.y > 1 || vector.z < -1 || vector.z > 1)
+		error_msg(PARSE_VECTOR);
 	if (vector_values[3])
 		error_msg(PARSE_VECTOR);
 	size_of_vector = vector_length(vector);
 	// if (size_of_vector > 1.01 || size_of_vector < 0.99)
-		// error_msg(PARSE_VECTOR);
+	// 	error_msg(PARSE_VECTOR);
 	free_two_dimensional_array(vector_values);
 	return (vector);
 }

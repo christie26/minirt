@@ -27,6 +27,8 @@ t_color	get_checkerboard_cylinder(t_cylinder cylinder, t_coordinate hit_point)
 	new_center.y = center.y + vector.y * height;
 	new_center.z = center.z + vector.z * height;
 
+	if (!cylinder.checker)
+		return (cylinder.color);
 	new_vector = vector_unit(get_vector_two_point(new_center, hit_point));
 	vertical = vector_unit(get_world_vertical(vector));
 	angle = radian_to_degree(acos(vector_dot(vertical, new_vector)));

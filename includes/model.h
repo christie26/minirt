@@ -3,9 +3,8 @@
 
 # define WINDOW_WIDTH 1000
 # define WINDOW_HEIGHT 1000
-// # define NUM_THREADS 9
-#define THREADS_PER_DIMENSION 3
-#define NUM_THREADS (THREADS_PER_DIMENSION * THREADS_PER_DIMENSION)
+# define THREADS_PER_DIMENSION 3
+# define NUM_THREADS 9
 
 typedef struct s_node
 {
@@ -97,7 +96,7 @@ typedef struct s_paraboloid
 	double			height;
 	t_color			color;
 	int				checker;
-}	t_paraboloid;
+}					t_paraboloid;
 
 typedef struct s_screen
 {
@@ -184,7 +183,7 @@ typedef struct s_hit_paraboloid
 	t_coordinate	hit_point_2;
 	t_vector		normal_1;
 	t_vector		normal_2;
-}				t_hit_paraboloid;
+}					t_hit_paraboloid;
 
 enum				e_definition
 {

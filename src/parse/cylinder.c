@@ -24,6 +24,7 @@ t_cylinder	*get_cylinder(char **tab)
 			error_msg(PARSE_CYLINDER);
 	}
 	cylinder->top = add_coordinates(cylinder->base, \
-		vector_to_coordinate(vector_mult_scalar(cylinder->vector, cylinder->height)));
+		vector_to_coordinate(vector_mult_scalar(cylinder->vector, \
+			cylinder->height)));
 	return (cylinder);
 }
