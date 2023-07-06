@@ -20,7 +20,7 @@
 // render.c
 int				key_press(int keycode, t_data *data);
 int				win_close(void);
-int				render(t_data *data);
+void			*render_thread(void *arg);
 
 // setup_screen.c
 void			setup_screen(t_data *data);
