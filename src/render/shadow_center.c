@@ -25,6 +25,8 @@ int blocked_sphere(t_sphere sphere, t_ray hit_to_light)
 	t_hit_sphere	info;
 
 	info = hit_sphere(sphere, hit_to_light);
+	if (info.discriminant < 0)
+		return (0);
 	return (info.t_1 > 0 || info.t_2 > 0);
 }
 
