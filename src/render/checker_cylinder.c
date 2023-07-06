@@ -32,12 +32,14 @@ t_color	get_checkerboard_cylinder(t_cylinder cylinder, t_coordinate hit_point)
 	angle = radian_to_degree(acos(vector_dot(vertical, new_vector)));
 	// angle = radian_to_degree(asin(vector_length(vector_cross(vertical, new_vector))));
 
-	if (fabs(height - cylinder.height / 2) < 0.0001)
-	{
-		printf("new_vector = (%.2f,%.2f,%.2f)\n", new_vector.x,new_vector.y,new_vector.z);
-		printf("vertical = (%.2f,%.2f,%.2f)\n", vertical.x,vertical.y,vertical.z);
-		printf("angle = %.2f\n", angle);
-	}
+	if (!cylinder.checker)
+		return (cylinder.color);
+	// if (fabs(height - cylinder.height / 2) < 0.0001)
+	// {
+	// 	printf("new_vector = (%.2f,%.2f,%.2f)\n", new_vector.x,new_vector.y,new_vector.z);
+	// 	printf("vertical = (%.2f,%.2f,%.2f)\n", vertical.x,vertical.y,vertical.z);
+	// 	printf("angle = %.2f\n", angle);
+	// }
 	if (((int)angle / 15) & 1)
 	{
 		// if (dmod(height, 1) > 0 && dmod(height, 1) < 0.5)
