@@ -30,24 +30,6 @@ int blocked_sphere(t_sphere sphere, t_ray hit_to_light)
 	return (info.t_1 > 0 || info.t_2 > 0);
 }
 
-// static int blocked_cylinder(t_cylinder cylinder, t_ray hit_to_light)
-// {
-// 	t_hit_cylinder	info;
-// 	t_coordinate	hit_point;
-// 	// t_coordinate	lid_point;
-
-// 	info = hit_cylinder(cylinder, &hit_to_light);
-// 	hit_point = init_hit_point();
-// 	// lid_point = hit_cylinder_lid(cylinder, &hit_to_light, cylinder.top, cylinder.base);
-// 	if (info.discriminant > 0 && (info.t_1 > 0 || info.t_2 > 0))
-// 		if (is_hit_point_between_top_and_bottom(info.base, info.top, cylinder.height))
-// 			hit_point = get_closer_hit_point(info.t_1, info.t_2, hit_to_light);	
-// 	// hit_point = get_closer_point(hit_point, lid_point, hit_to_light);
-// 	if (hit_point.x == INFINITY)
-// 		return (0);
-// 	return (1);
-// }
-
 static int blocked_cylinder(t_cylinder cylinder, t_ray hit_to_light)
 {
 	t_coordinate	hit_point;

@@ -1,5 +1,6 @@
 #include "../../includes/minirt.h"
 
+
 // ax + by + cz + d = 0
 t_color	get_checkerboard_cylinder(t_cylinder cylinder, t_coordinate hit_point)
 {

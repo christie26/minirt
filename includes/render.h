@@ -82,4 +82,7 @@ void				make_threads(t_data *data, pthread_t threads[], \
 						t_render_thread thread_data[]);
 void				join_threads(pthread_t threads[]);
 
+
+
+
 #endif
