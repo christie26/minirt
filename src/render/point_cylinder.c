@@ -31,39 +31,20 @@ t_hit_cylinder	hit_cylinder(t_cylinder cylinder, t_ray *ray)
 
 int is_hit_point_between_top_and_bottom(double hit_base, double hit_top, double height)
 {
-	return (hit_base >= 0 && hit_base <= height && hit_top >= 0 && hit_top <= height);
-}
-
-t_coordinate hit_cylinder_lid(t_cylinder cylinder, t_ray *ray, t_coordinate top_center, t_coordinate base_center)
-{
-	double			t1, t2;
-	t_coordinate	hit_point1, hit_point2;
-
-	t1 = vector_dot(vector_unit(cylinder.vector), get_vector_two_point(ray->origin, base_center))
-		/ vector_dot(ray->direction, vector_unit(cylinder.vector));
-	t2 = vector_dot(vector_unit(cylinder.vector), get_vector_two_point(ray->origin, top_center))
-		/ vector_dot(ray->direction, vector_unit(cylinder.vector));
-	hit_point1 = calculate_hit_point(*ray, t1);
-	hit_point2 = calculate_hit_point(*ray, t2);
-	if (get_distance(hit_point1, base_center) > cylinder.diameter / 2 || t1 <= 0)
-		hit_point1 = init_hit_point();
-	if (get_distance(hit_point2, top_center) > cylinder.diameter / 2 || t2 <= 0) 
-		hit_point2 = init_hit_point();
-	return get_closer_point(hit_point1, hit_point2, *ray);
+	if ((hit_base >= 0 && hit_base <= height) || (hit_top >= 0 && hit_top <= height))
+		return (1);
+	return (0);
 }
 
 t_coordinate	get_closer_cylinder_point(t_cylinder cylinder, t_ray *ray)
 {
 	t_coordinate	hit_point;
-	t_coordinate	lid_point;
 	t_hit_cylinder	info;
 
-	info = hit_cylinder(cylinder, ray);
 	hit_point = init_hit_point();
-	lid_point = hit_cylinder_lid(cylinder, ray, cylinder.top, cylinder.base);
-	if (info.discriminant > 0 && (info.t_1 > 0 || info.t_2 > 0))
+	info = hit_cylinder(cylinder, ray);
+	if (info.t_1 > 0 || info.t_2 > 0)
 		if (is_hit_point_between_top_and_bottom(info.base, info.top, cylinder.height))
-			hit_point = get_closer_hit_point(info.t_1, info.t_2, *ray);	
-	hit_point = get_closer_point(hit_point, lid_point, *ray);
+			hit_point = get_closer_hit_point(info.t_1, info.t_2, *ray);
 	return (hit_point);
 }
