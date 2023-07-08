@@ -185,6 +185,14 @@ typedef struct s_hit_paraboloid
 	t_vector		normal_2;
 }					t_hit_paraboloid;
 
+typedef struct s_specular_light
+{
+	t_vector		reflected_light;
+	t_vector		viewer_direction;
+	double			specular_intensity;
+	double			ambient_ratio;
+}					t_specular_light;
+
 enum				e_definition
 {
 	SPHERE = 1,
@@ -208,6 +216,9 @@ typedef struct s_render_thread
 	int				end_x;
 	int				start_y;
 	int				end_y;
+	t_vector		horizontal;
+	t_vector		vertical;
+	t_coordinate	pixel;
 	int				thread_index;
 }					t_render_thread;
 
