@@ -50,12 +50,10 @@ int blocked_sphere(t_sphere sphere, t_ray hit_to_light)
 
 static int blocked_cylinder(t_cylinder cylinder, t_ray hit_to_light)
 {
-	t_hit_cylinder	info;
+	t_coordinate	hit_point;
 
-	info = hit_cylinder(cylinder, &hit_to_light);
-	if (info.t_1 < 0 && info.t_2 < 0)
-		return (0);
-	if ((info.base >= 0 && info.base <= cylinder.height) || (info.top >= 0 && info.top <= cylinder.height))
+	hit_point = get_closer_cylinder_point(cylinder, &hit_to_light);
+	if (hit_point.x == INFINITY)
 		return (0);
 	return (1);
 }
