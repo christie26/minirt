@@ -180,7 +180,7 @@ typedef struct s_specular_light
 	t_vector		reflected_light;
 	t_vector		viewer_direction;
 	double			specular_intensity;
-	double			ambient_ratio;
+	double			specular_ratio;
 }					t_specular_light;
 
 enum				e_definition

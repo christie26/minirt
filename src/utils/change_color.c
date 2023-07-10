@@ -21,8 +21,14 @@ t_color	mix_color(t_color color_one, t_color color_two, double ratio)
 t_color	apply_brightness(t_color color, double brightness)
 {
 	color.red *= brightness;
+	if (color.red > 255)
+		color.red = 255;
 	color.green *= brightness;
+	if (color.green > 255)
+		color.green = 255;
 	color.blue *= brightness;
+	if (color.blue > 255)
+		color.blue = 255;
 	return (color);
 }
 

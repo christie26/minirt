@@ -55,6 +55,7 @@ static t_color	apply_phong_model(t_data data, t_ray *ray, t_light *light)
 	phong.specular_color = get_specular_color(ray, light, light_ratio);
 	color_rgb = add_all_phong_colors(phong);
 	return (color_rgb);
+	// return (phong.specular_color);
 }
 
 t_color	apply_phong_model_to_all_lights(t_data data, t_ray *ray)

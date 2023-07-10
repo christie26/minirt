@@ -1,7 +1,7 @@
 #include "../../includes/minirt.h"
 
-	// R = 2*(N.L)*N - L
-	// I = k * dot(R, V)^n
+// R = 2*(N.L)*N - L
+// I = k * dot(R, V)^n
 static t_vector	get_reflected_light(t_ray *ray)
 {
 	t_vector	reflected_light;
@@ -17,6 +17,7 @@ static t_vector	get_reflected_light(t_ray *ray)
 	return (reflected_light);
 }
 
+// 2 * (N dot L) * N - L
 t_color	get_specular_color(t_ray *ray, t_light *light, double light_ratio)
 {
 	double				shininess;
@@ -25,19 +26,14 @@ t_color	get_specular_color(t_ray *ray, t_light *light, double light_ratio)
 
 	if (light_ratio <= 0)
 		return (get_color("0,0,0"));
-	specular.reflected_light = get_reflected_light(ray);
-	specular.viewer_direction = vector_mult_scalar(ray->direction, -1);
 	shininess = 50;
-	specular.reflected_light = vector_unit(specular.reflected_light);
-	specular.viewer_direction = vector_unit(specular.viewer_direction);
-	specular.ambient_ratio = vector_dot(specular.reflected_light, \
-		specular.viewer_direction);
-	if (specular.ambient_ratio < 0)
-		specular.specular_intensity = 0;
-	else
-		specular.specular_intensity = pow(specular.ambient_ratio, \
-				shininess);
+	specular.reflected_light = vector_unit(get_reflected_light(ray));
+	specular.viewer_direction = vector_unit(vector_mult_scalar(ray->direction, \
+				-1));
+	specular.specular_ratio = fmax(0.0, vector_dot(specular.reflected_light, \
+				specular.viewer_direction));
+	specular.specular_intensity = pow(specular.specular_ratio, shininess);
 	specular_color = apply_brightness(light->color, \
-			specular.specular_intensity);
+										specular.specular_intensity);
 	return (specular_color);
 }
