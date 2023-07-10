@@ -17,16 +17,13 @@
 # define KEY_D 2
 
 // render.c
-int					key_press(int keycode, t_data *data);
+int					key_press(int keycode);
 void				*render_thread(void *arg);
 
 // setup_screen.c
 void				setup_screen(t_data *data);
 t_coordinate		get_start_corner(t_camera camera, t_vector horizontal,
 						t_vector vertical, double focal_length);
-t_vector			get_ray_direction(t_coordinate lower_left_corner, \
-						t_vector horizontal, t_vector vertical, \
-							t_coordinate origin, double u, double v);
 t_vector			get_world_vertical(t_vector camera_direction);
 
 //pixel color
@@ -36,6 +33,7 @@ double				get_short_distance(t_list *object_list, t_ray *ray);
 void				write_pixel_image(t_data *data, int x, int y, int color);
 
 // get_pixel_color.c
+t_coordinate		get_hit_point(t_ray *ray, t_node *node);
 void				get_pixel_color(t_data *data);
 t_color				apply_phong_model_to_all_lights(t_data data, t_ray *ray);
 t_color				get_checkerboard_sphere(t_sphere sphere, \
@@ -49,8 +47,6 @@ t_color				get_checkerboard_cylinder(t_cylinder cylinder, \
 int					is_shadow(t_data data, t_ray ray_to_light);
 
 // get hit_point
-t_coordinate		get_closer_hit_point(double t_1, double t_2, t_ray ray);
-t_coordinate		get_hit_point(t_ray *ray, t_node *node);
 t_coordinate		get_closer_sphere_point(t_sphere sphere, t_ray *ray);
 t_coordinate		get_closer_plane_point(t_plane plane, t_ray *ray);
 t_coordinate		get_closer_cylinder_point(t_cylinder cylinder, t_ray *ray);

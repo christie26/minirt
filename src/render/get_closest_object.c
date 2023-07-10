@@ -1,6 +1,5 @@
 #include "../../includes/minirt.h"
 
-
 double	get_short_distance(t_list *object_list, t_ray *ray)
 {
 	t_node			*node;

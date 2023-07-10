@@ -1,4 +1,3 @@
-
 #include "../../includes/minirt.h"
 
 int	hit_plane(t_plane plane, t_ray ray)
@@ -17,7 +16,7 @@ int	hit_plane(t_plane plane, t_ray ray)
 	return (PLANE);
 }
 
-int is_parallel(t_vector vector1, t_vector vector2, double *dot_product)
+int	is_parallel(t_vector vector1, t_vector vector2, double *dot_product)
 {
 	*dot_product = vector_dot(vector1, vector2);
 	return (fabs(*dot_product) < 1e-6);

@@ -124,17 +124,6 @@ typedef struct s_data
 	int				endian;
 }					t_data;
 
-typedef struct s_render
-{
-	int				window_width;
-	int				window_height;
-	double			focal_length;
-	t_coordinate	origin;
-	t_vector		horizontal;
-	t_vector		vertical;
-	t_coordinate	lower_left_corner;
-}					t_render;
-
 typedef struct s_phong
 {
 	t_color			ambient_color;
@@ -208,6 +197,18 @@ enum e_cylinder
 	TOP,
 	NOT_LID
 };
+
+typedef struct s_render
+{
+	double			u;
+	double			v;
+	t_coordinate	lower_left_corner;
+	t_vector		horizontal;
+	t_vector		vertical;
+	t_coordinate	origin;
+	t_color			color_rgb;
+	int				color_hex;
+}					t_render;
 
 typedef struct s_render_thread
 {

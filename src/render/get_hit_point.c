@@ -1,8 +1,8 @@
 #include "../../includes/minirt.h"
 
-t_coordinate init_hit_point(void)
+t_coordinate	init_hit_point(void)
 {
-	t_coordinate hit_point;
+	t_coordinate	hit_point;
 
 	hit_point.x = INFINITY;
 	hit_point.y = INFINITY;

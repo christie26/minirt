@@ -21,10 +21,10 @@ PARSING      = $(addprefix $(PARSING_PATH), $(PARSING_SRCS))
 
 RENDER_PATH  = render/
 RENDER_SRCS  = render.c key_press.c setup_screen.c \
-				get_pixel_color.c get_light_ratio.c phong_model.c \
+				get_closest_object.c get_light_ratio.c phong_model.c \
 				get_hit_point.c point_sphere.c point_plane.c point_cylinder.c point_paraboloid.c \
 				checker_sphere.c checker_plane.c checker_cylinder.c \
-				shadow_center.c render_utils.c specular.c threads.c \
+				shadow_center.c specular.c threads.c \
 				blocked_object.c
 				
 RENDER       = $(addprefix $(RENDER_PATH), $(RENDER_SRCS))
@@ -36,7 +36,8 @@ VECTOR		 = $(addprefix $(VECTOR_PATH), $(VECTOR_SRCE))
 TOOL_PATH  	 = utils/
 TOOL_SRCE	 = error.c free.c get_double.c color_utils.c \
 				mlx_utils.c math_utils.c change_color.c linked_list.c \
-				coordinate.c screen_utils.c light_utils.c
+				coordinate.c screen_utils.c light_utils.c ray_utils.c \
+				get_normal.c
 TOOL		 = $(addprefix $(TOOL_PATH), $(TOOL_SRCE))
 
 SRC			 := $(addprefix $(SRCDIR), $(MAIN)) \
