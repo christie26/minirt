@@ -28,7 +28,7 @@ int	blocked_cylinder(t_cylinder cylinder, t_ray hit_to_light)
 	t_coordinate	hit_point;
 
 	hit_point = get_closer_cylinder_point(cylinder, &hit_to_light);
-	if (hit_point.x == INFINITY)
+	if (hit_point.x == INFINITY && hit_point.y == INFINITY && hit_point.z == INFINITY)
 		return (0);
 	return (1);
 }

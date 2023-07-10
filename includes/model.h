@@ -5,6 +5,7 @@
 # define WINDOW_HEIGHT 1000
 # define THREADS_PER_DIMENSION 3
 # define NUM_THREADS 9
+# define EPSILON 0.0001
 
 typedef struct s_node
 {
