@@ -10,3 +10,8 @@ void	write_pixel_image(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 	return ;
 }
+
+int	win_close(void)
+{
+	exit(EXIT_SUCCESS);
+}

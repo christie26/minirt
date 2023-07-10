@@ -20,12 +20,12 @@ int	ft_min(int a, int b)
 double	radian_to_degree(double radian)
 {
 	double	degree;
-	
+
 	degree = radian * 180 / PI;
 	return (degree);
 }
 
 double	dmod(double x, double y)
 {
-    return (x - (int)(x/y) * y);
+	return (x - (int)(x / y) * y);
 }

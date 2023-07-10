@@ -12,7 +12,7 @@ t_vector	init_vector(double x, double y, double z)
 
 t_vector	coordinate_to_vector(t_coordinate coordinate)
 {
-	t_vector vector;
+	t_vector	vector;
 
 	vector.x = coordinate.x;
 	vector.y = coordinate.y;
@@ -37,5 +37,5 @@ t_coordinate	vector_to_coordinate(t_vector vec)
 	coord.x = vec.x;
 	coord.y = vec.y;
 	coord.z = vec.z;
-	return coord;
+	return (coord);
 }

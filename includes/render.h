@@ -18,7 +18,6 @@
 
 // render.c
 int					key_press(int keycode, t_data *data);
-int					win_close(void);
 void				*render_thread(void *arg);
 
 // setup_screen.c
@@ -47,7 +46,6 @@ t_color				get_checkerboard_cylinder(t_cylinder cylinder, \
 									t_coordinate hit_point);
 
 // shadow_center.c
-void				fix_hit_to_light(t_ray *hit_to_light);
 int					is_shadow(t_data data, t_ray ray_to_light);
 
 // get hit_point
@@ -82,6 +80,10 @@ void				make_threads(t_data *data, pthread_t threads[], \
 						t_render_thread thread_data[]);
 void				join_threads(pthread_t threads[]);
 
+int					blocked_plane(t_plane plane, t_ray hit_to_light);
+int					blocked_sphere(t_sphere sphere, t_ray hit_to_light);
+int					blocked_cylinder(t_cylinder cylinder, t_ray hit_to_light);
+int					blocked_paraboloid(t_paraboloid paraboloid, t_ray hit_to_light);
 
 
 

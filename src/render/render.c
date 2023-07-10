@@ -1,11 +1,5 @@
 #include "../../includes/minirt.h"
 
-int	win_close(void)
-{
-	exit(EXIT_SUCCESS);
-}
-
-
 static t_color	sky_color(t_ray ray, double vertical)
 {
 	t_color	color_rgb;
@@ -17,7 +11,21 @@ static t_color	sky_color(t_ray ray, double vertical)
 	return (color_rgb);
 }
 
-static t_color	get_color_rgb(t_ray *ray, t_data *data)
+t_vector	get_ray_direction(t_coordinate lower_left_corner,
+		t_vector horizontal, t_vector vertical, t_coordinate origin, double u,
+		double v)
+{
+	t_vector		ray_direction;
+	t_coordinate	pixel;
+
+	pixel.x = lower_left_corner.x + u * horizontal.x + v * vertical.x;
+	pixel.y = lower_left_corner.y + u * horizontal.y + v * vertical.y;
+	pixel.z = lower_left_corner.z + u * horizontal.z + v * vertical.z;
+	ray_direction = get_vector_two_point(origin, pixel);
+	return (ray_direction);
+}
+
+t_color	get_color_rgb(t_ray *ray, t_data *data)
 {
 	t_color	background_color;
 

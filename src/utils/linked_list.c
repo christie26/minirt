@@ -35,10 +35,7 @@ t_node	*get_node(t_list *linked_list, size_t index)
 	}
 	dummy = linked_list->headnode;
 	if (dummy == NULL)
-	{
-		printf("Error: linked list is empty\n");
 		return (NULL);
-	}
 	while ((i < index) && dummy->next)
 	{
 		dummy = dummy->next;
@@ -75,11 +72,10 @@ int	add_node(t_list **linked_list, void *object, int type)
 	return (1);
 }
 
-
 void	destroy_list(t_list **linked_list)
 {
-	t_node *dummy;
-	t_node *remove;
+	t_node	*dummy;
+	t_node	*remove;
 
 	if (!*linked_list)
 		return ;

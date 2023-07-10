@@ -53,5 +53,13 @@ t_coordinate	add_coordinates_scalar(t_coordinate v1, double scalar);
 t_coordinate	sub_coordinates(t_coordinate v1, t_coordinate v2);
 t_coordinate	coordinate_mult_scalar(t_coordinate vector, double scalar);
 int				is_same_coordinate(t_coordinate one, t_coordinate two);
+int				win_close(void);
+
+t_vector		get_world_vertical(t_vector camera_direction);
+t_coordinate	get_start_corner(t_camera camera, t_vector horizontal, \
+		t_vector vertical, double focal_length);
+
+// light_utils.c
+void			fix_hit_to_light(t_ray *hit_to_light);
 
 #endif

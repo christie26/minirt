@@ -1,18 +1,21 @@
 #include "../../includes/minirt.h"
 
-static int weighted_average(int color_one, int color_two, double ratio)
+static int	weighted_average(int color_one, int color_two, double ratio)
 {
 	return ((int)((1 - ratio) * (double)color_one + ratio * (double)color_two));
 }
 
-t_color mix_color(t_color color_one, t_color color_two, double ratio)
+t_color	mix_color(t_color color_one, t_color color_two, double ratio)
 {
-    t_color new_color;
+	t_color	new_color;
 
-    new_color.red = ft_min(weighted_average(color_one.red, color_two.red, ratio), 255);
-    new_color.green = ft_min(weighted_average(color_one.green, color_two.green, ratio), 255);
-    new_color.blue = ft_min(weighted_average(color_one.blue, color_two.blue, ratio), 255);
-    return (new_color);
+	new_color.red = ft_min(weighted_average(color_one.red, color_two.red, \
+				ratio), 255);
+	new_color.green = ft_min(weighted_average(color_one.green, color_two.green, \
+				ratio), 255);
+	new_color.blue = ft_min(weighted_average(color_one.blue, color_two.blue, \
+				ratio), 255);
+	return (new_color);
 }
 
 t_color	apply_brightness(t_color color, double brightness)
