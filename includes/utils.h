@@ -68,5 +68,7 @@ t_coordinate	get_closer_point(t_coordinate hit_point_1, \
 
 t_vector		get_normal(void *object, t_coordinate hit_point, int type);
 
+void    print_vector(t_vector vector);
+void    print_coordinate(t_coordinate coordinate);
 
 #endif

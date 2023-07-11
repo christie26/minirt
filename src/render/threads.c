@@ -37,6 +37,7 @@ void	make_threads(t_data *data, pthread_t threads[],
 	index = 0;
 	i = 0;
 	while (i < THREADS_PER_DIMENSION)
+	// while (i < 1)
 	{
 		j = 0;
 		while (j < THREADS_PER_DIMENSION)
