@@ -85,7 +85,7 @@ t_coordinate	get_closer_cylinder_point(t_cylinder cylinder, t_ray *ray)
 	if (info.discriminant > 0 && (info.t_1 > 0 || info.t_2 > 0))
 		side_point = get_side_point(info, *ray, cylinder, cylinder.height);
 	hit_point = get_closer_point(side_point, lid_point, *ray);
-	if (!is_same_coordinate(hit_point, init_hit_point()))
-		ray->hit_normal = get_cylinder_normal(cylinder, hit_point);
+	// if (!is_same_coordinate(hit_point, init_hit_point()))
+	// 	ray->hit_normal = get_cylinder_normal(cylinder, hit_point);
 	return (hit_point);
 }
