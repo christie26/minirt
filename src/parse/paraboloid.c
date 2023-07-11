@@ -1,14 +1,16 @@
-#include "../../includes/minirt.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   paraboloid.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yoonsele <yoonsele@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/11 14:49:18 by yoonsele          #+#    #+#             */
+/*   Updated: 2023/07/11 14:49:25 by yoonsele         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-// typedef struct s_paraboloid
-// {
-// 	t_coordinate	coordinate;
-// 	t_vector		vector;
-// 	double			diameter_x;
-// 	double			diameter_y;
-// 	double			height;
-// 	t_color			color;
-// }	t_paraboloid;
+#include "../../includes/minirt.h"
 
 t_paraboloid	*get_paraboloid(char **tab)
 {

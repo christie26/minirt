@@ -1,7 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker_cylinder.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yoonsele <yoonsele@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/11 14:49:57 by yoonsele          #+#    #+#             */
+/*   Updated: 2023/07/11 14:50:01 by yoonsele         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/minirt.h"
 
-
-// ax + by + cz + d = 0
 t_color	get_checkerboard_cylinder(t_cylinder cylinder, t_coordinate hit_point)
 {
 	double			a;
