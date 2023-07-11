@@ -51,6 +51,7 @@ static double	get_light_ratio_cylinder(t_data data, t_coordinate hit_point,
 	if (is_shadow(data, hit_to_light))
 		return (0);
 	light_ratio = vector_dot(ray->hit_normal, hit_to_light.direction);
+	ray->hit_direction = hit_to_light.direction;
 	return (light_ratio);
 }
 
