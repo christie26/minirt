@@ -2,15 +2,19 @@
 
 int	blocked_plane(t_plane plane, t_ray hit_to_light)
 {
-	t_vector	ray_to_plane;
-	double		denominator;
-	double		t;
+	t_vector		ray_to_plane;
+	double			denominator;
+	double			t;
+	double			distance;
+	t_coordinate	calculated_light_point;
 
 	ray_to_plane = get_vector_two_point(hit_to_light.origin, plane.coordinate);
 	if (is_parallel(plane.vector, hit_to_light.direction, &denominator))
 		return (0);
 	t = vector_dot(ray_to_plane, plane.vector) / denominator;
-	return (t >= 0);
+	distance = get_distance(hit_to_light.origin, hit_to_light.light);
+	calculated_light_point = calculate_hit_point(hit_to_light, t);
+	return (t >= 0 && distance > get_distance(hit_to_light.origin, calculated_light_point));
 }
 
 int	blocked_sphere(t_sphere sphere, t_ray hit_to_light)

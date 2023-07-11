@@ -10,6 +10,7 @@ typedef struct s_ray
 	t_coordinate	hit_point;
 	t_vector		hit_normal;
 	t_vector		hit_direction;
+	t_coordinate	light;
 	void			*object;
 	int				object_type;
 }					t_ray;

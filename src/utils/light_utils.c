@@ -18,5 +18,6 @@ t_ray	get_hit_to_light(t_coordinate hit_point, t_light light)
 	hit_to_light.direction = \
 		vector_unit(get_vector_two_point(hit_point, light.coordinate));
 	fix_hit_to_light(&hit_to_light);
+	hit_to_light.light = light.coordinate;
 	return (hit_to_light);
 }
