@@ -83,7 +83,6 @@ t_hit_paraboloid hit_paraboloid(t_paraboloid paraboloid, t_ray *ray)
 	t_vector			inverse_rotation;
 	t_ray				transformed_ray;
 	t_hit_paraboloid	hit;
-	// t_vector			normal;
 
 	paraboloid.rotation_angle = get_rotation_angle(paraboloid);
 	inverse_rotation = vector_mult_scalar(paraboloid.rotation_angle, -1);
