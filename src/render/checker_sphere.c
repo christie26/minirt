@@ -14,16 +14,16 @@
 
 static t_color	which_color(t_color color, double xy_angle, double z_angle)
 {
-	if (fmod(xy_angle, 30) > 0 && fmod(xy_angle, 30) < 15)
+	if (((int)xy_angle / 15) & 1)
 	{
-		if (fmod(z_angle, 30) > 0 && fmod(z_angle, 30) < 15)
+		if (((int)z_angle / 15) & 1)
 			return (color);
 		else
 			return (get_color("0,0,0"));
 	}
 	else
 	{
-		if (fmod(z_angle, 30) > 0 && fmod(z_angle, 30) < 15)
+		if (((int)z_angle / 15) & 1)
 			return (get_color("0,0,0"));
 		else
 			return (color);

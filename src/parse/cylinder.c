@@ -34,7 +34,7 @@ t_cylinder	*get_cylinder(char **tab)
 	get_arguments(cylinder, tab);
 	if (tab[6])
 	{
-		if (ft_strcmp(tab[6], "ch"))
+		if (!ft_strcmp(tab[6], "ch\n") || !ft_strcmp(tab[6], "ch"))
 			cylinder->checker = 1;
 		else
 			error_msg("PARSE_CYLINDER");

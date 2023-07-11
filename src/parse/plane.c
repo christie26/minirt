@@ -27,7 +27,7 @@ t_plane	*get_plane(char **tab)
 	plane->checker = 0;
 	if (tab[4])
 	{
-		if (ft_strcmp(tab[4], "ch"))
+		if (!ft_strcmp(tab[4], "ch\n") || !ft_strcmp(tab[4], "ch"))
 			plane->checker = 1;
 		else
 			error_msg(PARSE_PLANE);

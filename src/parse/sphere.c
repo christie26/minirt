@@ -25,7 +25,7 @@ t_sphere	*get_sphere(char **tab)
 	sphere->checker = 0;
 	if (tab[4])
 	{
-		if (!ft_strcmp(tab[4], "ch"))
+		if (!ft_strcmp(tab[4], "ch\n") || !ft_strcmp(tab[4], "ch"))
 			sphere->checker = 1;
 		else
 			error_msg(PARSE_SPHERE);
