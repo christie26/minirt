@@ -31,7 +31,8 @@ int	is_shadow(t_data data, t_ray hit_to_light)
 	while (node)
 	{
 		object = node->object;
-		find_blocked_object(object, hit_to_light, node->type);
+		if (find_blocked_object(object, hit_to_light, node->type))
+			return (1);
 		node = node->next;
 	}
 	return (0);
