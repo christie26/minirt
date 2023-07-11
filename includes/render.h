@@ -45,7 +45,9 @@ t_color				get_checkerboard_cylinder(t_cylinder cylinder, \
 
 // shadow_center.c
 int					is_shadow(t_data data, t_ray ray_to_light);
-
+// light ratio
+double				get_light_ratio(t_data data, t_coordinate hit_point, \
+						t_ray *ray, t_light light);
 // get hit_point
 t_coordinate		get_closer_sphere_point(t_sphere sphere, t_ray *ray);
 t_coordinate		get_closer_plane_point(t_plane plane, t_ray *ray);

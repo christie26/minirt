@@ -68,8 +68,5 @@ t_coordinate	get_closer_point(t_coordinate hit_point_1, \
 
 t_vector		get_normal(void *object, t_coordinate hit_point, int type);
 
-// light ratio
-double				get_light_ratio(t_data data, t_coordinate hit_point, \
-						t_ray *ray, t_light light);
 
 #endif

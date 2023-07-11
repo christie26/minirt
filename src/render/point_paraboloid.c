@@ -67,6 +67,20 @@ t_hit_paraboloid	hit_normalized_paraboloid(t_paraboloid paraboloid, t_ray *ray)
 	return hit;
 }
 
+// static t_vector	get_rotation_angle(t_paraboloid paraboloid)
+// {
+// 	t_vector	rotation_angle;
+
+// 	if (paraboloid.vector.y == 0)
+// 		rotation_angle.x = 0;
+// 	else	   
+// 		rotation_angle.x = -acos(paraboloid.vector.z / sqrt(pow(paraboloid.vector.y, 2) + pow(paraboloid.vector.z, 2))); 
+// 	if (paraboloid.vector.x == 0)
+// 		rotation_angle.y = 0;
+// 	else
+// 		rotation_angle.y = -acos(paraboloid.vector.z / sqrt(pow(paraboloid.vector.x, 2) + pow(paraboloid.vector.z, 2))); 
+// 	return (rotation_angle);
+// }
 
 t_hit_paraboloid hit_paraboloid(t_paraboloid paraboloid, t_ray *ray)
 {
