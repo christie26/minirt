@@ -18,7 +18,8 @@ double	get_short_distance(t_list *object_list, t_ray *ray)
 			ray->object = object;
 			ray->object_type = node->type;
 			ray->hit_point = hit_point;
-			ray->hit_normal = get_normal(object, hit_point, node->type);
+			if (node->type != PARABOLOID)
+				ray->hit_normal = get_normal(object, hit_point, node->type);
 			short_distance = get_distance(hit_point, ray->origin);
 		}
 		node = node->next;

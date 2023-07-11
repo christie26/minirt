@@ -11,23 +11,6 @@ double	get_hit_base_paraboloid(t_ray *ray, t_paraboloid paraboloid, double t)
 	return (vector_dot(base_to_intersection, paraboloid.vector));
 }
 
-t_vector	rotate_vector(t_vector vec, t_vector rotation_angle)
-{
-	const double	cos_x = cos(rotation_angle.x);
-	const double	sin_x = sin(rotation_angle.x);
-	const double	cos_y = cos(rotation_angle.y);
-	const double	sin_y = sin(rotation_angle.y);
-	t_vector		result;
-
-	result.y = cos_x * vec.y - sin_x * vec.z;
-	result.z = sin_x * vec.y + cos_x * vec.z;
-	vec.y = result.y;
-	vec.z = result.z;
-	result.x = cos_y * vec.x + sin_y * vec.z;
-	result.z = -sin_y * vec.x + cos_y * vec.z;
-	return (result);
-}
-
 t_vector	get_normal_vector(t_coordinate hit_point, t_paraboloid paraboloid)
 {
 	t_vector	normal;
@@ -67,29 +50,9 @@ t_hit_paraboloid	hit_normalized_paraboloid(t_paraboloid paraboloid, t_ray *ray)
 	return hit;
 }
 
-// static t_vector	get_rotation_angle(t_paraboloid paraboloid)
-// {
-// 	t_vector	rotation_angle;
-
-// 	if (paraboloid.vector.y == 0)
-// 		rotation_angle.x = 0;
-// 	else	   
-// 		rotation_angle.x = -acos(paraboloid.vector.z / sqrt(pow(paraboloid.vector.y, 2) + pow(paraboloid.vector.z, 2))); 
-// 	if (paraboloid.vector.x == 0)
-// 		rotation_angle.y = 0;
-// 	else
-// 		rotation_angle.y = -acos(paraboloid.vector.z / sqrt(pow(paraboloid.vector.x, 2) + pow(paraboloid.vector.z, 2))); 
-// 	return (rotation_angle);
-// }
-
-t_hit_paraboloid hit_paraboloid(t_paraboloid paraboloid, t_ray *ray)
+static t_vector	get_rotation_angle(t_paraboloid paraboloid)
 {
-	t_vector			rotation_angle;
-	const t_vector		inverse_translation = vector_mult_scalar(coordinate_to_vector(paraboloid.coordinate), -1);
-	t_vector			inverse_rotation;
-	t_ray				transformed_ray;
-	t_hit_paraboloid	hit;
-	// t_vector			normal;
+	t_vector	rotation_angle;
 
 	if (paraboloid.vector.y == 0)
 		rotation_angle.x = 0;
@@ -99,7 +62,19 @@ t_hit_paraboloid hit_paraboloid(t_paraboloid paraboloid, t_ray *ray)
 		rotation_angle.y = 0;
 	else
 		rotation_angle.y = -acos(paraboloid.vector.z / sqrt(pow(paraboloid.vector.x, 2) + pow(paraboloid.vector.z, 2))); 
-	inverse_rotation = vector_mult_scalar(rotation_angle, -1);
+	return (rotation_angle);
+}
+
+t_hit_paraboloid hit_paraboloid(t_paraboloid paraboloid, t_ray *ray)
+{
+	const t_vector		inverse_translation = vector_mult_scalar(coordinate_to_vector(paraboloid.coordinate), -1);
+	t_vector			inverse_rotation;
+	t_ray				transformed_ray;
+	t_hit_paraboloid	hit;
+	// t_vector			normal;
+
+	paraboloid.rotation_angle = get_rotation_angle(paraboloid);
+	inverse_rotation = vector_mult_scalar(paraboloid.rotation_angle, -1);
 	transformed_ray.origin = vector_to_coordinate(rotate_vector(vector_add(coordinate_to_vector(ray->origin), inverse_translation), inverse_rotation));
 	transformed_ray.direction = rotate_vector(ray->direction, inverse_rotation);
 	hit = hit_normalized_paraboloid(paraboloid, &transformed_ray);
@@ -107,11 +82,11 @@ t_hit_paraboloid hit_paraboloid(t_paraboloid paraboloid, t_ray *ray)
 	hit.hit_point_2 = calculate_hit_point(transformed_ray, hit.t_2);
 	hit.normal_1 = get_normal_vector(hit.hit_point_1, paraboloid);
 	hit.normal_2 = get_normal_vector(hit.hit_point_2, paraboloid);
+	hit.normal_1 = rotate_vector(hit.normal_1, paraboloid.rotation_angle);
+	hit.normal_2 = rotate_vector(hit.normal_2, paraboloid.rotation_angle);
 
-	hit.hit_point_1 = vector_to_coordinate(vector_add(rotate_vector(coordinate_to_vector(hit.hit_point_1), rotation_angle), coordinate_to_vector(paraboloid.coordinate)));
-	hit.hit_point_2 = vector_to_coordinate(vector_add(rotate_vector(coordinate_to_vector(hit.hit_point_2), rotation_angle), coordinate_to_vector(paraboloid.coordinate)));
-	hit.normal_1 = rotate_vector(hit.normal_1, rotation_angle);
-	hit.normal_2 = rotate_vector(hit.normal_2, rotation_angle);
+	hit.hit_point_1 = vector_to_coordinate(vector_add(rotate_vector(coordinate_to_vector(hit.hit_point_1), paraboloid.rotation_angle), coordinate_to_vector(paraboloid.coordinate)));
+	hit.hit_point_2 = vector_to_coordinate(vector_add(rotate_vector(coordinate_to_vector(hit.hit_point_2), paraboloid.rotation_angle), coordinate_to_vector(paraboloid.coordinate)));
 	return (hit);
 }
 
@@ -146,9 +121,5 @@ t_coordinate	get_closer_paraboloid_point(t_paraboloid paraboloid, t_ray *ray)
 		hit_point = info.hit_point_2;
 		ray->hit_normal = info.normal_2;
 	}
-	// hit_point = get_closer_hit_point(info.t_1, info.t_2, *ray);
-	
-	// if (!is_hit_point_within_paraboloid(info.base, info.top, paraboloid.height))
-	// 	return init_hit_point();
 	return hit_point;
 }

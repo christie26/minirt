@@ -51,7 +51,5 @@ t_vector	get_normal(void *object, t_coordinate hit_point, int type)
 		normal = get_plane_normal(*(t_plane *)object, hit_point);
 	else
 		normal = get_cylinder_normal(*(t_cylinder *)object, hit_point);
-	// else
-	// 	normal = get_paraboloid_normal(*(t_paraboloid *)object, hit_point);
 	return (normal);
 }

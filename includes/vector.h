@@ -31,5 +31,6 @@ double				vector_length(t_vector v);
 double				vector_dot(t_vector v1, t_vector v2);
 t_vector			vector_cross(t_vector v1, t_vector v2);
 t_vector			vector_unit(t_vector v);
+t_vector			rotate_vector(t_vector vec, t_vector rotation_angle);
 
 #endif

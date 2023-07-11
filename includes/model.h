@@ -92,6 +92,7 @@ typedef struct s_paraboloid
 {
 	t_coordinate	coordinate;
 	t_vector		vector;
+	t_vector		rotation_angle;
 	double			parameter_x;
 	double			parameter_y;
 	double			height;
