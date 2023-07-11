@@ -49,7 +49,8 @@ int	blocked_cylinder(t_cylinder cylinder, t_ray hit_to_light)
 	double			t_of_hit;
 
 	hit_point = get_closer_cylinder_point(cylinder, &hit_to_light);
-	if (hit_point.x == INFINITY && hit_point.y == INFINITY && hit_point.z == INFINITY)
+	if (hit_point.x == INFINITY && hit_point.y == INFINITY \
+		&& hit_point.z == INFINITY)
 		return (0);
 	t_of_light = vector_length(get_vector_two_point(hit_to_light.origin, \
 				hit_to_light.light)) / vector_length(hit_to_light.direction);

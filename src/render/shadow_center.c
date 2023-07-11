@@ -53,8 +53,8 @@ int	is_shadow(t_data data, t_ray hit_to_light)
 double	get_light_ratio(t_data data, t_coordinate hit_point, t_ray *ray, \
 		t_light light)
 {
-	t_ray		hit_to_light;
-	double			light_ratio;
+	t_ray	hit_to_light;
+	double	light_ratio;
 
 	hit_to_light = get_hit_to_light(hit_point, light);
 	if (is_shadow(data, hit_to_light))

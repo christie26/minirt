@@ -44,7 +44,7 @@ static t_vector	get_cylinder_normal(t_cylinder cylinder, t_coordinate hit_point)
 	else
 	{
 		v = get_vector_two_point(cylinder.base, hit_point);
-		p = vector_add(coordinate_to_vector(cylinder.base),
+		p = vector_add(cord_to_vec(cylinder.base),
 				vector_mult_scalar(cylinder.vector, vector_dot(v, \
 						cylinder.vector)));
 		normal = vector_unit(vector_sub(init_vector(hit_point.x, hit_point.y, \

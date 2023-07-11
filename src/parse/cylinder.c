@@ -34,15 +34,15 @@ t_cylinder	*get_cylinder(char **tab)
 	get_arguments(cylinder, tab);
 	if (tab[6])
 	{
-		if (!ft_strcmp(tab[6], "ch"))
+		if (ft_strcmp(tab[6], "ch"))
 			cylinder->checker = 1;
 		else
-			error_msg(PARSE_CYLINDER);
+			error_msg("PARSE_CYLINDER");
 		if (tab[7])
 			error_msg(PARSE_CYLINDER);
 	}
 	cylinder->top = add_coordinates(cylinder->base, \
-		vector_to_coordinate(vector_mult_scalar(cylinder->vector, \
+		vec_to_cord(vector_mult_scalar(cylinder->vector, \
 			cylinder->height)));
 	return (cylinder);
 }

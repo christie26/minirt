@@ -37,7 +37,7 @@ TOOL_PATH  	 = utils/
 TOOL_SRCE	 = error.c free.c get_double.c color_utils.c \
 				mlx_utils.c math_utils.c change_color.c linked_list.c \
 				coordinate.c screen_utils.c light_utils.c ray_utils.c \
-				get_normal.c
+				get_normal.c paraboloid_utils.c
 TOOL		 = $(addprefix $(TOOL_PATH), $(TOOL_SRCE))
 
 SRC			 := $(addprefix $(SRCDIR), $(MAIN)) \

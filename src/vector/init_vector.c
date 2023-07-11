@@ -22,7 +22,7 @@ t_vector	init_vector(double x, double y, double z)
 	return (vector);
 }
 
-t_vector	coordinate_to_vector(t_coordinate coordinate)
+t_vector	cord_to_vec(t_coordinate coordinate)
 {
 	t_vector	vector;
 
@@ -42,7 +42,7 @@ t_vector	get_vector_two_point(t_coordinate start, t_coordinate end)
 	return (vector);
 }
 
-t_coordinate	vector_to_coordinate(t_vector vec)
+t_coordinate	vec_to_cord(t_vector vec)
 {
 	t_coordinate	coord;
 
