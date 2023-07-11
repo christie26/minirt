@@ -54,7 +54,7 @@ t_vector	get_world_vertical(t_vector camera_direction)
 	world_vertical = init_vector(0, -1, 0);
 	if (vector_dot(camera_direction, world_vertical) == 0)
 		return (world_vertical);
-	world_vertical = init_vector(-1, 0, 0);
+	world_vertical = init_vector(0, -1, 1);
 	if (vector_dot(camera_direction, world_vertical) == 0)
 		return (world_vertical);
 	world_vertical = calculate_world_vertical(x, y, z);
