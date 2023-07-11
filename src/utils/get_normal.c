@@ -12,7 +12,7 @@
 
 #include "../../includes/minirt.h"
 
-static t_vector get_sphere_normal(t_sphere sphere, t_coordinate hit_point)
+static t_vector	get_sphere_normal(t_sphere sphere, t_coordinate hit_point)
 {
 	t_vector	normal;
 
@@ -35,7 +35,7 @@ static t_vector	get_cylinder_normal(t_cylinder cylinder, t_coordinate hit_point)
 	t_vector	v;
 	t_vector	p;
 
-	if (fabs(vector_dot(get_vector_two_point(hit_point, cylinder.base),
+	if (fabs(vector_dot(get_vector_two_point(hit_point, cylinder.base), \
 			cylinder.vector)) < EPSILON)
 		normal = vector_mult_scalar(cylinder.vector, -1);
 	else if (fabs(vector_dot(get_vector_two_point(hit_point, cylinder.top), \

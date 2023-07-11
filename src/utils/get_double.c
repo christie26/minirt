@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../../includes/minirt.h"
 
 static double	process_dot(const char **str, double result, double scale)

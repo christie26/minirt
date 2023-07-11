@@ -15,16 +15,16 @@
 static t_color	which_color(t_color color, \
 	double vertical_len, double horizontal_len)
 {
-	if (dmod(vertical_len, 1) > 0 && dmod(vertical_len, 1) < 0.5)
+	if (fmod(vertical_len, 1) > 0 && fmod(vertical_len, 1) < 0.5)
 	{
-		if (dmod(horizontal_len, 1) > 0 && dmod(horizontal_len, 1) < 0.5)
+		if (fmod(horizontal_len, 1) > 0 && fmod(horizontal_len, 1) < 0.5)
 			return (color);
 		else
 			return (get_color("0,0,0"));
 	}
 	else
 	{
-		if (dmod(horizontal_len, 1) > 0 && dmod(horizontal_len, 1) < 0.5)
+		if (fmod(horizontal_len, 1) > 0 && fmod(horizontal_len, 1) < 0.5)
 			return (get_color("0,0,0"));
 		else
 			return (color);

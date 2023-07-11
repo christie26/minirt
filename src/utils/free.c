@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../../includes/minirt.h"
 
 void	free_two_dimensional_array(char **array)

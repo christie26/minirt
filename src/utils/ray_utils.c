@@ -30,12 +30,12 @@ t_coordinate	get_closer_hit_point(double t_1, double t_2, t_ray ray)
 	return (closer_hit_point);
 }
 
-void    print_vector(t_vector vector)
+void	print_vector(t_vector vector)
 {
-    printf("(%.f,%.f,%.f)\n", vector.x,vector.y,vector.z);
+	printf("(%.f,%.f,%.f)\n", vector.x, vector.y, vector.z);
 }
 
-void    print_coordinate(t_coordinate coordinate)
+void	print_coordinate(t_coordinate coordinate)
 {
-    printf("(%.f,%.f,%.f)\n", coordinate.x,coordinate.y,coordinate.z);
+	printf("(%.f,%.f,%.f)\n", coordinate.x, coordinate.y, coordinate.z);
 }

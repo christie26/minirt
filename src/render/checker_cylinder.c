@@ -48,14 +48,14 @@ t_color	get_checkerboard_cylinder(t_cylinder cylinder, t_coordinate hit_point)
 		return (cylinder.color);
 	if (((int)angle / 15) & 1)
 	{
-		if (dmod(height, 1) > 0 && dmod(height, 1) < 0.5)
+		if (fmod(height, 1) > 0 && fmod(height, 1) < 0.5)
 			return (cylinder.color);
 		else
 			return (get_color("0,0,0"));
 	}
 	else
 	{
-		if (dmod(height, 1) > 0 && dmod(height, 1) < 0.5)
+		if (fmod(height, 1) > 0 && fmod(height, 1) < 0.5)
 			return (get_color("0,0,0"));
 		else
 			return (cylinder.color);

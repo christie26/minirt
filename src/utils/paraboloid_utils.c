@@ -62,9 +62,9 @@ t_ray	get_trans_ray(t_ray *ray, t_vector inverse_trans, t_vector inverse_ro)
 	return (transformed_ray);
 }
 
-int is_hit_point_within_paraboloid(double hit_base, double hit_top, double height)
+int	is_hit_point_within_paraboloid(double base, double top, double height)
 {
-	if ((hit_base >= 0 && hit_base <= height) || (hit_top >= 0 && hit_top <= height))
+	if ((base >= 0 && base <= height) || (top >= 0 && top <= height))
 		return (1);
 	return (0);
 }

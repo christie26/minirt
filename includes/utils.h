@@ -55,7 +55,6 @@ double			quadratic_equation_1(double a, double b, double c);
 double			quadratic_equation_2(double a, double b, double c);
 int				ft_min(int a, int b);
 double			radian_to_degree(double radian);
-double			dmod(double x, double y);
 
 // cordinate_utils.c
 t_coordinate	add_coordinates(t_coordinate v1, t_coordinate v2);
