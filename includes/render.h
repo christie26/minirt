@@ -64,9 +64,6 @@ int					is_hit_point_between_top_and_bottom(double hit_base, \
 t_coordinate		hit_cylinder_lid(t_cylinder cylinder, t_ray *ray, \
 						t_coordinate top_center, t_coordinate base_center);
 
-// light ratio
-double				get_light_ratio(t_data data, t_coordinate hit_point, \
-						t_ray *ray, t_light light);
 // int					is_lid(t_cylinder cylinder, t_coordinate hit_point);
 
 t_color				get_specular_color(t_ray *ray, t_light *light, \
