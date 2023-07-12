@@ -28,11 +28,17 @@ t_vector	get_rotation_angle(t_paraboloid *paraboloid)
 {
 	if (paraboloid->vector.y == 0)
 		paraboloid->rot_angle.x = 0;
+	else if (paraboloid->vector.y < 0)
+		paraboloid->rot_angle.x = acos(paraboloid->vector.z / \
+		sqrt(pow(paraboloid->vector.y, 2) + pow(paraboloid->vector.z, 2)));
 	else
 		paraboloid->rot_angle.x = -acos(paraboloid->vector.z / \
 		sqrt(pow(paraboloid->vector.y, 2) + pow(paraboloid->vector.z, 2)));
 	if (paraboloid->vector.x == 0)
 		paraboloid->rot_angle.y = 0;
+	else if (paraboloid->vector.x < 0)
+		paraboloid->rot_angle.y = acos(paraboloid->vector.z / \
+		sqrt(pow(paraboloid->vector.x, 2) + pow(paraboloid->vector.z, 2)));
 	else
 		paraboloid->rot_angle.y = -acos(paraboloid->vector.z / \
 		sqrt(pow(paraboloid->vector.x, 2) + pow(paraboloid->vector.z, 2)));
