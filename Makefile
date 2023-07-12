@@ -70,11 +70,12 @@ $(DYLIB):
 clean:
 			${RM} ${OBJ}
 			@make -C ./libft clean
-			# @make -C ./mlx clean
+			@make -C ./mlx clean
 
 fclean:		clean
 			${RM} ${NAME}
 			@make -C ./libft fclean
+			rm -f ./libmlx.dylib
 
 re:			fclean all
 
