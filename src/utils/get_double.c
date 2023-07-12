@@ -12,7 +12,8 @@
 
 #include "../../includes/minirt.h"
 
-static double	process_dot(const char **str, double result, double scale, char *bit)
+static double	process_dot(const char **str, double result, \
+						double scale, char *bit)
 {
 	if (*bit & 1)
 		error_msg(PARSE_DOUBLE);
