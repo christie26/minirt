@@ -4,7 +4,7 @@
 .vscode/*
 *.dSYM
 libmlx.dylib
-minirt
+miniRT
 */*.swiftmodule
 */*.swiftsourceinfo
 */*.swiftdoc

@@ -1,4 +1,4 @@
-NAME		 = ./minirt
+NAME		 = ./miniRT
 LIBFT		 = ./libft/libft.a
 DYLIB		 = ./mlx/libmlx.dylib
 
