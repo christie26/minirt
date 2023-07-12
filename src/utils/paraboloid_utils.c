@@ -24,21 +24,19 @@ t_vector	get_normal_vector(t_coordinate hit_point, t_paraboloid paraboloid)
 	return (normal);
 }
 
-t_vector	get_rotation_angle(t_paraboloid paraboloid)
+t_vector	get_rotation_angle(t_paraboloid *paraboloid)
 {
-	t_vector	rotation_angle;
-
-	if (paraboloid.vector.y == 0)
-		rotation_angle.x = 0;
+	if (paraboloid->vector.y == 0)
+		paraboloid->rot_angle.x = 0;
 	else
-		rotation_angle.x = - (acos(paraboloid.vector.z / \
-			sqrt(pow(paraboloid.vector.y, 2)) - pow(paraboloid.vector.z, 2)));
-	if (paraboloid.vector.x == 0)
-		rotation_angle.y = 0;
+		paraboloid->rot_angle.x = -acos(paraboloid->vector.z / \
+		sqrt(pow(paraboloid->vector.y, 2) + pow(paraboloid->vector.z, 2)));
+	if (paraboloid->vector.x == 0)
+		paraboloid->rot_angle.y = 0;
 	else
-		rotation_angle.y = - (acos(paraboloid.vector.z / \
-			sqrt(pow(paraboloid.vector.x, 2)) - pow(paraboloid.vector.z, 2)));
-	return (rotation_angle);
+		paraboloid->rot_angle.y = -acos(paraboloid->vector.z / \
+		sqrt(pow(paraboloid->vector.x, 2) + pow(paraboloid->vector.z, 2)));
+	return (paraboloid->rot_angle);
 }
 
 t_ray	get_trans_ray(t_ray *ray, t_vector inverse_trans, t_vector inverse_ro)
