@@ -78,14 +78,14 @@ t_vector	get_vector(char *vector_val)
 	vector.x = get_double(vector_values[0]);
 	vector.y = get_double(vector_values[1]);
 	vector.z = get_double(vector_values[2]);
-	// if (vector.x < -1 || vector.x > 1 || vector.y < -1 || \
-	// 	vector.y > 1 || vector.z < -1 || vector.z > 1)
-	// 	error_msg(PARSE_VECTOR);
+	if (vector.x < -1 || vector.x > 1 || vector.y < -1 || \
+		vector.y > 1 || vector.z < -1 || vector.z > 1)
+		error_msg(PARSE_VECTOR);
 	if (vector_values[3])
 		error_msg(PARSE_VECTOR);
 	size_of_vector = vector_length(vector);
-	// if (size_of_vector > 1.01 || size_of_vector < 0.99)
-	// 	error_msg(PARSE_VECTOR);
+	if (size_of_vector > 1.01 || size_of_vector < 0.99)
+		error_msg(PARSE_VECTOR);
 	free_two_dimensional_array(vector_values);
 	return (vector);
 }

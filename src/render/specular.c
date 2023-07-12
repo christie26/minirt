@@ -12,8 +12,6 @@
 
 #include "../../includes/minirt.h"
 
-// R = 2*(N.L)*N - L
-// I = k * dot(R, V)^n
 static t_vector	get_reflected_light(t_ray *ray)
 {
 	t_vector	reflected_light;
@@ -29,7 +27,6 @@ static t_vector	get_reflected_light(t_ray *ray)
 	return (reflected_light);
 }
 
-// 2 * (N dot L) * N - L
 t_color	get_specular_color(t_ray *ray, t_light *light, double light_ratio)
 {
 	double				shininess;

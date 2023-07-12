@@ -12,17 +12,6 @@
 
 #include "../../includes/minirt.h"
 
-// double	get_hit_base_paraboloid(t_ray ray, t_paraboloid paraboloid, double t)
-// {
-// 	t_coordinate	intersection_point;
-// 	t_vector		base_to_intersection;
-
-// 	intersection_point = calculate_hit_point(ray, t);
-// 	base_to_intersection = get_vector_two_point(paraboloid.coordinate, \
-// 													intersection_point);
-// 	return (vector_dot(base_to_intersection, paraboloid.vector));
-// }
-
 t_vector	get_normal_vector(t_coordinate hit_point, t_paraboloid paraboloid)
 {
 	t_vector	normal;

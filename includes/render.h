@@ -38,8 +38,6 @@ t_coordinate		get_start_corner(t_camera camera, t_vector horizontal,
 						t_vector vertical, double focal_length);
 t_vector			get_world_vertical(t_vector camera_direction);
 
-//pixel color
-double				get_short_distance(t_list *object_list, t_ray *ray);
 
 // utils.c
 void				write_pixel_image(t_data *data, int x, int y, int color);
@@ -61,6 +59,7 @@ int					is_shadow(t_data data, t_ray ray_to_light);
 double				get_light_ratio(t_data data, t_coordinate hit_point, \
 						t_ray *ray, t_light light);
 // get hit_point
+double				get_short_distance(t_list *object_list, t_ray *ray);
 t_coordinate		get_closer_sphere_point(t_sphere sphere, t_ray *ray);
 t_coordinate		get_closer_plane_point(t_plane plane, t_ray *ray);
 t_coordinate		get_closer_cylinder_point(t_cylinder cylinder, t_ray *ray);
@@ -78,7 +77,6 @@ int					is_hit_point_between_top_and_bottom(double hit_base, \
 t_coordinate		hit_cylinder_lid(t_cylinder cylinder, t_ray *ray, \
 						t_coordinate top_center, t_coordinate base_center);
 
-// int					is_lid(t_cylinder cylinder, t_coordinate hit_point);
 
 t_color				get_specular_color(t_ray *ray, t_light *light, \
 						double light_ratio);
