@@ -104,7 +104,7 @@ typedef struct s_paraboloid
 {
 	t_coordinate	coordinate;
 	t_vector		vector;
-	t_vector		rotation_angle;
+	t_vector		rot_angle;
 	double			parameter_x;
 	double			parameter_y;
 	double			height;
@@ -186,6 +186,8 @@ typedef struct s_hit_paraboloid
 	t_coordinate	hit_point_2;
 	t_vector		normal_1;
 	t_vector		normal_2;
+	double			z_1;
+	double			z_2;
 }					t_hit_paraboloid;
 
 typedef struct s_specular_light
