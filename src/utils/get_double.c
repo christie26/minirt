@@ -12,8 +12,10 @@
 
 #include "../../includes/minirt.h"
 
-static double	process_dot(const char **str, double result, double scale)
+static double	process_dot(const char **str, double result, double scale, char *bit)
 {
+	if (*bit & 1)
+		error_msg(PARSE_DOUBLE);
 	(*str)++;
 	while (ft_isdigit(**str))
 	{
@@ -21,6 +23,7 @@ static double	process_dot(const char **str, double result, double scale)
 		scale *= 10.0;
 		(*str)++;
 	}
+	*bit |= 1;
 	return (result / scale);
 }
 
@@ -39,23 +42,25 @@ double	get_double(const char *str)
 	double	result;
 	double	sign;
 	double	scale;
+	char	bit;
 
 	result = 0.0;
 	sign = 1.0;
 	scale = 1.0;
+	bit = 0;
 	if (*str == '-')
 	{
 		sign = -1.0;
 		str++;
 	}
-	while (*str)
+	while (*str && *str != '\n')
 	{
 		if (*str == '.')
-			result = process_dot(&str, result, scale);
+			result = process_dot(&str, result, scale, &bit);
 		else if (ft_isdigit(*str))
 			result = process_digit(&str, result);
 		else
-			str++;
+			error_msg(PARSE_DOUBLE);
 	}
 	return (sign * result);
 }

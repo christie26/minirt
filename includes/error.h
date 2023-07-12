@@ -25,6 +25,8 @@
 # define PARSE_COLOR "parsing error: color"
 # define PARSE_VECTOR "parsing error: vector"
 # define PARSE_COORDINATE "parsing error: coordinate"
+# define PARSE_DOUBLE "parsing error: double"
+
 # define PARSE_SPHERE "parsing error: sphere"
 # define PARSE_PLANE "parsing error: plane"
 # define PARSE_CYLINDER "parsing error: cylinder"
