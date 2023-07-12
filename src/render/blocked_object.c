@@ -62,11 +62,15 @@ int	blocked_cylinder(t_cylinder cylinder, t_ray hit_to_light)
 int	blocked_paraboloid(t_paraboloid paraboloid, t_ray hit_to_light)
 {
 	t_hit_paraboloid	info;
+	double				t_of_light;
 
 	info = hit_paraboloid(paraboloid, &hit_to_light);
-	if (info.t_1 < 0 && info.t_2 < 0)
-		return (0);
-	if (info.hit_point_1.x == INFINITY && info.hit_point_2.x == INFINITY)
-		return (0);
-	return (1);
+	t_of_light = vector_length(get_vector_two_point(hit_to_light.origin, \
+				hit_to_light.light)) / vector_length(hit_to_light.direction);
+	if ((info.t_1 > 0 && info.t_1 < t_of_light && \
+		info.hit_point_1.x != INFINITY) || \
+		(info.t_2 > 0 && info.t_2 < t_of_light && \
+		info.hit_point_2.x != INFINITY))
+		return (1);
+	return (0);
 }
