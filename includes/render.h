@@ -38,7 +38,6 @@ t_coordinate		get_start_corner(t_camera camera, t_vector horizontal,
 						t_vector vertical, double focal_length);
 t_vector			get_world_vertical(t_vector camera_direction);
 
-
 // utils.c
 void				write_pixel_image(t_data *data, int x, int y, int color);
 
@@ -76,20 +75,16 @@ int					is_hit_point_between_top_and_bottom(double hit_base, \
 						double hit_top, double height);
 t_coordinate		hit_cylinder_lid(t_cylinder cylinder, t_ray *ray, \
 						t_coordinate top_center, t_coordinate base_center);
-
-
 t_color				get_specular_color(t_ray *ray, t_light *light, \
 						double light_ratio);
 void				*render_thread(void *arg);
 void				make_threads(t_data *data, pthread_t threads[], \
 						t_render_thread thread_data[]);
 void				join_threads(pthread_t threads[]);
-
 int					blocked_plane(t_plane plane, t_ray hit_to_light);
 int					blocked_sphere(t_sphere sphere, t_ray hit_to_light);
 int					blocked_cylinder(t_cylinder cylinder, t_ray hit_to_light);
-int					blocked_paraboloid(t_paraboloid paraboloid, t_ray hit_to_light);
-
-
+int					blocked_paraboloid(t_paraboloid paraboloid, \
+					t_ray hit_to_light);
 
 #endif
