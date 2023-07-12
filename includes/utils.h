@@ -83,7 +83,6 @@ void			print_vector(t_vector vector);
 void			print_coordinate(t_coordinate coordinate);
 
 // praboloid
-double			get_hit_base_paraboloid(t_ray ray, t_paraboloid paraboloid, double t);
 t_vector		get_normal_vector(t_coordinate hit_point, t_paraboloid paraboloid);
 t_vector		get_rotation_angle(t_paraboloid paraboloid);
 t_ray			get_trans_ray(t_ray *ray, t_vector inverse_trans, t_vector inverse_ro);

@@ -66,8 +66,7 @@ int	blocked_paraboloid(t_paraboloid paraboloid, t_ray hit_to_light)
 	info = hit_paraboloid(paraboloid, &hit_to_light);
 	if (info.t_1 < 0 && info.t_2 < 0)
 		return (0);
-	if ((info.base >= 0 && info.base <= paraboloid.height) || (info.top >= 0
-			&& info.top <= paraboloid.height))
+	if (info.hit_point_1.x == INFINITY && info.hit_point_2.x == INFINITY)
 		return (0);
 	return (1);
 }
